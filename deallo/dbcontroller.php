@@ -1,3 +1,8 @@
+<!--
+Author: Darren Wong Siew Ding (4334108)
+File Function: The database controller which allows me to call from its functions to connect to the database and interact with the database.
+-->
+
 <?php
 class DBController {
 	private $host = "localhost";
@@ -26,7 +31,7 @@ class DBController {
 	}
 	
 	function runQuery($query){
-        $result = $this->conn->$query;
+        $result = $this->conn->query($query);
         while($row=$result->fetch(PDO::FETCH_ASSOC)){
             $resultset[]=$row;
         }
@@ -44,9 +49,9 @@ class DBController {
 	}
 	
 	function numRows($query) {
-        $result = $this->conn->exec($query);
-        $rowcount = $result->fetchColumn();
-        
+        #$rowcount = $this->conn->exec($query)->fetchColumn(); exec returns number of rows for insert, update, delete. query function returns pdostatement object which can be manipulated by other pdo functions such as fetchcolumn
+        $rowcount = $this->conn->query($query)->fetchColumn();
+       
         
 		#$result  = mysqli_query($this->conn,$query);
 		#$rowcount = mysqli_num_rows($result);
