@@ -30,6 +30,10 @@ class DBController {
         }
 	}
 	
+    function getConn() {
+        return $this->conn;
+    }
+    
 	function runQuery($query){
         $result = $this->conn->query($query);
         while($row=$result->fetch(PDO::FETCH_ASSOC)){
