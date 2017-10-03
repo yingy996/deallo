@@ -24,7 +24,7 @@
     
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
+            <div class="col-xs-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3">
                 <form id="registerForm" name="frmRegistration" method="post" action="" novalidate role="form">
                     <?php if(!empty($success_message)) { ?>	
                     <div class="alert alert-success">
