@@ -18,12 +18,14 @@
             
             $total = count($result);
             if($total > 0) {
-                session_start();
-                $_SESSION["user_login"] = $username;
-                $test = $_SESSION["user_login"];
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
                 
-                header("refresh:2; url=index.html");
-                $resultMsg = "Login successfully! You will be redirected soon. $test";
+                $_SESSION["user_login"] = $username;
+                
+                header("refresh:3; url=index.php");
+                $resultMsg = "Login successfully! You will be redirected soon.";
                 
             } else {
                 $errorMsg = "Invalid username or password. Please try again!";

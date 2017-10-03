@@ -1,4 +1,7 @@
 <?php 
+    include("session.php");
+
+    //Display the navigation bar
     echo 
         '<nav class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container-fluid">
@@ -21,15 +24,39 @@
                         <li><a href="#">Contact us</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Burger</a></li>
-                                <li><a href="#">Appetizer</a></li>
-                                <li><a href="#">Dessert</a></li>
-                                <li><a href="#">Drink</a></li>
+                                <li><a href="#">Jewelry</a></li>
+                                <li><a href="#">Clothing &amp; accessories</a></li>
+                                <li><a href="#">Room decoration</a></li>
+                                <li><a href="#">Wedding accessories</a></li>
+                                <li><a href="#">Vintage arts</a></li>
+                                <li><a href="#">Toys</a></li>
+                                <li><a href="#">Craft supplies</a></li>
+
+                                <li><a href="#">Others</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="btn disabled hidden-xs">|</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
+                        <li><a href="#" class="btn disabled hidden-xs">|</a></li>';
+                
+                
+                    //Display user account if user logged in
+                    if (!isset($_SESSION["user_login"])){
+                        echo '<li><a href="login.php">Login</a></li>';
+                        echo '<li><a href="register.php">Sign up</a></li>';
+                    } else {
+                        
+                        echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
+                        
+                        echo '<li class="hidden-xs"><a href="#" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
+                        
+                        echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
+                        
+                        
+                        echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><span> Logout</span></a></li>';
+                        
+                        echo '<li class="hidden-xs"><a href="logout.php" class="btn-lg"><span class="glyphicon glyphicon-log-out"></span></a></li>';
+                    }    
+                
+            echo '</ul>
                 </div>
             </div>
         </nav>';

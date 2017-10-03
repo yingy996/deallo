@@ -16,7 +16,7 @@
 </head>
 <body id="loginpg"> <!--full page background img -->
     <?php 
-        include("processlogin.php");
+        include("process_login.php");
         include("header.php");
     ?>
     <!-- Navigation Bar -->
@@ -29,6 +29,7 @@
                     <fieldset>
                         <legend>Welcome!</legend>
                         <p>Login to your account now.</p>
+                        
                         <p class="text-success"><?php echo $resultMsg; ?></p>
                         <p class="text-danger"><?php echo $errorMsg; ?></p>
                         <div class="form-group">
@@ -41,8 +42,8 @@
                             <input type="password" class="form-control" id="password" name="password"/>
                         </div>
 
-                        <p><input type="submit" class="btn btn-default" id="loginBtn" value="Login"/> &nbsp; <a href="#">Forgot password?</a> </p>
-                        
+                        <p><input type="submit" class="btn btn-default" id="loginBtn" value="Login"/> &nbsp; <a href="#">Forgot password?</a></p>
+                        <p class="text-muted"><em><small>Need an account? <a href="register.php">Sign up!</a></small></em></p>
                     </fieldset>
                 </form>
             </div>
