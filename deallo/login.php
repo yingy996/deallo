@@ -14,22 +14,7 @@
 <script src="js/respond.min.js"></script>
 <![endif]-->
         <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId      : '296435147524384',
-                    xfbml      : true,
-                    version    : 'v2.10'
-                });
-                FB.AppEvents.logPageView();
-            };
 
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
         </script>
     </head>
     <body id="loginpg"> <!--full page background img -->
@@ -63,11 +48,21 @@
                             <p><input type="submit" class="btn btn-default" id="loginBtn" value="Login"/> &nbsp; <a href="#">Forgot password?</a></p>
                             <p class="text-muted"><em><small>Need an account? <a href="register.php">Sign up!</a></small></em></p>
                         </fieldset>
-                        <div id="loginBtn">
+
+                        <!-- Facebook login button-->
+                        <hr/>
+                        <p>Sign in with Facebook.</p>
+                        <div id="loginBtn" style="color: white;">
                             <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                            <div id="name"></div>
+                            <div id="email"></div>
+                            <button type="button" id="logoutBtn" onclick="logout();">
+                                Logout
+                            </button>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
 
@@ -83,5 +78,6 @@
         <!--Basic AngularJS-->
 
         <!-- Facebook login JS script -->
+        <script src="fb_login.js"></script>
     </body>
 </html>
