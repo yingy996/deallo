@@ -39,12 +39,12 @@
                         <div class="row">
                             <div class="form-group col-xs-6">
                                 <label for="firstname">*First name:</label>
-                                <input type="text" class="form-control col-xs-6" id="firstname" data-ng-model="user.firstname" name="firstName" data-ng-pattern="/^[a-zA-Z]*$/" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName']; ?>" required/>
+                                <input type="text" class="form-control col-xs-6" id="firstname" data-ng-model="user.firstname" name="firstName" data-ng-pattern="/^[a-zA-Z ]*$/" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName']; ?>" required/>
                             </div>
                         
                             <div class="form-group col-xs-6">
                                 <label for="lastname">*Last name:</label>
-                                <input type="text" class="form-control" id="lastname" data-ng-model="user.lastname" name="lastName" data-ng-pattern="/^[a-zA-Z]*$/" value="<?php if(isset($_POST['lastName'])) echo $_POST['lastName']; ?>" required/>
+                                <input type="text" class="form-control" id="lastname" data-ng-model="user.lastname" name="lastName" data-ng-pattern="/^[a-zA-Z ]*$/" value="<?php if(isset($_POST['lastName'])) echo $_POST['lastName']; ?>" required/>
                             </div>
                             
                             

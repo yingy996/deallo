@@ -1,4 +1,8 @@
 <?php
+    
+    $success_message = "";
+    $error_message = "";
+
     if(!empty($_POST["productSubmit"])){
             /* Product Category validation */
         if(empty($_POST["productCategory"])){
