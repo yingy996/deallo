@@ -170,8 +170,6 @@
         
     </div>
     
-    
-    
     <!-- Footer -->
     <footer class="footer navbar-static-bottom">
       <div class="container">

@@ -15,11 +15,12 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-ng-controller="imgUploadCtrl">
+<body data-ng-controller="addProductCtrl">
     <!-- Navigation Bar -->
+    
     <?php 
-        include("process_addproduct.php");
-        include("header.php");
+		include("header.php");
+        include("process_addproduct.php");    
     ?>
     
     <div class="container-fluid">
@@ -37,7 +38,7 @@
                 </div>
             </div>
 
-            <form name="frmProduct" method="post" action="" novalidate role="form" enctype="multipart/form-data">
+            <form name="frmProduct" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" data-ng-submit="productSubmit($event)" novalidate role="form" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="h4">Product Information</h2>
@@ -45,14 +46,13 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="input-group img-preview">
-
                                 <span class="input-group-btn">
 
                                     <div class="btn btn-default img-upload">
                                         <span class="glyphicon glyphicon-folder-open"></span>
                                         Browse
                                         <!--<input type="file" accept="image/jpeg, image/png" name="img-input" onchange="getImgUrl(event);"/> -->
-                                        <input type="file" name="img-input" accept="image/jpeg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
+                                        <input type="file" name="img-input" accept="image/jpeg, image/jpg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
                                     </div>
                                 </span>
                                 <input type="text" class="form-control img-preview-url" disabled="disabled" placeholder="{{imgName}}"/>
@@ -63,33 +63,34 @@
                             </div>
 
                         </div>
+						
                     </div>
                     <br/>
                     <div class="row">
                         <div class="col-xs-12">
                             <label for="category">Category:</label>
                             <select class="form-control" id="category" data-ng-model="category" name="productCategory" required>
-                                <option value="jw">Jewelry</option>
-                                <option value="clthacc">Clothing &amp; accessories</option>
-                                <option value="rd">Room decor</option>
-                                <option value="wd">Wedding accessories</option>
-                                <option value="va">Vintage arts</option>
-                                <option value="ty">Toy</option>
-                                <option value="cs">Craft supplies</option>
+                                <option value="jewelry">Jewelry</option>
+                                <option value="clothesNAccessories">Clothing &amp; accessories</option>
+                                <option value="roomDecor">Room decor</option>
+                                <option value="weddingAccessories">Wedding accessories</option>
+                                <option value="vintageArts">Vintage arts</option>
+                                <option value="toy">Toy</option>
+                                <option value="craftSupplies">Craft supplies</option>
                                 <option value="etc">Others</option>
                             </select>
                         </div>
                         
-                        <p class="alert alert-danger" data-ng-show="frmProduct.productCategory.$error.required && (frmProduct.productCategory.$touched || frmProduct.$submitted)">*Product category is required</p>
+                        <p class="alert alert-danger" data-ng-show="frmProduct.productCategory.$error.required && (frmProduct.productCategory.$touched || submitted)">*Product category is required</p>
                     </div>
                     <br/>
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <label for="productName">Product name:</label>
-                            <input type="text" class="form-control" id="productName" data-ng-model="productName" name="productName" required/>
+                            <input type="text" class="form-control" id="productName" data-ng-model="productName" name="productName" value="<?php if(isset($_POST["productName"])) echo $_POST["productName"]; ?>"required/>
                         </div>
                         
-                        <p class="alert alert-danger" data-ng-show="frmProduct.productName.$error.required && (frmProduct.productName.$touched || frmProduct.$submitted)" >*Product name is required</p>
+                        <p class="alert alert-danger" data-ng-show="frmProduct.productName.$error.required && (frmProduct.productName.$touched || submitted)" >*Product name is required</p>
                         
                     </div>
 
@@ -109,7 +110,7 @@
                             </div>                                           
                         </div>
                         
-                        <p class="alert alert-danger" data-ng-show="frmProduct.productPrice.$error.required && (frmProduct.productPrice.$touched || frmProduct.$submitted)" >*Product price is required</p>
+                        <p class="alert alert-danger" data-ng-show="frmProduct.productPrice.$error.required && (frmProduct.productPrice.$touched || submitted)" >*Product price is required</p>
                     </div>
 
                     <div class="row">
@@ -128,7 +129,7 @@
                             </div>
                         </div>
                         
-                        <p class="alert alert-danger" data-ng-show="frmProduct.productShippingPrice.$error.required && (frmProduct.productShippingPrice.$touched || frmProduct.$submitted)" >*Shipping fee is required</p>
+                        <p class="alert alert-danger" data-ng-show="frmProduct.productShippingPrice.$error.required && (frmProduct.productShippingPrice.$touched || submitted)" >*Shipping fee is required</p>
                     </div>
 
                     <div class="row">
@@ -142,27 +143,27 @@
                             <div class="row">
                                 <div class="col-xs-12 form-group">
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[1]" id="shpgAgent" data-ng-model="shpgAgent.poslaju" value="poslaju"/> Poslaju</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.poslaju" value="poslaju"/> Poslaju</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[2]" id="shpgAgent" data-ng-model="shpgAgent.abx" value="abx"/> ABX Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.abx" value="abx"/> ABX Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[3]" id="shpgAgent" data-ng-model="shpgAgent.gdex" value="gdex"/> GD Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.gdex" value="gdex"/> GD Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[4]" id="shpgAgent" data-ng-model="shpgAgent.fedex" value="fedex"/> FedEx</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.fedex" value="fedex"/> FedEx</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[5]" id="shpgAgent" data-ng-model="shpgAgent.ctlink" value="ctlink"/> City-Link</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.ctlink" value="ctlink"/> City-Link</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[6]" id="shpgAgent" data-ng-model="shpgAgent.other" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" data-ng-model="shpgAgent.other" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
                                     </div>
                                 </div>
                             </div>
