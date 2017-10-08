@@ -20,7 +20,7 @@
     
     <?php 
 		include("header.php");
-        include("process_addproduct.php");    
+		include("process_addproduct.php"); 
     ?>
     
     <div class="container-fluid">

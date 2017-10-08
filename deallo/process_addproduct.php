@@ -1,5 +1,6 @@
 <?php
-    
+    require_once("dbcontroller.php");
+
     $success_message = "";
     $error_message = "";
 
@@ -31,7 +32,6 @@
             $error_message = "Product Category cannot be empty";
         }
         
-
        if(!empty($_FILES["img-input"])){
 		   $shippingAgents = "";
 		   if (isset($_POST["shpgAgent"])) {
@@ -54,12 +54,15 @@
 
 		   if(in_array($file_ext,$expensions)=== false){
 			   $errors[] = "Extension not allowed, please choose a JPEG or PNG file.";
+			   $error_message .= "Extension not allowed, please choose a JPEG or PNG file. ";
 		   }
 
 		   if($file_size > 2097152){
 			   $errors[] = "File size must be less than 2 MB";
+			   $error_message .= "File size must be less than 2 MB. ";
 		   } elseif ($file_size == 0) {
 			   $errors[] = "Product image is required";
+			   $error_message .= "Product image is required.";
 		   }
 
 		   if(empty($errors)){ 
@@ -129,7 +132,7 @@
 
 		   }
        } else {
-		   $error_message = "Image is required";
+		   $error_message = $errors[0];
 	   }
     }
 
@@ -151,11 +154,11 @@
         return $result;
     }
 
-	function sanitizeInput($data) {
+	/*function sanitizeInput($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         
         return $data;
-    }
+    }*/
 ?>

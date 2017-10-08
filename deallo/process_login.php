@@ -1,5 +1,5 @@
 <?php
-    include("dbcontroller.php");    
+    require_once("dbcontroller.php");    
     $errorMsg = "";
     $resultMsg = "";
 
@@ -55,11 +55,11 @@
         }*/
     }
 
-    function sanitizeInput($data) {
+    /*function sanitizeInput($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         
         return $data;
-    }
+    }*/
 ?>

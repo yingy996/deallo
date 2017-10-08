@@ -1,4 +1,6 @@
 <?php
+require_once("dbcontroller.php");
+
 if(!empty($_POST["registerUser"])) {
 	/* Form Required Field Validation */
 	foreach($_POST as $key=>$value) {
@@ -82,7 +84,7 @@ if(!empty($_POST["registerUser"])) {
     
 
 	if(!isset($error_message)) {
-		require_once("dbcontroller.php");
+		
 		$db_handle = new DBController();
 		$query = "INSERT INTO user_account (id, email, first_name, last_name, username, password, phone_number, address, country, state, city, postcode) VALUES
 		(NULL,'" . $_POST["userEmail"] . "', '" . $_POST["firstName"] . "', '" . $_POST["lastName"] . "', '" . $_POST["userName"] . "', '" . md5($_POST["password"]) . "', '" . $_POST["phoneNum"] . "', '" . $_POST["userAddress"] . "', '" . $_POST["userCountry"] . "', '" . $_POST["userState"] . "', '" . $_POST["userCity"] . "', '" . $_POST["userPostcode"] . "')";

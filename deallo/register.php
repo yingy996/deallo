@@ -18,8 +18,8 @@
 <body>
     <!-- Navigation Bar -->
     <?php 
+		include("header.php");
         include("process_register.php");
-        include("header.php");
     ?>
     
     <div class="container-fluid">

@@ -16,8 +16,8 @@
 </head>
 <body id="loginpg"> <!--full page background img -->
     <?php 
+		include("header.php");
         include("process_login.php");
-        include("header.php");
     ?>
     <!-- Navigation Bar -->
     
@@ -34,7 +34,7 @@
                         <p class="text-danger"><?php echo $errorMsg; ?></p>
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username and email"/>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username"/>
                         </div>
 
                         <div class="form-group">
