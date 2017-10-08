@@ -18,13 +18,13 @@
 <body>
     <!-- Navigation Bar -->
     <?php 
+		include("header.php");
         include("process_register.php");
-        include("header.php");
     ?>
     
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
+            <div class="col-xs-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3">
                 <form id="registerForm" name="frmRegistration" method="post" action="" novalidate role="form">
                     <?php if(!empty($success_message)) { ?>	
                     <div class="alert alert-success">
@@ -39,12 +39,12 @@
                         <div class="row">
                             <div class="form-group col-xs-6">
                                 <label for="firstname">*First name:</label>
-                                <input type="text" class="form-control col-xs-6" id="firstname" data-ng-model="user.firstname" name="firstName" data-ng-pattern="/^[a-zA-Z]*$/" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName']; ?>" required/>
+                                <input type="text" class="form-control col-xs-6" id="firstname" data-ng-model="user.firstname" name="firstName" data-ng-pattern="/^[a-zA-Z ]*$/" value="<?php if(isset($_POST['firstName'])) echo $_POST['firstName']; ?>" required/>
                             </div>
                         
                             <div class="form-group col-xs-6">
                                 <label for="lastname">*Last name:</label>
-                                <input type="text" class="form-control" id="lastname" data-ng-model="user.lastname" name="lastName" data-ng-pattern="/^[a-zA-Z]*$/" value="<?php if(isset($_POST['lastName'])) echo $_POST['lastName']; ?>" required/>
+                                <input type="text" class="form-control" id="lastname" data-ng-model="user.lastname" name="lastName" data-ng-pattern="/^[a-zA-Z ]*$/" value="<?php if(isset($_POST['lastName'])) echo $_POST['lastName']; ?>" required/>
                             </div>
                             
                             
@@ -169,8 +169,6 @@
         </div>
         
     </div>
-    
-    
     
     <!-- Footer -->
     <footer class="footer navbar-static-bottom">
