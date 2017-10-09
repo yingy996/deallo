@@ -16,10 +16,10 @@
     <![endif]-->
 </head>
 <body>
-    <!-- Navigation Bar -->
     <?php 
         include("header.php");
-        include("process_register.php");
+        include("process_edituseraccount.php");
+        
     ?>
     
     <div class="container-fluid">
@@ -60,54 +60,6 @@
                             
                         </div>
                         
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <label for="email">*Email:</label>
-                                <input type="email" class="form-control" id="email" data-ng-model="user.email" name="userEmail" value="<?php if(isset($_POST['userEmail'])) echo $_POST['userEmail']; ?>" required/><span class="error"><?php if($emailErr != "") echo "<p class='alert alert-danger'>" . $emailErr . "</p>";?></span>
-                            </div>
-                            
-                            <!--Displaying errors: email-->
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.userEmail.$error.required && frmRegistration.userEmail.$touched">*Email is required</p>
-                    
-                            <p class="alert alert-danger" data-ng-show="!frmRegistration.userEmail.$error.required && frmRegistration.userEmail.$invalid && frmRegistration.userEmail.$touched">*Email format is invalid, format example: 1234@email.com</p>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <label for="username">*Username:</label>
-                                <input type="text" class="form-control" id="username" data-ng-model="user.username" name="userName" data-ng-minlength="4" data-ng-maxlength="13" data-ng-pattern="/^[a-zA-Z0-9]*$/" value="<?php if(isset($_POST['userName'])) echo $_POST['userName']; ?>" required/><span class="error"><?php if($usernameErr != "") echo "<p class='alert alert-danger'>" . $usernameErr . "</p>";?></span>
-                            </div>
-                            
-                            <!--Displaying errors: username-->
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.userName.$error.required && frmRegistration.userName.$touched">*Username is required</p>
-                            
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.userName.$error.minlength && frmRegistration.userName.$touched">*Username must has 4 characters and above</p>
-                            
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.userName.$error.maxlength && frmRegistration.userName.$touched">Username must only contain 13 characters and below in length</p>
-                            
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.userName.$error.pattern && frmRegistration.userName.$touched">Username can only be alphanumeric</p>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="password">*Password:</label>
-                                <input type="password" class="form-control" id="password" data-ng-model="user.password" name="password" data-ng-minlength="6" value="<?php if(isset($_POST['password'])) echo $_POST['password']; ?>" required/><span class="error"><?php if($passwordErr != "") echo "<p class='alert alert-danger'>" . $passwordErr . "</p>";?></span>
-                            </div> 
-							
-							<div class="form-group col-xs-6">
-                                <label for="confirmpass">*Confirm Password:</label>
-                                <input type="password" class="form-control" id="confirmpass" data-ng-model="user.confirmpass" name="confirmPass" required/><span class="error"><?php if($passwordErr != "") echo "<p class='alert alert-danger'>" . $passwordErr . "</p>";?></span>
-                            </div>
-                            
-                            <!--Displaying errors: password-->
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.password.$error.required && frmRegistration.password.$touched">*Password is required</p>
-                            
-                            <p class="alert alert-danger" data-ng-show=" frmRegistration.password.$error.minlength && frmRegistration.password.$touched">Password must contain at least 6 characters</p>
-                            
-                            <p class="alert alert-danger" data-ng-show="frmRegistration.confirmPass.$error.required && frmRegistration.confirmPass.$touched">*Please re-enter your password</p>
-                            
-                            <p class="alert alert-danger" data-ng-show="user.confirmpass != user.password">Password does not match</p>
-                        </div>
 					</fieldset>
 					<br/>
 					<fieldset>
@@ -183,7 +135,7 @@
                         </div>
                     </fieldset>  
 
-                        <button type="submit" class="btn btn-default" name="registerUser" data-ng-disabled="frmRegistration.$invalid || user.password!=user.confirmpass || !terms" value="register">Submit</button> 
+                        <button type="submit" class="btn btn-default" name="edituserInfo" data-ng-disabled="frmRegistration.$invalid || user.password!=user.confirmpass || !terms" value="register">Submit</button> 
                     
                 </form>
             </div>

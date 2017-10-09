@@ -48,7 +48,7 @@
                         
                         echo '<li class="hidden-xs"><a href="#" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
-                        echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
+                        echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
                         
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><span> Logout</span></a></li>';
