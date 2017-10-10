@@ -51,15 +51,19 @@
 
                         <!-- Facebook login button-->
                         <hr/>
-                        <p>Sign in with Facebook.</p>
-                        <div id="loginBtn" style="color: white;">
-                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-                            <div id="name"></div>
-                            <div id="email"></div>
-                            <button type="button" id="logoutBtn" onclick="logout();">
-                                Logout
-                            </button>
-                        </div>
+                        <!--
+<p>Sign in with Facebook.</p>
+<div id="loginBtn" style="color: white;">
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+<div id="name"></div>
+<div id="email"></div>
+<button type="button" id="logoutBtn" onclick="logout();">
+Logout
+</button>
+</div> -->
+                        <?php
+                        require_once __DIR__ . '/fb/fb_process_login.php';
+                        ?>
                     </form>
                 </div>
 
@@ -78,6 +82,8 @@
         <!--Basic AngularJS-->
 
         <!-- Facebook login JS script -->
-        <script src="fb_login.js"></script>
+        <!--<script src="fb_login.js"></script>-->
     </body>
 </html>
+
+<?php $session_value=(isset($_SESSION['id']))?$_SESSION['id']:''; ?>
