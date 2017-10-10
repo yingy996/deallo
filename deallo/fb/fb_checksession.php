@@ -52,7 +52,7 @@ if (isset($_SESSION['fb_access_token'])) {
     $fb = new Facebook\Facebook(['app_id' => '296435147524384','app_secret' => '01a6b28080ff646e9c43cbe3f9ee83d1','default_graph_version' => 'v2.4',]);
 
     try {  // Returns a `Facebook\FacebookResponse` object
-      $response = $fb->get('/me?fields=id,name', $_SESSION['fb_access_token']);
+      $response = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
     } catch(Facebook\Exceptions\FacebookResponseException $e) {
       echo 'Graph returned an error: ' . $e->getMessage();
       exit;
@@ -64,6 +64,7 @@ if (isset($_SESSION['fb_access_token'])) {
     $user = $response->getGraphUser();
     ?><br><?php
     echo 'Name: ' . $user['name'];
+    echo '<br/>Email: ' . $user['email'];
     ?><br><?php    
 }  else {
     echo "Dont know about session";    

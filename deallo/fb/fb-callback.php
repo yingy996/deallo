@@ -77,7 +77,7 @@ exit;
 }
 
 try {
-$response = $fb->get('/me?fields=id,name', $accessToken);
+$response = $fb->get('/me?fields=id,name,email', $accessToken);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
 echo 'Graph returned an error: ' . $e->getMessage();
 exit;
@@ -91,6 +91,7 @@ $user = $response->getGraphUser();
 echo 'Name: ' . $user['name'];
 ?><br><?php
 echo 'ID: ' . $user['id'];
+echo '<br/>Email: ' . $user['email'];
 // OR
 // echo 'Name: ' . $user->getName();
 
