@@ -54,12 +54,16 @@
                                         <span class="glyphicon glyphicon-folder-open"></span>
                                         Browse
                                         <!--<input type="file" accept="image/jpeg, image/png" name="img-input" onchange="getImgUrl(event);"/> -->
-                                        <input type="file" name="img-input" accept="image/jpeg, image/jpg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
+                                        <input type="file" name="img-input[]" accept="image/jpeg, image/jpg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
                                     </div>
                                 </span>
                                 <input type="text" class="form-control img-preview-url" disabled="disabled" placeholder="{{imgName}}"/>
                             </div>
-
+							
+							<div>
+								<img class="uploadedImg" src="<?php echo $row["img"]?>"/>
+							</div>
+							
                             <div data-ng-repeat="img in images">
                                 <img class="uploadedImg" data-ng-src="{{img}}"/>
                             </div>
@@ -170,11 +174,12 @@
                                 </div>
                             </div>
                         </div>
+						<!--<p class="alert alert-danger" data-ng-show="!checkAgents() && submitted" >*At least one shipping agent is required</p>-->
                     </div>
 
                 </div>
             </div>
-                <input type="submit" class="btn btn-default" value="Add product" name="productSubmit"/>
+                <input type="submit" class="btn btn-default" value="Edit product" name="productSubmit"/>
             </form>
         </div>
     </div>

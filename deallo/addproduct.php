@@ -54,10 +54,11 @@
                                         <span class="glyphicon glyphicon-folder-open"></span>
                                         Browse
                                         <!--<input type="file" accept="image/jpeg, image/png" name="img-input" onchange="getImgUrl(event);"/> -->
-                                        <input type="file" name="img-input" accept="image/jpeg, image/jpg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
+                                        <input type="file" name="img-input[]" accept="image/jpeg, image/jpg, image/png" ng-model-instant onchange="angular.element(this).scope().getImgUrl(event)" multiple/>
                                     </div>
                                 </span>
                                 <input type="text" class="form-control img-preview-url" disabled="disabled" placeholder="{{imgName}}"/>
+								
                             </div>
 
                             <div data-ng-repeat="img in images">
@@ -145,31 +146,33 @@
                             <div class="row">
                                 <div class="col-xs-12 form-group">
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.poslaju" value="poslaju"/> Poslaju</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[0]" value="poslaju"/> Poslaju</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.abx" value="abx"/> ABX Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[1]" value="abx"/> ABX Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.gdex" value="gdex"/> GD Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[2]" value="gdex"/> GD Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.fedex" value="fedex"/> FedEx</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[3]" value="fedex"/> FedEx</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent.ctlink" value="ctlink"/> City-Link</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[4]" value="ctlink" /> City-Link</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" data-ng-model="shpgAgent.other" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" data-ng-model="shpgAgent[5]" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+						
+						<!--<p class="alert alert-danger" data-ng-show="!checkAgents() && (frmProduct.shpgAgent.$touched || submitted)" >*At least one shipping agent is required</p>-->
                     </div>
 
                 </div>
@@ -178,7 +181,7 @@
             </form>
         </div>
     </div>
-       
+   
     <!-- Footer -->
     <?php 
         include("footer.php");
