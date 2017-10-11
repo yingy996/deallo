@@ -14,7 +14,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="#">Money Saver</a>
+                    <a class="navbar-brand" href="index.php"><em>Deallo Craft House</em></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-to-collapse">
@@ -22,7 +22,7 @@
                         <li><a href="#">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="productcategory.php">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Jewelry</a></li>
                                 <li><a href="#">Clothing &amp; accessories</a></li>
@@ -48,7 +48,7 @@
                         
                         echo '<li class="hidden-xs"><a href="#" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
-                        echo '<li><a href="#"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
+                        echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
                         
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><span> Logout</span></a></li>';
