@@ -61,7 +61,12 @@
                             </div>
 							
 							<div>
-								<img class="uploadedImg" src="<?php echo $row["img"]?>"/>
+								<?php 
+									foreach ($dbImages as $dbImage) {
+										echo "<img class='uploadedImg' src='$dbImage'/>";
+									}
+								?>
+								
 							</div>
 							
                             <div data-ng-repeat="img in images">
