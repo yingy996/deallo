@@ -173,7 +173,12 @@
 				$productPrice = sanitizeInput($_POST["productPrice"]);
 				$shippingFee = $_POST["productShippingPrice"];
 				$modified = date("Y-m-d");
-				$imageNames = $dbCurrentImg . "_,_" . $imageFileNames;
+				if ($imageFileNames != "") {
+					$imageNames = $dbCurrentImg . "_,_" . $imageFileNames;
+				} else {
+					$imageNames = $dbCurrentImg;
+				}
+				
 				$query->execute();
 
 				if($query->rowCount() > 0) {
