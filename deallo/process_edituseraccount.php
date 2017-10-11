@@ -7,7 +7,7 @@ $error_message = "";
         require_once("dbcontroller.php");
 		$db_handle = new DBController();
  //temporary email later get from session 
-        $temporaryusername = "woohoo";
+        //$temporaryusername = "woohoo";
         
 
 if(!empty($_POST["edituserInfo"])) {
@@ -108,7 +108,7 @@ if(!empty($_POST["edituserInfo"])) {
 
 	if($error_message == "" && $errorpresence == false) {
 		
-        $query = $db_handle->getConn()->prepare("UPDATE user_account SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, address = :address, country = :country, state = :state, city = :city, postcode = :postcode WHERE username = '$temporaryusername'");
+        $query = $db_handle->getConn()->prepare("UPDATE user_account SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, address = :address, country = :country, state = :state, city = :city, postcode = :postcode WHERE username = :username");
             
             $query->bindParam(":first_name", $first_name);
             $query->bindParam(":last_name", $last_name);
@@ -118,7 +118,7 @@ if(!empty($_POST["edituserInfo"])) {
             $query->bindParam(":state", $state);
             $query->bindParam(":city", $city);
             $query->bindParam(":postcode", $postcode);
-
+		$query->bindParam(":username", $login_user);
 
 
             $result = $query->execute();
