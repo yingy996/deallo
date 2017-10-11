@@ -1,7 +1,7 @@
 <?php
 
         //LATER CAN GET SESSION EMAIL OR SUMFING
-        $login_user = "woohoo";
+        //$login_user = "woohoo";
         
         require_once("dbcontroller.php");
 		$db_handle = new DBController();
