@@ -78,27 +78,29 @@
 					
 					echo 
 						'<div class="col-xs-6 col-md-3">
-							<div class="row">
-								<div class="col-xs-12 text-center">
-									<img class="productImg img-thumbnail" src="'. $productImg[0] .'"/>
+							<a href="#"> 
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<img class="productImg img-thumbnail" src="'. $productImg[0] .'"/>
+									</div>
 								</div>
-							</div>
 
-							<div class="row">
-								<div class="col-xs-12 text-center">
-									<p>'.
-										$product["name"]
-									.'</p>
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<p>'.
+											$product["name"]
+										.'</p>
+									</div>
 								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-xs-12 text-center">
-									<p>RM'.
-										$product["price"]
-									.'</p>
+
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<p>RM'.
+											$product["price"]
+										.'</p>
+									</div>
 								</div>
-							</div>
+							</a>
 						</div>';
 					
 					if ($index == 1) {

@@ -19,11 +19,12 @@
 
                 <div class="collapse navbar-collapse" id="navbar-to-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="#">Contact us</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="productcategory.php">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+								<li><a href="productcategory.php">All</a></li>
                                 <li><a href="#">Jewelry</a></li>
                                 <li><a href="#">Clothing &amp; accessories</a></li>
                                 <li><a href="#">Room decoration</a></li>
