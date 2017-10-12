@@ -51,16 +51,6 @@
 
                         <!-- Facebook login button-->
                         <hr/>
-                        <!--
-<p>Sign in with Facebook.</p>
-<div id="loginBtn" style="color: white;">
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-<div id="name"></div>
-<div id="email"></div>
-<button type="button" id="logoutBtn" onclick="logout();">
-Logout
-</button>
-</div> -->
                         <?php
                         require_once __DIR__ . '/fb/fb_process_login.php';
                         ?>

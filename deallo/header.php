@@ -1,5 +1,6 @@
 <?php 
     include("session.php");
+    require_once($_SERVER['DOCUMENT_ROOT']."/deallo/deallo/fb/fb-callback.php");
 
     //Display the navigation bar
     echo 
@@ -43,6 +44,10 @@
                         echo '<li><a href="login.php">Login</a></li>';
                         echo '<li><a href="register.php">Sign up</a></li>';
                     } else {
+                        
+                        if (!empty($accessToken)) { 
+                            $login_user = $user['name'];
+                        }
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
                         
