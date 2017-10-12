@@ -1,6 +1,6 @@
 <?php 
     include("session.php");
-    require_once($_SERVER['DOCUMENT_ROOT']."/deallo/deallo/fb/fb-callback.php");
+    
 
     //Display the navigation bar
     echo 
