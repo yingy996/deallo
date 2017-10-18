@@ -91,5 +91,3 @@ if(!empty($user['name']) && !empty($user['email'])) {
 
 include ("fb_process_register.php");
 ?>
-
-<a href="http://localhost/deallo/deallo/logout.php">Log me out</a>
