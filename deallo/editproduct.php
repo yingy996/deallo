@@ -20,7 +20,7 @@
     
     <?php 
 		include("header.php");
-		include("process_addproduct.php"); 
+		include("process_editproduct.php"); 
     ?>
     
     <div class="container-fluid">
@@ -58,9 +58,17 @@
                                     </div>
                                 </span>
                                 <input type="text" class="form-control img-preview-url" disabled="disabled" placeholder="{{imgName}}"/>
-								
                             </div>
-
+							
+							<div>
+								<?php 
+									foreach ($dbImages as $dbImage) {
+										echo "<img class='uploadedImg' src='$dbImage'/>";
+									}
+								?>
+								
+							</div>
+							
                             <div data-ng-repeat="img in images">
                                 <img class="uploadedImg" data-ng-src="{{img}}"/>
                             </div>
@@ -72,15 +80,15 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <label for="category">Category:</label>
-                            <select class="form-control" id="category" data-ng-model="category" name="productCategory" required>
-                                <option value="jewelry">Jewelry</option>
-                                <option value="clothesNAccessories">Clothing &amp; accessories</option>
-                                <option value="roomDecor">Room decor</option>
-                                <option value="weddingAccessories">Wedding accessories</option>
-                                <option value="vintageArts">Vintage arts</option>
-                                <option value="toy">Toy</option>
-                                <option value="craftSupplies">Craft supplies</option>
-                                <option value="etc">Others</option>
+                            <select class="form-control" id="category" name="productCategory" required>
+                                <option value="jewelry" <?php if($row['category'] == 'jewelry'){ echo 'selected="selected"'; }?>>Jewelry</option>
+                                <option value="clothesNAccessories" <?php if($row['category'] == 'clothesNAccessories'){ echo 'selected="selected"'; }?>>Clothing &amp; accessories</option>
+                                <option value="roomDecor" <?php if($row['category'] == 'roomDecor'){ echo 'selected="selected"'; }?>>Room decor</option>
+                                <option value="weddingAccessories" <?php if($row['category'] == 'weddingAccessories'){ echo 'selected="selected"'; }?>>Wedding accessories</option>
+                                <option value="vintageArts" <?php if($row['category'] == 'vintageArts'){ echo 'selected="selected"'; }?>>Vintage arts</option>
+                                <option value="toy" <?php if($row['category'] == 'toy'){ echo 'selected="selected"'; }?>>Toy</option>
+                                <option value="craftSupplies" <?php if($row['category'] == 'craftSupplies'){ echo 'selected="selected"'; }?>>Craft supplies</option>
+                                <option value="etc" <?php if($row['category'] == 'etc'){ echo 'selected="selected"'; }?>>Others</option>
                             </select>
                         </div>
                         
@@ -90,7 +98,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <label for="productName">Product name:</label>
-                            <input type="text" class="form-control" id="productName" data-ng-model="productName" name="productName" value="<?php if(isset($_POST["productName"])) echo $_POST["productName"]; ?>"required/>
+                            <input type="text" class="form-control" id="productName" name="productName" value="<?php echo $row["name"]; ?>"required/>
                         </div>
                         
                         <p class="alert alert-danger" data-ng-show="frmProduct.productName.$error.required && (frmProduct.productName.$touched || submitted)" >*Product name is required</p>
@@ -100,7 +108,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <label for="desc">Product description:</label>
-                            <textarea id="desc" data-ng-model="desc" class="form-control" name="productDescription" rows="4" placeholder="Enter description for the product"></textarea>
+                            <textarea id="desc" class="form-control" name="productDescription" rows="4" placeholder="Enter description for the product"><?php echo $row["description"]; ?></textarea>
                         </div>                            
                     </div>
 
@@ -109,7 +117,7 @@
                             <label for="price">Price:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">RM</div>
-                                <input type="number" class="form-control" id="price" data-ng-model="price" name="productPrice" required/> 
+                                <input type="number" class="form-control" id="price" name="productPrice" value="<?php echo $row["price"]; ?>" required/> 
                             </div>                                           
                         </div>
                         
@@ -128,7 +136,7 @@
                             <label for="shpgFee">Shipping fee:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">RM</div>
-                                <input type="number" class="form-control" id="shpgfee" data-ng-model="shpgfee" name="productShippingPrice" required/> 
+                                <input type="number" class="form-control" id="shpgfee" name="productShippingPrice" value="<?php echo $row["shipping_fee"]; ?>" required/> 
                             </div>
                         </div>
                         
@@ -146,42 +154,41 @@
                             <div class="row">
                                 <div class="col-xs-12 form-group">
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[0]" value="poslaju"/> Poslaju</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" value="poslaju" <?php if(in_array("poslaju", $shpgAgents)){ echo "checked='checked'"; } ?>/> Poslaju</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[1]" value="abx"/> ABX Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" value="abx" <?php if(in_array("abx", $shpgAgents)){ echo "checked='checked'"; } ?>/> ABX Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[2]" value="gdex"/> GD Express</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" value="gdex" <?php if(in_array("gdex", $shpgAgents)){ echo "checked='checked'"; } ?>/> GD Express</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[3]" value="fedex"/> FedEx</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" value="fedex" <?php if(in_array("fedex", $shpgAgents)){ echo "checked='checked'"; } ?>/> FedEx</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" data-ng-model="shpgAgent[4]" value="ctlink" /> City-Link</label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="shpgAgent[]" id="shpgAgent" value="ctlink" <?php if(in_array("ctlink", $shpgAgents)){ echo "checked='checked'"; } ?>/> City-Link</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" data-ng-model="shpgAgent[5]" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" value="" <?php if($isOtherAgent){ echo "checked='checked'"; } ?>/> Other <input type="text" name="otherSAgent" value="<?php if($isOtherAgent){ echo $otherAgent; } ?>"/> </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-						
-						<!--<p class="alert alert-danger" data-ng-show="!checkAgents() && (frmProduct.shpgAgent.$touched || submitted)" >*At least one shipping agent is required</p>-->
+						<!--<p class="alert alert-danger" data-ng-show="!checkAgents() && submitted" >*At least one shipping agent is required</p>-->
                     </div>
 
                 </div>
             </div>
-                <input type="submit" class="btn btn-default" value="Add product" name="productSubmit"/>
+                <input type="submit" class="btn btn-default" value="Edit product" name="productSubmit"/>
             </form>
         </div>
     </div>
-   
+       
     <!-- Footer -->
     <?php 
         include("footer.php");

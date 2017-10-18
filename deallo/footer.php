@@ -10,7 +10,7 @@
               <li>&#8226;</li>
               <li><a href="#">Contact us</a></li>
           </ul>
-          <p class="text-center copyright"><em>Copyright &copy; 2017. All Rights reserved by Money Saver Sdn Bhd</em></p>
+          <p class="text-center copyright"><em>Copyright &copy; 2017. All Rights reserved by Deallo Craft House Ltd</em></p>
       </div>
     </footer>';
 ?>
