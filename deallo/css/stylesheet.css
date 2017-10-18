@@ -173,11 +173,6 @@ body#loginpg {
     float: left;
 }
 
-.productImg {
-	width: 200px;
-	margin: 2px;
-}
-
 .img-upload input[type=file] {
     position: absolute;
     top: 0;

@@ -1,3 +1,8 @@
+<!--
+Author: Darren Wong Siew Ding (4334108)
+File Function: The database controller which allows me to call from its functions to connect to the database and interact with the database.
+-->
+
 <?php
 class DBController {
 	private $host = "localhost";
