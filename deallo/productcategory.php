@@ -1,16 +1,7 @@
-<?php
-
-require_once("dbcontroller.php");
-		$db_handle = new DBController();
-		$query = "SELECT id, image, product_name FROM products ";
-		$result = $db_handle->insertQuery($query);
-
-?>
-
 <!DOCTYPE html>
 <html data-ng-app="moneySaver">
 <head>
-    <title>Money Saver</title>
+    <title>Deallo Craft House</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initialscale=1.0"/>
     <!-- Bootstrap -->
@@ -25,47 +16,13 @@ require_once("dbcontroller.php");
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <!--3 bar icon-->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-to-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <a class="navbar-brand" href="#">Money Saver</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="navbar-to-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Jewelry</a></li>
-                            <li><a href="#">Clothing &amp; accessories</a></li>
-                            <li><a href="#">Room decoration</a></li>
-                            <li><a href="#">Wedding accessories</a></li>
-                            <li><a href="#">Vintage arts</a></li>
-                            <li><a href="#">Toys</a></li>
-                            <li><a href="#">Craft supplies</a></li>
-                            
-                            <li><a href="#">Others</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="btn disabled hidden-xs">|</a></li>
-                    <li><a href="#">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php 
+		include("header.php");
+        include("process_showproduct.php");
+    ?>
     
     <!-- Body content -->
-    <div class="container-fluid" data-ng-controller="productListCtrl">
+    <div class="container-fluid">
         <!-- Sort and filter list -->
         <h1 class="h3">Products</h1>
         <hr/>
@@ -109,7 +66,62 @@ require_once("dbcontroller.php");
         <!-- List of products -->
         <!-- Code reference https://stackoverflow.com/questions/21644493/how-to-split-the-ng-repeat-data-with-three-columns-using-bootstrap/30128450#30128450?newreg=2738e86b04ed403e84ffce4a201fff6f -->
         <br/>
-        <div class="row" data-ng-repeat="product in products" data-ng-switch on="$index % 4">
+		
+		<?php 
+			$index = 0;	
+			if (count($results) > 0) {
+				foreach ($results as $product) {
+					$productImg = explode("_,_", $product["img"]);
+					if ($index == 0) {
+						echo '<div class="row">';
+					}
+					
+					echo 
+						'<div class="col-xs-6 col-md-3">
+							<a href="#"> 
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<img class="productImg img-thumbnail" src="'. $productImg[0] .'"/>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<p>'.
+											$product["name"]
+										.'</p>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xs-12 text-center">
+										<p>RM'.
+											$product["price"]
+										.'</p>
+									</div>
+								</div>
+							</a>
+						</div>';
+					
+					if ($index == 1) {
+						echo '<div class="clearfix visible-xs"></div>';
+					}
+					
+					if ($index == 3) {
+						echo '</div>';
+					}
+					
+					if ($index == 3){
+						$index = 0;
+					} else {
+						$index++;
+					}
+				}
+			}
+			
+		?>
+		
+        <!--<div class="row" data-ng-repeat="product in products" data-ng-switch on="$index % 4">
             <div class="col-xs-6 col-md-3 text-center" data-ng-switch-when="0">
                 <div class="row">
                     <div class="col-xs-12">
@@ -170,24 +182,14 @@ require_once("dbcontroller.php");
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
     
     <!-- Footer -->
-    <footer class="footer navbar-static-bottom">
-      <div class="container">
-          <ul class="list-inline text-center">
-              <li><a href="#">Home</a></li>
-              <li>&#8226;</li>
-              <li><a href="#">About</a></li>
-              <li>&#8226;</li>
-              <li><a href="#">Products</a></li>
-              <li>&#8226;</li>
-              <li><a href="#">Contact us</a></li>
-          </ul>
-          <p class="text-center copyright"><em>Copyright &copy; 2017. All Rights reserved by Money Saver Sdn Bhd</em></p>
-      </div>
-    </footer>
+    <?php 
+        include("footer.php");
+    ?>
+	
     <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- All Bootstrap plug-ins file -->
