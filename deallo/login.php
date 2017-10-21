@@ -45,6 +45,12 @@
                         <p><input type="submit" class="btn btn-default" id="loginBtn" value="Login"/> &nbsp; <a href="#">Forgot password?</a></p>
                         <p class="text-muted"><em><small>Need an account? <a href="register.php">Sign up!</a></small></em></p>
                     </fieldset>
+                    
+                    <!-- Facebook login button-->
+                        <hr/>
+                        <?php
+                        require_once __DIR__ . '/fb/fb_process_login.php';
+                        ?>
                 </form>
             </div>
         </div>
@@ -63,3 +69,5 @@
     
 </body>
 </html>
+
+<?php $session_value=(isset($_SESSION['id']))?$_SESSION['id']:''; ?>
