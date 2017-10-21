@@ -121,14 +121,18 @@ if(!empty($user['name']) && !empty($user['email'])) {
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-        <script>
-
-        </script>
+        <style>
+            .inactiveLink {
+                pointer-events: none;
+                cursor: default;
+            }
+        </style>
     </head>
     <body id="loginpg"> <!--full page background img -->
-        <?php 
-        include("../header.php");
-        ?>
+        <div class=inactiveLink><?php 
+            include("../header.php");
+            ?></div>
+
         <!-- Navigation Bar -->
         <div class="container-fluid">
             <div class="row">
@@ -150,9 +154,11 @@ if(!empty($user['name']) && !empty($user['email'])) {
         </div>
 
         <!-- Footer -->
-        <?php 
-        include("../footer.php");
-        ?>
+        <div class="inactiveLink">
+            <?php 
+            include("../footer.php");
+            ?>
+        </div>
 
         <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
         <script src="../js/jquery.min.js"></script>
