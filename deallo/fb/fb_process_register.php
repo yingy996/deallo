@@ -1,7 +1,6 @@
 <?php
 $error = false;
 
-
 /* Check if Facebook succesfully retrieve first_name */
 if(empty($user['first_name'])){
     $error = true;
@@ -26,23 +25,22 @@ if($error !== true) {
     $dupli = $db_handle->runQuery($query);
 
     if(empty($dupli)) {
+        $username = $user['first_name'] . $user['last_name'] . "#" . substr($user['id'],0,5);
 
         $query = "INSERT INTO user_account (id, email, first_name, last_name, username, password, phone_number, address, country, state, city, postcode) VALUES
-		(NULL,'" . $user['email'] . "', '" . $user['first_name'] . "', '" . $user['last_name'] . "', '" . NULL . "', '" . md5($user['id']) . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "')";
+		(NULL,'" . $user['email'] . "', '" . $user['first_name'] . "', '" . $user['last_name'] . "', '" . $username . "', '" . md5($user['id']) . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "')";
         $result = $db_handle->insertQuery($query);
-
+        
+        $script= '';
+        
         if(!empty($result)) {
-            echo "
-            <script>
-                    alert('Facebook registration successful!');
-            </script>
-            ";
+            $script = "<script>
+                    alert('You have successfully registered an account!');
+            </script>";
         } else {
-            echo "
-            <script>
-                    alert('Error occured during registration.');
-            </script>
-            ";
+            $script = "<script>
+                    alert('Error occured during account registration.');
+            </script>";
         }
     }
 }

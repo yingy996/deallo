@@ -69,5 +69,3 @@
     
 </body>
 </html>
-
-<?php $session_value=(isset($_SESSION['id']))?$_SESSION['id']:''; ?>
