@@ -27,8 +27,11 @@ if($error !== true) {
 
     if(empty($dupli)) {
 
+        $ref =substr($user['id'],0, 5);
+        $username = $user['first_name'] . $user['last_name'] . "#" . $ref;
+        
         $query = "INSERT INTO user_account (id, email, first_name, last_name, username, password, phone_number, address, country, state, city, postcode) VALUES
-		(NULL,'" . $user['email'] . "', '" . $user['first_name'] . "', '" . $user['last_name'] . "', '" . NULL . "', '" . md5($user['id']) . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "')";
+		(NULL,'" . $user['email'] . "', '" . $user['first_name'] . "', '" . $user['last_name'] . "', '" . $username . "', '" . md5($user['id']) . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "', '" . NULL . "')";
         $result = $db_handle->insertQuery($query);
 
         if(!empty($result)) {
