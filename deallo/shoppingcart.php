@@ -18,12 +18,13 @@
         <!-- Navigation Bar -->
         <?php 
         include("header.php"); 
-        //include("process_basket_item_add.php"); 
+        $add_prodId = $_POST['prod_id'];
+        include("process_basket_item_add.php"); 
         //include("process_basket_item_remove.php"); 
         
-        $add_prodid = $_POST['prod_id'];
+        
 
-        echo $add_prodid;
+        echo $add_prodId;
 
         ?>
 
