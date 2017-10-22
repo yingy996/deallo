@@ -9,7 +9,7 @@
 //Retrieving current product info from database
 	$query = $db_handle->getConn()->prepare("SELECT * FROM products WHERE id = :productId");
 	$query->bindParam(":productId", $productId);
-	$productId = "IPC085";
+	$productId = "GXM981";
 	$query->execute();
 	$result = $query->fetchAll();
 

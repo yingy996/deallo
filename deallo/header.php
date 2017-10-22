@@ -47,7 +47,7 @@
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
                         
-                        echo '<li class="hidden-xs"><a href="#" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
+                        echo '<li class="hidden-xs"><a href="shoppingcart.php" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
                         echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
                         
