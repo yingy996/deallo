@@ -2,7 +2,7 @@
 require_once("dbcontroller.php");
 
 //$currentUser= "";
-
+/*
 if (isset($_SESSION["user_login"])) {
     $db_handle = new DBController();
     //$currentUser= $_SESSION["user_login"];
@@ -12,7 +12,7 @@ if (isset($_SESSION["user_login"])) {
     $row = $getUsername[0];
     $login_user = $row["id"];
     echo $_SESSION["user_login"]." ".$login_user." ";
-}
+}*/
 
 $success_message = "";
 $error_message = "";
@@ -30,7 +30,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
         $row = $result[0];
 
         $_id = generateID(6);
-        $_prod_id = $row["id"];
+        $_product_id = $row["id"];
         //$_name = $row["name"];
         //$_description = $row["description"];
         //$_category = $row["category"];
@@ -38,7 +38,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
         //$_shipping_fee = $row["shipping_fee"];
         //$_shipping_agents = $row["shipping_agents"];
         //$_seller_id = $row["seller_id"];
-        $_buyer_id = $login_user;
+        $_buyer_username = $_SESSION["user_login"];
         $_date_added = date("Y-m-d");
         //$_img = $row["img"];
 
@@ -47,18 +47,18 @@ if (!empty($add_prodId) && !empty($login_user)) {
         $dbCurrentImg = $row["img"]; //used to add new images
 
         // Check if record already exist
-        $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE prod_id = '$add_prodId'");
+        $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
         $check->execute();
         $existed = $check->fetchAll();
 
         if (empty($existed)) {
-            $query = $db_handle->getConn()->prepare("INSERT INTO basket(id, prod_id, quantity, buyer_id, date_added) VALUES ('$_id', '$_prod_id', '1', '$_buyer_id', '$_date_added')");
+            $query = $db_handle->getConn()->prepare("INSERT INTO basket(id, product_id, quantity, buyer_username, date_added) VALUES ('$_id', '$_product_id', '1', '$_buyer_username', '$_date_added')");
 
             $query->execute();
 
         } else {
             // If record already existed update the quantity to be +1
-            $query = $db_handle->getConn()->prepare("SELECT quantity FROM basket WHERE prod_id = '$add_prodId'");
+            $query = $db_handle->getConn()->prepare("SELECT quantity FROM basket WHERE product_id = '$add_prodId'");
 
             $query->execute();
             $retrieve = $query->fetchAll();
@@ -67,12 +67,14 @@ if (!empty($add_prodId) && !empty($login_user)) {
             $currentQuantity = $getQuantity["quantity"];
             $currentQuantity = $currentQuantity + 1;
 
-            $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE prod_id = '$add_prodId'");
+            $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE product_id = '$add_prodId'");
             $updateQuantity->execute();
+            
+            $success_message .= "Updated product quantity<br/>";
         }
     } 
 
-    $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE prod_id = '$add_prodId'");
+    $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
     $check->execute();
     $result = $check->fetchAll();
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2017 at 06:32 AM
+-- Generation Time: Oct 23, 2017 at 07:02 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `basket` (
   `id` varchar(6) NOT NULL,
-  `prod_id` varchar(6) NOT NULL,
-  `quantity` int(2) NOT NULL,
-  `buyer_id` int(10) NOT NULL,
+  `product_id` varchar(6) NOT NULL,
+  `quantity` int(3) NOT NULL,
+  `buyer_username` varchar(15) NOT NULL,
   `date_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,8 +40,8 @@ CREATE TABLE `basket` (
 -- Dumping data for table `basket`
 --
 
-INSERT INTO `basket` (`id`, `prod_id`, `quantity`, `buyer_id`, `date_added`) VALUES
-('909362', 'WQY947', 2, 69, '2017-10-23');
+INSERT INTO `basket` (`id`, `product_id`, `quantity`, `buyer_username`, `date_added`) VALUES
+('498059', 'GXM981', 1, 'JosephSim#16801', '2017-10-23');
 
 --
 -- Indexes for dumped tables

@@ -18,21 +18,26 @@
         <!-- Navigation Bar -->
         <?php 
         include("header.php"); 
-        $add_prodId = $_POST['prod_id'];
+        if (!empty($_POST['prod_id'])) {
+            $add_prodId = $_POST['prod_id'];
+        } else {
+            $add_prodId= '';
+        }
         include("process_basket_item_add.php"); 
         //include("process_basket_item_remove.php"); 
-        
-        
 
         echo $add_prodId;
-
         ?>
 
         <!-- Body content -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <p class="h3">Shopping Basket</p>
+                    <p class="h3"> Shopping Basket </p>
+                    <subtitle style="color:limegreen;"> <?php 
+                            echo $success_message;
+                        ?>
+                    </subtitle>
                     <hr/>
                     <div class="container">
                         <div class="row">
