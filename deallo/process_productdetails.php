@@ -9,7 +9,7 @@ $query = $db_handle->getConn()->prepare("SELECT * FROM products WHERE id = :prod
 $query->bindParam(":productId", $productId);
 
 // insert product id here
-$productId = "GXM981";
+$productId = "WQY947";
 $query->execute();
 $result = $query->fetchAll();
 
