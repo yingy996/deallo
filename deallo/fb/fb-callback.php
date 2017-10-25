@@ -44,7 +44,7 @@ if(!session_id()) {
     session_start();
 }
 //ensure Facebook SDK is loaded
-require_once __DIR__ . '/src/Facebook/autoload.php';
+require_once ('src/Facebook/autoload.php');
 
 //Shake my hand!
 $fb = new Facebook\Facebook(['app_id' => '296435147524384','app_secret' => '01a6b28080ff646e9c43cbe3f9ee83d1','default_graph_version' => 'v2.4',]);
@@ -131,7 +131,7 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 echo "-->". $user['name'];
 ?><br> <?php
 
-header("Location: http://localhost/deallo/deallo/fb/fb_checksession.php"); /* Redirect browser */
+header("Location: fb_checksession.php"); /* Redirect browser */
 exit();
 
 ?>

@@ -3,7 +3,7 @@ if(!session_id()) {
     session_start();
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/deallo/deallo/fb/src/Facebook/autoload.php");
+require_once("src/Facebook/autoload.php");
 
 ini_set('display_errors', 'On');
 ini_set('html_errors', 0);
