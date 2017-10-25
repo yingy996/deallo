@@ -18,6 +18,8 @@
         <!-- Navigation Bar -->
         <?php 
         include("header.php"); 
+        include("process_showcart.php");
+
         if (!empty($_POST['prod_id'])) {
             $add_prodId = $_POST['prod_id'];
         } else {
@@ -35,7 +37,7 @@
                 <div class="col-xs-12 col-md-12">
                     <p class="h3"> Shopping Basket </p>
                     <subtitle style="color:limegreen;"> <?php 
-                            echo $success_message;
+                        echo $success_message;
                         ?>
                     </subtitle>
                     <hr/>
@@ -53,33 +55,50 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="shoppingcart-product">
-                                            <td class="col-sm-8 col-md-6">
-                                                <div class="media">
-                                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading"><a href="#">Product name</a></h4>
-                                                        <h5 class="media-heading"> Seller: <a href="#">seller name</a></h5>
-                                                        <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                        <?php
+                                        //$index = 0;	
+                                        $subtotal = 0;
+                                        if (count($results) > 0) {
+                                            foreach ($results as $item) {
+                                                $itemImg = explode("_,_", $item["img"]);
+
+                                                echo 
+                                                    "<tr class='shoppingcart-product'>
+                                            <td class='col-sm-8 col-md-6'>
+                                                <div class='media'>
+                                                    <a class='thumbnail pull-left' href='#'> <!--<img class='media-object' src='http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png' style='width: 72px; height: 72px;'>-->
+                                                    <img class='media-object' src='".$itemImg[0]."' style='width: 72px; height: 72px;'>
+                                                    </a>
+                                                    <div class='media-body'>
+                                                        <h4 class='media-heading'><a href='#'>".$item['name']."</a></h4>
+                                                        <h5 class='media-heading'> Seller: <a href='#'>".$item['seller_id']."</a></h5>
+                                                        <h6 class='media-heading'> Date added: ".$item['date_added']."</h6>
+                                                        <!--<span>Status: </span><span class='text-success'><strong>In Stock</strong></span> -->
                                                     </div>
-                                                </div></td>
-                                            <td class="col-sm-1 col-md-1" style="text-align: center">
-                                                <input type="email" class="form-control" id="exampleInputEmail1" value="3">
+                                                </div>
                                             </td>
-                                            <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                                            <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                                            <td class="col-sm-1 col-md-1">
-                                                <button type="button" class="btn btn-danger">
-                                                    <span class="glyphicon glyphicon-remove"></span> Remove
-                                                </button></td>
-                                        </tr>
+                                            <td class='col-sm-1 col-md-1' style='text-align: center'>
+                                                <input type='email' class='form-control' id='exampleInputEmail1' value='".$item['quantity']."'>
+                                            </td>
+                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
+                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$total=$item['quantity']*$item['price']."</strong></td>
+                                            <td class='col-sm-1 col-md-1'>
+                                                <button type='button' class='btn btn-danger'>
+                                                    <span class='glyphicon glyphicon-remove'></span> Remove
+                                                </button>
+                                            </td>
+                                        </tr>"; 
+                                               $subtotal += $total;
+                                            } 
+                                        }
+                                        ?>
 
                                         <tr>
                                             <td>   </td>
                                             <td>   </td>
                                             <td>   </td>
                                             <td><h5>Subtotal</h5></td>
-                                            <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                                            <td class="text-right"><h5><strong><?php $subtotal ?></strong></h5></td>
                                         </tr>
                                         <tr>
                                             <td>   </td>
