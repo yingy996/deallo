@@ -58,6 +58,8 @@
                                         <?php
                                         //$index = 0;	
                                         $subtotal = 0;
+                                        $shippingtotal = 0;
+                                        $total = 0;
                                         if (count($results) > 0) {
                                             foreach ($results as $item) {
                                                 $itemImg = explode("_,_", $item["img"]);
@@ -81,14 +83,15 @@
                                                 <input type='email' class='form-control' id='exampleInputEmail1' value='".$item['quantity']."'>
                                             </td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
-                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$total=$item['quantity']*$item['price']."</strong></td>
+                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
                                             <td class='col-sm-1 col-md-1'>
                                                 <button type='button' class='btn btn-danger'>
                                                     <span class='glyphicon glyphicon-remove'></span> Remove
                                                 </button>
                                             </td>
                                         </tr>"; 
-                                               $subtotal += $total;
+                                                $subtotal += $item['quantity']*$item['price'];
+                                                $shippingtotal += $item['shipping_fee'];
                                             } 
                                         }
                                         ?>
@@ -98,32 +101,34 @@
                                             <td>   </td>
                                             <td>   </td>
                                             <td><h5>Subtotal</h5></td>
-                                            <td class="text-right"><h5><strong><?php $subtotal ?></strong></h5></td>
+                                            <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$subtotal, 2, '.', ''); ?></strong></h5></td>
                                         </tr>
                                         <tr>
                                             <td>   </td>
                                             <td>   </td>
                                             <td>   </td>
                                             <td><h5>Estimated shipping</h5></td>
-                                            <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                                            <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$shippingtotal, 2, '.', ''); ?></strong></h5></td>
                                         </tr>
                                         <tr>
                                             <td>   </td>
                                             <td>   </td>
                                             <td>   </td>
-                                            <td><h3>Total</h3></td>
-                                            <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                                            <td><h4>Total</h4></td>
+                                            <td class="text-right"><h4><strong>RM <?php $total = $subtotal + $shippingtotal; 
+                                                echo number_format((float)$total, 2, '.', ''); ?></strong></h4>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>   </td>
                                             <td>   </td>
                                             <td>   </td>
                                             <td>
-                                                <button type="button" class="btn btn-default">
+                                                <button type="button" class="btn btn-default" onclick="window.location.href='productcategory.php'">
                                                     <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                                                 </button></td>
-                                            <td>
-                                                <button type="button" class="btn btn-success">
+                                            <td> 
+                                                <button type="button" class="btn btn-success" onclick="window.location.href='#'">
                                                     Checkout <span class="glyphicon glyphicon-play"></span>
                                                 </button></td>
                                         </tr>
