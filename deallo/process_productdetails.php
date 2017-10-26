@@ -1,70 +1,107 @@
 <?php
-require_once("dbcontroller.php");
+	require_once("dbcontroller.php");
 
-$db_handle = new DBController();
-$error_message = "";
+    //boolean to check if user rated or not
+    $rated = false;
 
-// Retrieving product from database using product id
-$query = $db_handle->getConn()->prepare("SELECT * FROM products WHERE id = :productId");
-$query->bindParam(":productId", $productId);
+    $rating = 0.0;
 
-// insert product id here
-$productId = "GXM981";
-$query->execute();
-$result = $query->fetchAll();
-
-if(empty($result)) {
-    $error_message = "Problem in retrieving product data! Please try again later.";
-
-} else {
-    //Get the values of the product info to display it in the input fields
-    $row = $result[0];
-    $success_message = $row["category"];
-
-    //get shipping agents to check respective checkbox
-    $defaultAgents = array("poslaju", "abx", "gdex", "fedex", "ctlink");
-    $shpgAgents = explode(",", $row["shipping_agents"]);
-    $isOtherAgent = false;
-    $otherAgent = "";
-    foreach ($shpgAgents as $agent) {
-        if (!in_array($agent, $defaultAgents)) {
-            $isOtherAgent = true;
-            $otherAgent = $agent;
-            break;
-        }
+    //Check product id of the product clicked by the user in productcategory.php
+    if(isset($_GET["productID"])){
+        $productId = $_GET["productID"];
     }
 
-    //retrieve image files
-    $dbImages = explode("_,_", $row["img"]);
-    $dbCurrentImg = $row["img"]; //used to add new images
-}
-/*
-if (!empty($result[0])) {
-    $query = $db_handle->getConn()->prepare("UPDATE products SET name = :productName , description = :productDesc, category = :productCategory, price = :productPrice, shipping_fee = :shippingFee, shipping_agents = :shippingAgents, seller_id = :sellerId, modified = :modified, img = :image WHERE id = :id");
 
-    $query->bindParam(":id", $productId);
-    $query->bindParam(":productName", $productName);
-    $query->bindParam(":productDesc", $productDesc);
-    $query->bindParam(":productCategory", $productCategory);
-    $query->bindParam(":productPrice", $productPrice);
-    $query->bindParam(":shippingFee", $shippingFee);
-    $query->bindParam(":shippingAgents", $shippingAgents);
-    $query->bindParam(":sellerId", $login_user);
-    $query->bindParam(":modified", $modified);
-    $query->bindParam(":image", $imageNames);
 
-    $productName = sanitizeInput($_POST["productName"]);
-    $productDesc = sanitizeInput($_POST["productDescription"]);
-    $productCategory = $_POST["productCategory"];
-    $productPrice = sanitizeInput($_POST["productPrice"]);
-    $shippingFee = $_POST["productShippingPrice"];
-    $modified = date("Y-m-d");
-    if ($imageFileNames != "") {
-        $imageNames = $dbCurrentImg . "_,_" . $imageFileNames;
-    } else {
-        $imageNames = $dbCurrentImg;
+    $db_handle = new DBController();
+
+    //Retrieving current product info from database
+    $query = $db_handle->getConn()->prepare("SELECT name, description, category, price, shipping_fee, shipping_agents, seller_id, img FROM products WHERE id = :productId");
+	$query->bindParam(":productId", $productId);
+	//$productId = "PEO747";
+	$query->execute();
+	$result = $query->fetchAll();
+
+    
+
+    //check if product exists
+	if(empty($result)) {
+		$error_message = "Problem in retrieving product data! Please try again later.";
+	} else {
+        //retrieve image files
+		$dbImages = explode("_,_", $result[0]["img"]);
+        
+        //slice away the first element of the image array for use in the subimages for loop
+		$dbImagesSliced = array_slice($dbImages, 1);
+        
+        //if rating column is not empty, get average
+        
+            $query2 = $db_handle->getConn()->prepare("SELECT CAST(AVG(rating.rating_value) AS DECIMAL(10,1)) AS rating_average FROM products INNER JOIN rating ON rating.product_id=products.id AND products.id = :productID");
+            $query2->bindParam(":productID", $productId);
+            $query2->execute();
+            $result2 = $query2->fetchAll();
+            //$rating = $result2[0]["rating_average"];
+            
+            if($result2[0][0] == "" ){
+                if(!empty($_POST["ratingbutton"])){
+                    if(isset($_POST["rating"])){
+                        $rating = $_POST["rating"];
+                        $ratingquery = $db_handle->getConn()->prepare("INSERT INTO rating (product_id, rater_username, rating_value) VALUES (:productId, :rater_username, :rating_value)");
+                        $ratingquery->bindParam(":productId", $productId);
+                        $ratingquery->bindParam(":rater_username", $login_user);
+                        $ratingquery->bindParam(":rating_value", $rating);
+                        $insertqueryresult = $ratingquery->execute();
+                        if($insertqueryresult = true){
+                        $success_message = "You have successfully rated this product!";
+                        header("Refresh:3");
+                        $rated = true;
+                            
+                        }else{
+                            $error_message = "Failed to submit your rating.";
+                        }
+                    }else{
+                        $error_message = "You have not selected a rating!";
+                    }
+                }
+            }else{
+                
+                $rating = $result2;
+                //Check if user has rated before
+                $checkUserRatedBefore = $db_handle->getConn()->prepare("SELECT * FROM rating WHERE rater_username = :rater_username");
+                $checkUserRatedBefore->bindParam(":rater_username", $login_user);
+                $checkUserRatedBefore->execute();
+                $userRateHistory = $checkUserRatedBefore->fetchAll();
+                if(count($userRateHistory) > 0){
+                    $rating = $result2[0][0];
+                    $rated = true; 
+                }else{
+                    if(!empty($_POST["ratingbutton"])){
+                        if(isset($_POST["rating"])){
+                            $rating = $_POST["rating"];
+                            $ratingquery = $db_handle->getConn()->prepare("INSERT INTO rating (product_id, rater_username, rating_value) VALUES (:productId, :rater_username, :rating_value)");
+                            $ratingquery->bindParam(":productId", $productId);
+                            $ratingquery->bindParam(":rater_username", $login_user);
+                            $ratingquery->bindParam(":rating_value", $rating);
+                             $insertqueryresult = $ratingquery->execute();
+                            if($insertqueryresult = true){
+                            $success_message = "You have successfully rated this product!";
+                            header("Refresh:3");
+                            $rated = true;
+
+                            }else{
+                                $error_message = "Failed to submit your rating.";
+                            }
+                            
+                        }else{
+                        $error_message = "You have not selected a rating!";
+                        }
+                    }
+                }
+            }
+        
+        
+        
+        
+        
     }
-
-    $query->execute();
-}*/
 ?>

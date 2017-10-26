@@ -25,15 +25,15 @@
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="productcategory.php">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">
 								<li><a href="productcategory.php">All</a></li>
-                                <li><a href="#">Jewelry</a></li>
-                                <li><a href="#">Clothing &amp; accessories</a></li>
-                                <li><a href="#">Room decoration</a></li>
-                                <li><a href="#">Wedding accessories</a></li>
-                                <li><a href="#">Vintage arts</a></li>
-                                <li><a href="#">Toys</a></li>
-                                <li><a href="#">Craft supplies</a></li>
+                                <li><a href="productcategory.php?category=jewelry">Jewelry</a></li>
+                                <li><a href="productcategory.php?category=clothesNaccessories">Clothing &amp; accessories</a></li>
+                                <li><a href="productcategory.php?category=roomDecor">Room decoration</a></li>
+                                <li><a href="productcategory.php?category=weddingAccessories">Wedding accessories</a></li>
+                                <li><a href="productcategory.php?category=vintageArts">Vintage arts</a></li>
+                                <li><a href="productcategory.php?category=toy">Toys</a></li>
+                                <li><a href="productcategory.php?category=craftSupplies">Craft supplies</a></li>
 
-                                <li><a href="#">Others</a></li>
+                                <li><a href="productcategory.php?etc">Others</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="btn disabled hidden-xs">|</a></li>';
@@ -47,7 +47,7 @@
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
                         
-                        echo '<li class="hidden-xs"><a href="shoppingcart.php" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
+                        echo '<li class="hidden-xs"><a href="#" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
                         echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
                         
