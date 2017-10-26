@@ -35,25 +35,40 @@
 		$dbImagesSliced = array_slice($dbImages, 1);
         
         //if rating column is not empty, get average
-        
             $query2 = $db_handle->getConn()->prepare("SELECT CAST(AVG(rating.rating_value) AS DECIMAL(10,1)) AS rating_average FROM products INNER JOIN rating ON rating.product_id=products.id AND products.id = :productID");
             $query2->bindParam(":productID", $productId);
             $query2->execute();
             $result2 = $query2->fetchAll();
-            //$rating = $result2[0]["rating_average"];
+            
+        
+            
+            //insert average rating into product rating column
+            if($result2[0][0] != ""){
+                
+                $averageRating = $result2[0]["rating_average"];
+                $queryInsertAverageRating = $db_handle->getConn()->prepare("UPDATE products SET rating = :rating WHERE id = :productID");
+                $queryInsertAverageRating->bindParam(":rating", $averageRating);
+                $queryInsertAverageRating->bindParam(":productID", $productId);
+                $insertAverageQueryResult = $queryInsertAverageRating->execute();
+            }
+            
             
             if($result2[0][0] == "" ){ //means product has no rating
-                if(!empty($_POST["ratingbutton"])){
-                    if(isset($_POST["rating"])){
+                if(!empty($_POST["ratingbutton"])){ //if rate button is pressed 
+                    if(isset($_POST["rating"])){ // if rating already selected when rate button pressed
+                        
+                        //Insert into rating table
                         $rating = $_POST["rating"];
                         $ratingquery = $db_handle->getConn()->prepare("INSERT INTO rating (product_id, rater_username, rating_value) VALUES (:productId, :rater_username, :rating_value)");
                         $ratingquery->bindParam(":productId", $productId);
                         $ratingquery->bindParam(":rater_username", $login_user);
                         $ratingquery->bindParam(":rating_value", $rating);
                         $insertqueryresult = $ratingquery->execute();
+                        
+
                         if($insertqueryresult = true){
                         $success_message = "You have successfully rated this product!";
-                        header("Refresh:3");
+                        echo "<meta http-equiv='refresh' content='0'>";
                         $rated = true;
                             
                         }else{
@@ -65,16 +80,19 @@
                 }
             }else{ //product already has rating
                 
-                //$rating = $result2;
+                
                 //Check if user has rated before
                 $checkUserRatedBefore = $db_handle->getConn()->prepare("SELECT * FROM rating  WHERE rater_username = :rater_username AND product_id = :productID");
                 $checkUserRatedBefore->bindParam(":rater_username", $login_user);
                 $checkUserRatedBefore->bindParam(":productID", $productId);
                 $checkUserRatedBefore->execute();
                 $userRateHistory = $checkUserRatedBefore->fetchAll();
+                
+                //if user rated before 
                 if(count($userRateHistory) > 0){
                     $rating = $result2[0][0];
                     $rated = true; 
+                    
                     
                 }else{
                     $rated = false;
@@ -85,11 +103,13 @@
                             $ratingquery->bindParam(":productId", $productId);
                             $ratingquery->bindParam(":rater_username", $login_user);
                             $ratingquery->bindParam(":rating_value", $rating);
-                             $insertqueryresult = $ratingquery->execute();
+                            $insertqueryresult = $ratingquery->execute();
+                            
+                            
                             if($insertqueryresult = true){
-                            $success_message = "You have successfully rated this product!";
-                            header("Refresh:3");
-                            $rated = true;
+                                $success_message = "You have successfully rated this product!";
+                                echo "<meta http-equiv='refresh' content='0'>";
+                                $rated = true;
                             }else{
                                 $error_message = "Failed to submit your rating.";
                             }
@@ -99,11 +119,6 @@
                         }
                     }
                 }
-            }
-        
-        
-        
-        
-        
+            }  
     }
 ?>

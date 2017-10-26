@@ -36,12 +36,12 @@
                     
                     <ul class="dropdown-menu">
                         <li class="dropdown-header">Price</li>
-                        <li><a href="productcategory.php?sort=pricelowhigh" class="dropdown-item">Low to High</a></li>
-                        <li><a href="productcategory.php?sort=pricehighlow" class="dropdown-item">High to Low</a></li>
+                        <li><a href="productcategory.php?category=<?php echo $category; ?>&sort=pricelowhigh" class="dropdown-item">Low to High</a></li>
+                        <li><a href="productcategory.php?category=<?php echo $category; ?>&sort=pricehighlow" class="dropdown-item">High to Low</a></li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Ratings</li>
-                        <li><a href="productcategory.php?sort=ratinglowhigh" class="dropdown-item">Low to High</a>
-                        <li><a href="productcategory.php?sort=ratinghighlow" class="dropdown-item">High to Low</a></li>
+                        <li><a href="productcategory.php?category=<?php echo $category; ?>&sort=ratinglowhigh" class="dropdown-item">Low to High</a>
+                        <li><a href="productcategory.php?category=<?php echo $category; ?>&sort=ratinghighlow" class="dropdown-item">High to Low</a></li>
                     </ul>
                 </div>
             </div>   
