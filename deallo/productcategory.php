@@ -124,7 +124,7 @@
                                             <input type="radio" id="star2" name="rating" value="2.0" ' . (($rating <= 2.0 && $rating > 1.5) ? "checked" : (($rated == true) ? "disabled" : "")) . ' /><label class = "full" for="star2" title="Below Average - 2 stars"></label>
                                             <input type="radio" id="star1half" name="rating" value="1.5" ' . (($rating <= 1.5 && $rating > 1.0) ? "checked" : (($rated == true) ? "disabled" : "")) . '/><label class="half" for="star1half" title="Unpopular - 1.5 stars"></label>
                                             <input type="radio" id="star1" name="rating" value="1.0" ' . (($rating <= 1.0 && $rating > 0.5) ? "checked" : (($rated == true) ? "disabled" : "")) . '/><label class = "full" for="star1" title="Very Unpopular - 1 star"></label>
-                                            <input type="radio" id="starhalf" name="rating" value="0.5" ' . (($rating <= 0.5) ? "checked" : (($rated == true) ? "disabled" : "")) . '/><label class="half" for="starhalf" title="Very Unpopular - 0.5 stars"></label>
+                                            <input type="radio" id="starhalf" name="rating" value="0.5" ' . (($rating <= 0.5 & $rating > 0 ) ? "checked" : (($rated == true) ? "disabled" : "")) . '/><label class="half" for="starhalf" title="Very Unpopular - 0.5 stars"></label>
                                         </fieldset>
                                         </form>
                                     </div>
