@@ -9,7 +9,7 @@
 //Retrieving current product info from database
 	$query = $db_handle->getConn()->prepare("SELECT * FROM products WHERE id = :productId");
 	$query->bindParam(":productId", $productId);
-	$productId = "IPC085";
+	$productId = "QCL052";
 	$query->execute();
 	$result = $query->fetchAll();
 
@@ -19,7 +19,7 @@
 	} else {
 		//Get the values of the product info to display it in the input fields
 		$row = $result[0];
-		$success_message = $row["category"];
+		
 		
 		//get shipping agents to check respective checkbox
 		$defaultAgents = array("poslaju", "abx", "gdex", "fedex", "ctlink");

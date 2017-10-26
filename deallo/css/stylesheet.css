@@ -178,6 +178,28 @@ body#loginpg {
 	margin: 2px;
 }
 
+/*-- Product list / My products page --*/
+.square {
+	height: 200px;
+	line-height: 200px;
+}
+
+.productBtn {
+	background-color: #42bbb1;
+    color: white;
+    border-color: white;
+}
+
+.productBtn:hover {
+    background-color: #2f8e86;
+	color: white;
+}
+
+.btnPadding {
+	padding: 18px;
+	
+}
+
 .img-upload input[type=file] {
     position: absolute;
     top: 0;

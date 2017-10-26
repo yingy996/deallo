@@ -18,50 +18,14 @@
     <!-- Navigation Bar -->
     <?php 
 		include("header.php");
-        include("process_showproduct.php");
+        include("process_showmyproducts.php");
     ?>
     
     <!-- Body content -->
     <div class="container-fluid">
         <!-- Sort and filter list -->
-        <h1 class="h3">Products</h1>
+        <h1 class="h3">My Products</h1>
         <hr/>
-        <div class="row">
-            <div class="col-xs-3">
-                <!-- Sorting dropdown -->
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort <span class="caret"></span></button>
-                    
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Price</li>
-                        <li><a href="#" class="dropdown-item">Low to High</a></li>
-                        <li><a href="#" class="dropdown-item">High to Low</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Ratings</li>
-                        <li><a href="#" class="dropdown-item">Low to High</a>
-                        <li><a href="#" class="dropdown-item">High to Low</a></li>
-                    </ul>
-                </div>
-            </div>   
-            
-            
-            <!-- Filter -->
-            <div class="col-xs-9">    
-                <div class="form-group row form-inline">
-                    <label for="minPrice">Price range:</label>
-
-                    <input type="number" class="form-control" data-ng-model="minPrice" id="minPrice" min="0" size="4"/> <span>&ndash;</span>
-                    <input type="number" class="form-control" data-ng-model="maxPrice" min="0"/>
-                    <span>&nbsp;</span>
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" data-ng-model="freeShpg">
-                        Free shipping
-                    </label>
-                </div>
-            </div>
-        </div>
-        
-        
         
         <!-- List of products -->
         <!-- Code reference https://stackoverflow.com/questions/21644493/how-to-split-the-ng-repeat-data-with-three-columns-using-bootstrap/30128450#30128450?newreg=2738e86b04ed403e84ffce4a201fff6f -->
@@ -101,6 +65,20 @@
 									</div>
 								</div>
 							</a>
+							
+							<div class="row btnPadding">
+								<a href="#">
+									<div class="col-xs-6 text-center btn btn-default productBtn">
+										Edit
+									</div>
+								</a>
+								
+								<a href="#">
+									<div class="col-xs-6 text-center btn btn-default productBtn">
+										Remove
+									</div>
+								</a>
+							</div>
 						</div>';
 					
 					if ($index == 1) {
