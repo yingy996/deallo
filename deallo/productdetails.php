@@ -109,7 +109,7 @@
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
 						<li><a href="#service-two" data-toggle="tab">Shipping Information</a></li>
-						
+						<li><a href="#service-three" data-toggle="tab">Seller Information</a></li>
 						
 					</ul>
 				<div id="myTabContent" class="tab-content">
@@ -127,7 +127,13 @@
                             </section>
 
                         </div>
-                        
+                        <div class="tab-pane fade" id="service-three">
+
+                            <section class="product-info">
+                                <?php echo $result[0]["seller_id"]; ?>
+                            </section>
+
+                        </div>
 				</div>
 				<hr>
                         </div>

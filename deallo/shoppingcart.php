@@ -22,13 +22,15 @@
 
         if (!empty($_POST['prod_id'])) {
             $add_prodId = $_POST['prod_id'];
+            header("Refresh:1");
         } else {
             $add_prodId= '';
         }
+
         include("process_basket_item_add.php"); 
         //include("process_basket_item_remove.php"); 
 
-        echo $add_prodId;
+        //echo $add_prodId;
         ?>
 
         <!-- Body content -->
@@ -36,9 +38,14 @@
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <p class="h3"> Shopping Basket </p>
-                    <subtitle style="color:limegreen;"> <?php 
-                        echo $success_message;
-                        ?>
+                    <subtitle style="color:limegreen;">  
+                        <?php if(!empty($success_message)) { ?>	
+                        <div class="alert alert-success">
+                        <?php if(isset($success_message)) echo $success_message; ?></div>
+                        <?php } ?>
+                        <?php if(!empty($error_message)) { ?>	
+                        <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
+                        <?php } ?>
                     </subtitle>
                     <hr/>
                     <div class="container">

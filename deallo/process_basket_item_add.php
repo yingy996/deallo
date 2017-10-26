@@ -28,7 +28,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
 
     if (!empty($result)) {
         $row = $result[0];
-
+ 
         $_id = generateID(6);
         $_product_id = $row["id"];
         //$_name = $row["name"];
@@ -55,7 +55,8 @@ if (!empty($add_prodId) && !empty($login_user)) {
             $query = $db_handle->getConn()->prepare("INSERT INTO basket(id, product_id, quantity, buyer_username, date_added) VALUES ('$_id', '$_product_id', '1', '$_buyer_username', '$_date_added')");
 
             $query->execute();
-
+            //$success_message .= "Added product item";
+            
         } else {
             // If record already existed update the quantity to be +1
             $query = $db_handle->getConn()->prepare("SELECT quantity FROM basket WHERE product_id = '$add_prodId'");
@@ -70,7 +71,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
             $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE product_id = '$add_prodId'");
             $updateQuantity->execute();
             
-            $success_message .= "Updated product quantity<br/>";
+            $success_message .= "Updated product quantity";
         }
     } 
 
@@ -79,13 +80,11 @@ if (!empty($add_prodId) && !empty($login_user)) {
     $result = $check->fetchAll();
 
     if (!empty($result)) {
-        echo "successfully added item to basket";
+        $success_message = "successfully added item to basket";
     } else {
-        echo "failed to add item to basket";
+        $error_message = "failed to add item to basket";
     }
 
-} else {
-    $error_message = "Error: Product ID not found.";
 }
 
 function generateID($length) {
