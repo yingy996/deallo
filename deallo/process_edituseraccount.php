@@ -115,7 +115,7 @@ if(!empty($_POST["edituserInfo"])) {
 			$success_message = "You have edited your account information successfully! This page will be refreshed soon.";
             
 			unset($_POST);
-            header("refresh:2; url=viewuseraccount.php");
+            echo "<meta http-equiv='refresh' content='2'>";
 
 		} else {
 			$error_message = "Problem in registration. Try Again!";	
@@ -124,6 +124,4 @@ if(!empty($_POST["edituserInfo"])) {
 		//$error_message = "test";
 	}
 }
-
-
 ?>
