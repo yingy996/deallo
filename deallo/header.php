@@ -33,7 +33,7 @@
                                 <li><a href="productcategory.php?category=toy">Toys</a></li>
                                 <li><a href="productcategory.php?category=craftSupplies">Craft supplies</a></li>
 
-                                <li><a href="productcategory.php?etc">Others</a></li>
+                                <li><a href="productcategory.php?category=etc">Others</a></li>
                             </ul>
                         </li>
                         <li><a href="#" class="btn disabled hidden-xs">|</a></li>';
@@ -49,8 +49,21 @@
                         
                         echo '<li class="hidden-xs"><a href="shoppingcart.php" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
-                        echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
+                        //echo '<li><a href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a></li>';
                         
+						echo '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="viewuseraccount.php"><span class="glyphicon glyphicon-user"></span><span> '. $login_user.'</span></a>
+                            <ul class="dropdown-menu">
+								<li><a href="viewuseraccount.php"> My Profile</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Sell</li>
+                                <li><a href="myproducts.php">My Products</a></li>
+								<li><a href="myproducts.php">My Sales Orders</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-header">Buy</li>
+                                <li><a href="myproducts.php">My Purchases</a></li>
+								<li><a href="shoppingcart.php">Shopping Cart</a></li>
+                            </ul>
+                        </li>';
                         
                         echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span><span> Logout</span></a></li>';
                         
