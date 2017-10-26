@@ -42,7 +42,7 @@
             $result2 = $query2->fetchAll();
             //$rating = $result2[0]["rating_average"];
             
-            if($result2[0][0] == "" ){
+            if($result2[0][0] == "" ){ //means product has no rating
                 if(!empty($_POST["ratingbutton"])){
                     if(isset($_POST["rating"])){
                         $rating = $_POST["rating"];
@@ -63,18 +63,21 @@
                         $error_message = "You have not selected a rating!";
                     }
                 }
-            }else{
+            }else{ //product already has rating
                 
-                $rating = $result2;
+                //$rating = $result2;
                 //Check if user has rated before
-                $checkUserRatedBefore = $db_handle->getConn()->prepare("SELECT * FROM rating WHERE rater_username = :rater_username");
+                $checkUserRatedBefore = $db_handle->getConn()->prepare("SELECT * FROM rating  WHERE rater_username = :rater_username AND product_id = :productID");
                 $checkUserRatedBefore->bindParam(":rater_username", $login_user);
+                $checkUserRatedBefore->bindParam(":productID", $productId);
                 $checkUserRatedBefore->execute();
                 $userRateHistory = $checkUserRatedBefore->fetchAll();
                 if(count($userRateHistory) > 0){
                     $rating = $result2[0][0];
                     $rated = true; 
+                    
                 }else{
+                    $rated = false;
                     if(!empty($_POST["ratingbutton"])){
                         if(isset($_POST["rating"])){
                             $rating = $_POST["rating"];
@@ -87,7 +90,6 @@
                             $success_message = "You have successfully rated this product!";
                             header("Refresh:3");
                             $rated = true;
-
                             }else{
                                 $error_message = "Failed to submit your rating.";
                             }
