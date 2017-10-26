@@ -98,7 +98,7 @@
 						'<div class="col-xs-6 col-md-3">
 							<a href="productdetails.php?productID='. $product["id"] .'"> 
 								<div class="row">
-									<div class="col-xs-12 text-center">
+									<div class="col-xs-12 text-center square">
 										<img class="productImg img-thumbnail" src="'. $productImg[0] .'"/>
 									</div>
 								</div>
@@ -161,68 +161,6 @@
 			
 		?>
 		
-        <!--<div class="row" data-ng-repeat="product in products" data-ng-switch on="$index % 4">
-            <div class="col-xs-6 col-md-3 text-center" data-ng-switch-when="0">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index].id}}
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index].name}}
-                    </div>
-                </div>
-                 
-            </div>
-            
-            <div class="col-xs-6 col-md-3 text-center" data-ng-switch-when="0">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+1].id}}
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+1].name}}
-                    </div>
-                </div>
-                 
-            </div>
-            
-            <div class="clearfix visible-xs" data-ng-switch-when="0"></div>
-            
-            <div class="col-xs-6 col-md-3 text-center" data-ng-switch-when="0">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+2].id}}
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+2].name}}
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="col-xs-6 col-md-3 text-center" data-ng-switch-when="0">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+3].id}}
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{products[$index+3].name}}
-                    </div>
-                </div>
-            </div>
-        </div>-->
     </div>
     
     <!-- Footer -->

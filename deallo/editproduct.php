@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-ng-app="moneySaver">
 <head>
-    <title>Money Saver</title>
+    <title>Deallo Craft House</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initialscale=1.0"/>
     <!-- Bootstrap -->
@@ -35,7 +35,7 @@
             
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 class="h3">Add New Product</h1>
+                    <h1 class="h3">Edit Product</h1>
                     <hr/>
                 </div>
             </div>
