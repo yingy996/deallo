@@ -6,10 +6,16 @@
 	$isValid = true;
 	$db_handle = new DBController();
 
+	if (isset($_GET["productID"])) {
+		$productId = $_GET["productID"];
+	} else {
+		header("location: myproducts.php");
+	}
+	
 //Retrieving current product info from database
 	$query = $db_handle->getConn()->prepare("SELECT * FROM products WHERE id = :productId");
 	$query->bindParam(":productId", $productId);
-	$productId = "AHR067";
+	
 	$query->execute();
 	$result = $query->fetchAll();
 
@@ -182,10 +188,11 @@
 
 				if($query->rowCount() > 0) {
 					$success_message = "You have succesfully updated your product! This page will be refreshed to display the updated information.";
-					header("refresh:2; url=editproduct.php");
+					header("refresh:2; url=editproduct.php?productID=$productId");
 					//unset($_POST);
 				} else {
 					$error_message = "Problem in updating product. Please try again!";
+					header("refresh:2; url=editproduct.php?productID=$productId");
 				}
 		   	}
        	}
