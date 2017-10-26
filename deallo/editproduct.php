@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <form name="frmProduct" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" data-ng-submit="productSubmit($event)" novalidate role="form" enctype="multipart/form-data">
+            <form name="frmProduct" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])."?productID=".$productId; ?>" data-ng-submit="productSubmit($event)" novalidate role="form" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="h4">Product Information</h2>

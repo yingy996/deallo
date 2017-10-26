@@ -67,7 +67,7 @@
 							</a>
 							
 							<div class="row btnPadding">
-								<a href="#">
+								<a href="editproduct.php?productID='. $product["id"].'">
 									<div class="col-xs-6 text-center btn btn-default productBtn">
 										Edit
 									</div>
