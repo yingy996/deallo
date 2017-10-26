@@ -24,7 +24,7 @@
                         <li><a href="#">Contact us</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="productcategory.php">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-								<li><a href="productcategory.php">All</a></li>
+								<li><a href="productcategory.php?category=all">All</a></li>
                                 <li><a href="productcategory.php?category=jewelry">Jewelry</a></li>
                                 <li><a href="productcategory.php?category=clothesNaccessories">Clothing &amp; accessories</a></li>
                                 <li><a href="productcategory.php?category=roomDecor">Room decoration</a></li>
