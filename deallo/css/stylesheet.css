@@ -264,7 +264,7 @@ body#loginpg {
 	display: block;
 	float: left;
 	position: relative;
-	padding-right: 20px;
+	/*padding-right: 20px;*/
 	border-right: 1px solid #DDD;
 	border-top: 1px solid #DDD;
 	border-bottom: 1px solid #DDD;
@@ -301,7 +301,8 @@ body#loginpg {
 
 .rating { 
   border: none;
-  float: left;
+  display: inline-block;
+  /*float: left;*/
 }
 
 .rating > input { display: none; } 
@@ -328,6 +329,8 @@ body#loginpg {
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
 .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,

@@ -29,82 +29,72 @@
         <!-- Body content -->
         <div class="container-fluid">
             <div class="content-wrapper">
+                 <?php if(!empty($success_message)) { ?>	
+                    <div class="alert alert-success">
+                    <?php if(isset($success_message)) echo $success_message; ?></div>
+                    <?php } ?>
+                    <?php if(!empty($error_message)) { ?>	
+                    <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
+                    <?php } ?>
                 <form action="shoppingcart.php" method="post">
                     <div class="item-container">	
                         <div class="product-container">	
-                            <div class="col-md-12">
-                                <div class="product col-md-3 service-image-left">
-                                    <center>
-                                        <!--
-<img id="item-display" src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img> -->
-                                        <?php 
+                                    <div class="col-md-12">
+                                                <div class="product col-md-3 service-image-left">
+                                                   <center>
+                                                    <img id="item-display" name="item-display" <?php echo "src='$dbImages[0]'" ?> alt=""></img>
+                                                    </center>
+                                                </div>
 
-                                        echo "<img id='item-display' alt='' src='$dbImages[0]'/>";
+                                                <div class="product-container service1-items col-sm-2 col-md-2 pull-left">
+                                                   <center>
+
+                                        <?php 
+                                        $index = 1;
+                                            foreach($dbImagesSliced as $dbImageSliced){
+
+                                                /*echo "<a id='item-" . $index . "' class='service1-item'><img src='$dbImageSliced' alt=''></img></a>";*/
+                                                echo "<img id='item-" . $index . "' class='service1-item' src='$dbImageSliced' alt=''></img>";
+                                                $index ++;
+
+                                            }
 
                                         ?>
-                                    </center>
-                                </div>
 
-                                <div class="product-container service1-items col-sm-2 col-md-2 pull-left">
-                                    <center>
-                                        <a id="item-1" class="service1-item">
-                                            <!--
-<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img> -->
-                                            <?php
-                                            if(!empty($dbImages[1])) {
-                                                echo "<img id='item-display' alt='' src='$dbImages[1]'/>";
-                                            }
-                                            ?>
-                                        </a>
-                                        <a id="item-2" class="service1-item">
-                                            <!-- <img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img> -->
-                                            <?php
-                                            if(!empty($dbImages[2])) {
-                                                echo "<img id='item-display' alt='' src='$dbImages[2]'/>";
-                                            }
-                                            ?>
-                                        </a>
-                                        <a id="item-3" class="service1-item">
-                                            <!-- <img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img> -->
-                                            <?php
-                                            if(!empty($dbImages[3])) {
-                                                echo "<img id='item-display' alt='' src='$dbImages[3]'/>";
-                                            }
-                                            ?>
-                                        </a>
-                                    </center>
-                                </div>
+                                        </center>
+                                    </div>
 
 
                                 <div class="col-md-7">
-                                    <div class="product-title">
-                                        <?php echo $row["name"]; ?>
-                                    </div>
+                                    <div class="product-title" name="product-title"><?php echo $result[0]["name"]; ?></div>
                                     <div class="col-md-12" class="col-xs-12">
-                                        <fieldset class="rating">
-                                            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                            <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                                        </fieldset>
+
+                                    <form method="post">
+                                    <fieldset class="rating">
+                                        <input type="radio" id="star5" name="rating" value="5.0" <?php if($rating == 5.0){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                                        <input type="radio" id="star4half" name="rating" value="4.5" <?php if($rating == 4.5){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                        <input type="radio" id="star4" name="rating" value="4.0" <?php if($rating == 4.0){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                                        <input type="radio" id="star3half" name="rating" value="3.5" <?php if($rating == 3.5){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="star3half" title="Average - 3.5 stars"></label>
+                                        <input type="radio" id="star3" name="rating" value="3.0" <?php if($rating == 3.0){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class = "full" for="star3" title="Average - 3 stars"></label>
+                                        <input type="radio" id="star2half" name="rating" value="2.5" <?php if($rating == 2.5){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="star2half" title="Below Average - 2.5 stars"></label>
+                                        <input type="radio" id="star2" name="rating" value="2.0" <?php if($rating == 2.0){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class = "full" for="star2" title="Below Average - 2 stars"></label>
+                                        <input type="radio" id="star1half" name="rating" value="1.5" <?php if($rating == 1.5){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="star1half" title="Unpopular - 1.5 stars"></label>
+                                        <input type="radio" id="star1" name="rating" value="1.0" <?php if($rating == 1.0){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class = "full" for="star1" title="Very Unpopular - 1 star"></label>
+                                        <input type="radio" id="starhalf" name="rating" value="0.5" <?php if($rating == 0.5){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="starhalf" title="Very Unpopular - 0.5 stars"></label>
+                                    </fieldset>
+                                        <?php if($rated == false){
+                                            echo "<input type='submit' id='ratingbutton' name='ratingbutton' value='rateproduct'/>";
+                                        }else{
+                                            echo"You have already rated!";
+                                        }                       
+                                        ?>
+                                    </form>
+                                        <!--<button type="button" id="ratingbutton" name="ratingbutton" value="rateproduct">Submit Rating</button>-->
+
                                     </div>
-                                    <div class="product-desc" class="col-md-12" class="col-xs-12">
-                                        <?php echo $row["description"]; ?>
-                                    </div>
-                                    <hr>
-                                    <div class="product-price">
-                                        <?php echo "RM ".$row["price"]; ?>
-                                    </div>
-                                    <!--<div class="product-stock">In Stock</div>-->
                                     <hr>
                                     <div class="btn-group cart">
-                                        <input type="hidden" name="prod_id" value="<?php echo $row['id'] ?>"/>
+                                        <input type="hidden" name="prod_id" value="<?php echo $productId ?>"/>
                                         <button type="submit" class="btn btn-success">
                                             Add to cart 
                                         </button>
@@ -114,36 +104,32 @@
                         </div>
                     </div>
                     <div class="container-fluid">		
-                        <div class="col-md-12 product-info">
-                            <ul id="myTab" class="nav nav-tabs nav_tabs">
+			<div class="col-md-12 product-info">
+					<ul id="myTab" class="nav nav-tabs nav_tabs">
+						
+						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+						<li><a href="#service-two" data-toggle="tab">Shipping Information</a></li>
+						
+						
+					</ul>
+				<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="service-one">
+						 
+							<section class="container product-info">
+                                <?php echo $result[0]["description"]; ?>
+							</section>
+										  
+						</div>
+                        <div class="tab-pane fade" id="service-two">
 
-                                <li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-                                <li><a href="#service-two" data-toggle="tab">SELLER INFORMATION</a></li>
-                                <li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
+                            <section class="product-info">
+                                <?php echo $result[0]["shipping_agents"]; ?>
+                            </section>
 
-                            </ul>
-                            <div id="myTabContent" class="tab-content">
-                                <div class="tab-pane fade in active" id="service-one">
-
-                                    <section class="container product-info">
-                                        <?php echo $row["description"]; ?>
-                                    </section>
-
-                                </div>
-                                <div class="tab-pane fade" id="service-two">
-
-                                    <section class="product-info">
-                                        <?php echo $row["seller_id"]; ?>
-                                    </section>
-
-                                </div>
-                                <div class="tab-pane fade" id="service-three">
-                                    <section class="product-info">
-                                        dunno need or not
-                                    </section>						
-                                </div>
-                            </div>
-                            <hr>
+                        </div>
+                        
+				</div>
+				<hr>
                         </div>
                     </div>
                 </form>
