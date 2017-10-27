@@ -82,7 +82,7 @@
                                         <input type="radio" id="starhalf" name="rating" value="0.5" <?php if($rating <= 0.5 & $rating > 0 ){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="starhalf" title="Very Unpopular - 0.5 stars"></label>
                                     </fieldset>
                                         <?php if($rated == false){
-                                            echo "<input type='submit' id='ratingbutton' name='ratingbutton' value='rateproduct'/>";
+                                            echo "<input type='submit' id='ratingbutton' name='ratingbutton' class='btn btn-default' value='rateproduct'/>";
                                         }else{
                                             echo"You have already rated!";
                                         }                       
