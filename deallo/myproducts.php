@@ -23,6 +23,13 @@
     
     <!-- Body content -->
     <div class="container-fluid">
+        <?php if(!empty($success_message)) { ?>	
+                    <div class="alert alert-success">
+                    <?php if(isset($success_message)) echo $success_message; ?></div>
+                    <?php } ?>
+                    <?php if(!empty($error_message)) { ?>	
+                    <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
+                    <?php } ?>
         <!-- Sort and filter list -->
         <h1 class="h3">My Products</h1>
         <hr/>
@@ -73,7 +80,7 @@
 									</div>
 								</a>
 								
-								<a href="#" onclick="confirm(\'Do you really want to delete item < '. $product["name"] .' >?\')">
+								<a href="myproducts.php?productID='.$product["id"].'" onclick="return confirm(\'Do you really want to delete item < '. $product["name"] .' >?\')">
 									<div class="col-xs-6 text-center btn btn-default productBtn">
 										Remove
 									</div>
