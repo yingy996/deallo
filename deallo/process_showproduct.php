@@ -30,15 +30,15 @@
         } else{
             
             if($_GET["sort"] = "pricelowhigh"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE ORDER BY price ASC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category AND deleted = FALSE ORDER BY price ASC");
             }else if($_GET["sort"] == "pricehighlow"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE ORDER BY price DESC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category AND deleted = FALSE ORDER BY price DESC");
             }else if($_GET["sort"] == "ratinglowhigh"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category, deleted = FALSE ORDER BY rating ASC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category AND deleted = FALSE ORDER BY rating ASC");
             }else if($_GET["sort"] == "ratinghighlow"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category, deleted = FALSE ORDER BY rating DESC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category AND deleted = FALSE ORDER BY rating DESC");
             }else{
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category AND deleted = FALSE");
             }
             
         }
