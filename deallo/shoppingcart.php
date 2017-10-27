@@ -109,38 +109,30 @@
                                         ?>
 
                                         <tr>
-                                            <td>   </td>
-                                            <td>   </td>
-                                            <td>   </td>
+                                            <td colspan="3"></td>
                                             <td><h5>Subtotal</h5></td>
                                             <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$subtotal, 2, '.', ''); ?></strong></h5></td>
                                         </tr>
                                         <tr>
-                                            <td>   </td>
-                                            <td>   </td>
-                                            <td>   </td>
+                                            <td colspan="3"></td>
                                             <td><h5>Estimated shipping</h5></td>
                                             <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$shippingtotal, 2, '.', ''); ?></strong></h5></td>
                                         </tr>
                                         <tr>
-                                            <td>   </td>
-                                            <td>   </td>
-                                            <td>   </td>
+                                            <td colspan="3"></td>
                                             <td><h4>Total</h4></td>
                                             <td class="text-right"><h4><strong>RM <?php $total = $subtotal + $shippingtotal; 
                                                 echo number_format((float)$total, 2, '.', ''); ?></strong></h4>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>   </td>
-                                            <td>   </td>
-                                            <td>   </td>
+                                            <td colspan="3"></td>
                                             <td>
                                                 <button type="button" class="btn btn-default" onclick="window.location.href='productcategory.php?category=all'">
                                                     <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                                                 </button></td>
                                             <td> 
-                                                <button type="button" class="btn btn-success" onclick="window.location.href='#'">
+                                                <button type="button" class="btn btn-success" onclick="window.location.href='checkoutdetails.php'">
                                                     Checkout <span class="glyphicon glyphicon-play"></span>
                                                 </button></td>
                                         </tr>
