@@ -22,13 +22,15 @@
 
         if (!empty($_POST['prod_id'])) {
             $add_prodId = $_POST['prod_id'];
-            header("Refresh:1");
+            echo "<meta http-equiv='refresh' content='0'>";
         } else {
-            $add_prodId= '';
+            $add_prodId = '';
         }
 
+        $remove_prodId = '';
+        
         include("process_basket_item_add.php"); 
-        //include("process_basket_item_remove.php"); 
+        include("process_basket_item_remove.php"); 
 
         //echo $add_prodId;
         ?>
@@ -91,12 +93,15 @@
                                             </td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
-                                            <td class='col-sm-1 col-md-1'>
-                                                <button type='button' class='btn btn-danger'>
+                                            <td class='col-sm-1 col-md-1'>"; ?>
+                                             <form method='post' action='process_basket_item_remove.php'>
+                                                <input type='hidden' name='remove_prodID' value='<?php echo $item['product_id']; ?>' />
+                                                <button type='submit' class='btn btn-danger'>
                                                     <span class='glyphicon glyphicon-remove'></span> Remove
                                                 </button>
-                                            </td>
-                                        </tr>"; 
+                                            </form>
+                                           <?php echo "</td>
+                                        </tr> "; 
                                                 $subtotal += $item['quantity']*$item['price'];
                                                 $shippingtotal += $item['shipping_fee'];
                                             } 
