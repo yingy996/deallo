@@ -143,22 +143,23 @@
 					if ($index == 1) {
 						echo '<div class="clearfix visible-xs"></div>';
 					}
-					
-					if ($index == 3) {
-						echo '</div>';
-					}
-					
+
 					if ($index == 3){
+						echo '</div>';
 						$index = 0;
 					} else {
 						$index++;
 					}     
                     
 				}
+				
+				if ($index != 0) {
+					echo '</div>';
+				}
 			}
 			
 		?>
-		
+	
     </div>
     
     <!-- Footer -->
