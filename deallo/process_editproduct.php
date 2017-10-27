@@ -188,11 +188,13 @@
 
 				if($query->rowCount() > 0) {
 					$success_message = "You have succesfully updated your product! This page will be refreshed to display the updated information.";
-					header("refresh:2; url=editproduct.php?productID=$productId");
+					//header("refresh:2; url=editproduct.php?productID=$productId");
+					echo "<meta http-equiv='refresh' content='2'>";
 					//unset($_POST);
 				} else {
 					$error_message = "Problem in updating product. Please try again!";
-					header("refresh:2; url=editproduct.php?productID=$productId");
+					//header("refresh:2; url=editproduct.php?productID=$productId");
+					echo "<meta http-equiv='refresh' content='2'>";
 				}
 		   	}
        	}
