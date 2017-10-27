@@ -82,7 +82,11 @@
 			}
 
 			if (isset($_POST["otherShpgAgent"])) {
-				$shippingAgents .= "," . sanitizeInput($_POST["otherSAgent"]);
+				if ($shippingAgents == ""){
+					$shippingAgents = sanitizeInput($_POST["otherSAgent"]);
+				} else {
+					$shippingAgents .= "," . sanitizeInput($_POST["otherSAgent"]);
+				}
 			}
 
 			//get uploaded image files
@@ -130,28 +134,6 @@
 			   
 			  	
 			}
-		   /*$file_name = $_FILES["img-input"]["name"];
-		   $file_size =$_FILES["img-input"]["size"];
-		   $file_tmp =$_FILES["img-input"]["tmp_name"];
-		   //$file_type=$_FILES["img-input"]["type"];
-		   $dest_file = "productImages/" . basename($file_name);
-		   $tmp=explode(".",$_FILES["img-input"]["name"]);
-		   $file_ext=strtolower(end($tmp));
-
-		   $expensions= array("jpeg","jpg","png");
-
-			if($file_size > 2097152){
-			   $errors[] = "File size must be less than 2 MB";
-			   $error_message .= "File size must be less than 2 MB. ";
-		   } elseif ($file_size == 0) {
-			   $errors[] = "Product image is required";
-			   $error_message .= "Product image is required. ";
-		   }
-			
-		   if(in_array($file_ext,$expensions)=== false){
-			   $errors[] = "Extension not allowed, please choose a JPEG or PNG file.";
-			   $error_message .= "Extension not allowed, please choose a JPEG or PNG file. ";
-		   }*/
 
 		   	if(empty($errors) && $isValid){ 
 				//$success_message = $login_user;
