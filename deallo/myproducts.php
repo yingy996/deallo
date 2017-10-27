@@ -73,7 +73,7 @@
 									</div>
 								</a>
 								
-								<a href="#">
+								<a href="#" onclick="confirm(\'Do you really want to delete item < '. $product["name"] .' >?\')">
 									<div class="col-xs-6 text-center btn btn-default productBtn">
 										Remove
 									</div>
