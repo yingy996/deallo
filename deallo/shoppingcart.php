@@ -127,14 +127,16 @@
                                         </tr>
                                         <tr>
                                             <td colspan="3"></td>
-                                            <td>
+                                            <td class="text-right">
                                                 <button type="button" class="btn btn-default" onclick="window.location.href='productcategory.php?category=all'">
                                                     <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                                                </button></td>
-                                            <td> 
+                                                </button>
+											</td>
+                                            <td class="text-right"> 
                                                 <button type="button" class="btn btn-success" onclick="window.location.href='checkoutdetails.php'">
                                                     Checkout <span class="glyphicon glyphicon-play"></span>
-                                                </button></td>
+                                                </button>
+											</td>
                                         </tr>
                                     </tbody>
                                 </table>
