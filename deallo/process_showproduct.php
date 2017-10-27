@@ -7,22 +7,22 @@
         if($category == "all"){
             if(isset($_GET["sort"])){
                 if($_GET["sort"] == "pricelowhigh"){
-                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products ORDER BY price ASC");
+                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE deleted = FALSE ORDER BY price ASC");
 
                 }else if($_GET["sort"] == "pricehighlow"){
 
-                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products ORDER BY price DESC");
+                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE deleted = FALSE ORDER BY price DESC");
                 }else if($_GET["sort"] == "ratinglowhigh"){
-                   $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products ORDER BY  rating ASC");
+                   $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE deleted = FALSE ORDER BY  rating ASC");
 
 
                 }else if($_GET["sort"] == "ratinghighlow"){
 
-                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products ORDER BY  rating DESC");
+                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE deleted = FALSE ORDER BY  rating DESC");
 
                 }
             }else{
-                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products");
+                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE deleted = FALSE ");
 
             }
 
@@ -30,15 +30,15 @@
         } else{
             
             if($_GET["sort"] = "pricelowhigh"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category ORDER BY price ASC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE ORDER BY price ASC");
             }else if($_GET["sort"] == "pricehighlow"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category ORDER BY price DESC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE ORDER BY price DESC");
             }else if($_GET["sort"] == "ratinglowhigh"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category ORDER BY rating ASC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category, deleted = FALSE ORDER BY rating ASC");
             }else if($_GET["sort"] == "ratinghighlow"){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category ORDER BY rating DESC");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category, deleted = FALSE ORDER BY rating DESC");
             }else{
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category");
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img FROM products WHERE category=:category, deleted = FALSE");
             }
             
         }
