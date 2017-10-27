@@ -136,7 +136,7 @@
                                             <td>   </td>
                                             <td>   </td>
                                             <td>
-                                                <button type="button" class="btn btn-default" onclick="window.location.href='productcategory.php'">
+                                                <button type="button" class="btn btn-default" onclick="window.location.href='productcategory.php?category=all'">
                                                     <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                                                 </button></td>
                                             <td> 
