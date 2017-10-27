@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2017 at 03:20 AM
+-- Generation Time: Oct 27, 2017 at 09:02 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -32,17 +32,16 @@ CREATE TABLE `rating` (
   `rating_id` int(11) NOT NULL,
   `product_id` varchar(6) NOT NULL,
   `rater_username` varchar(15) NOT NULL,
-  `rating_value` decimal(10,1) DEFAULT NULL
+  `rating_value` decimal(10,1) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rating`
 --
 
-INSERT INTO `rating` (`rating_id`, `product_id`, `rater_username`, `rating_value`) VALUES
-(1, 'PEO747', 'coucou', '2.0'),
-(2, 'PEO747', 'hulala', '4.0'),
-(3, 'PDI435', 'coucou', '5.0');
+INSERT INTO `rating` (`rating_id`, `product_id`, `rater_username`, `rating_value`, `deleted`) VALUES
+(36, 'PDI435', 'coucou', '5.0', 0);
 
 --
 -- Indexes for dumped tables
@@ -62,7 +61,7 @@ ALTER TABLE `rating`
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
