@@ -26,6 +26,7 @@
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3">
                 <form id="registerForm" name="frmRegistration" method="post" action="" novalidate role="form">
+					
                     <?php if(!empty($success_message)) { ?>	
                     <div class="alert alert-success">
                     <?php if(isset($success_message)) echo $success_message; ?></div>
@@ -35,7 +36,7 @@
                     <?php } ?>
                     <fieldset>
                         <legend>Personal Info</legend>
-                        
+                        <p class="text-muted"><em>* indicates the field is a required field</em></p>
                         <div class="row">
                             <div class="form-group col-xs-6">
                                 <label for="firstname">*First name:</label>
