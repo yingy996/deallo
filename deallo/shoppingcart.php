@@ -28,7 +28,8 @@
         }
 
         $remove_prodId = '';
-        
+        $geturl = "$_SERVER[REQUEST_URI]";
+        //echo $geturl;
         include("process_basket_item_add.php"); 
         include("process_basket_item_remove.php"); 
 
@@ -94,8 +95,9 @@
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
                                             <td class='col-sm-1 col-md-1'>"; ?>
-                                             <form method='post' action='process_basket_item_remove.php'>
+                                            <form method='post' action='process_basket_item_remove.php'>
                                                 <input type='hidden' name='remove_prodID' value='<?php echo $item['product_id']; ?>' />
+                                                 <input type='hidden' name='url' value='<?php echo $geturl; ?>' />
                                                 <button type='submit' class='btn btn-danger'>
                                                     <span class='glyphicon glyphicon-remove'></span> Remove
                                                 </button>
