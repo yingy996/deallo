@@ -170,25 +170,9 @@
                                     	<span class="glyphicon glyphicon-shopping-cart"></span> Cancel
 									</button>
 									
-									<button type="submit" value="checkout" class="text-right btn btn-success">
-										Checkout <span class="glyphicon glyphicon-play"></span>
-									</button>
+									<input type="submit" name="userCheckout" value="Checkout" class="btn btn-success"/>
 								</form>
 								
-								<table>
-									
-									<tbody>
-                                        <tr>
-                                           	<td colspan="3"></td>
-                                            <td>
-                                                
-                                            <td> 
-												
-											</td>
-                                        </tr>
-									</tbody>
-                                </table>  
-                                
                             </div>
                         </div>
                     </div>       
