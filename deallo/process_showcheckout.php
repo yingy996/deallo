@@ -2,6 +2,7 @@
 //Shows the details of the checkout (e.g. shopping cart items, shipping address...)
 	require_once("dbcontroller.php");
 
+	$error_message = "";
 	$db_handle = new DBController();
 	
 	//Get shopping basket details
@@ -14,6 +15,10 @@
 
 	$query->execute();
 	$results = $query->fetchAll();
+
+	if (count($results) == 0) {
+		$error_message = "No item to checkout! Please continue shopping.";
+	}
 
 	//Get shipping details from user account
 	$userDetailsQuery = $db_handle->getConn()->prepare("SELECT first_name, last_name, phone_number, address FROM user_account WHERE username = :username");

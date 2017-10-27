@@ -39,7 +39,9 @@
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <p class="h3"> Confirm Checkout  </p>
-                    <subtitle style="color:limegreen;">  
+                    
+                    <hr/>
+					<subtitle style="color:limegreen;">  
                         <?php if(!empty($success_message)) { ?>	
                         <div class="alert alert-success">
                         <?php if(isset($success_message)) echo $success_message; ?></div>
@@ -48,7 +50,6 @@
                         <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
                         <?php } ?>
                     </subtitle>
-                    <hr/>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
