@@ -11,26 +11,31 @@
         /* Shipping Agent validation */
         if(empty($_POST["shpgAgent"])){
             $error_message = "Please select at least one preferred shipping agent";
+            $isValid = false;
         } 
         
         /* Shipping Price validation */
-        if(empty($_POST["productShippingPrice"])){
+        /*if(empty($_POST["productShippingPrice"])){
             $error_message = "Shipping Price cannot be empty";
-        }
+            $isValid = false;
+        }*/
         
         /* Product Price validation */
         if(empty($_POST["productPrice"])){
             $error_message = "Product Price cannot be empty";
+            $isValid = false;
         }
         
         /* Product Name validation */
         if(empty($_POST["productName"])){
             $error_message = "Product Name cannot be empty";
+            $isValid = false;
         }
         
         /* Product Category validation */
         if(empty($_POST["productCategory"])){
             $error_message = "Product Category cannot be empty";
+            
         }
         
        if(!empty($_FILES["img-input"])){

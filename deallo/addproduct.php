@@ -128,11 +128,11 @@
                             <label for="shpgFee">Shipping fee:</label>
                             <div class="input-group">
                                 <div class="input-group-addon">RM</div>
-                                <input type="number" class="form-control" id="shpgfee" data-ng-model="shpgfee" name="productShippingPrice" required/> 
+                                <input type="number" class="form-control" id="shpgfee" data-ng-model="shpgfee" name="productShippingPrice"/> 
                             </div>
                         </div>
                         
-                        <p class="alert alert-danger" data-ng-show="frmProduct.productShippingPrice.$error.required && (frmProduct.productShippingPrice.$touched || submitted)" >*Shipping fee is required</p>
+                        <!--<p class="alert alert-danger" data-ng-show="frmProduct.productShippingPrice.$error.required && (frmProduct.productShippingPrice.$touched || submitted)" >*Shipping fee is required</p>-->
                     </div>
 
                     <div class="row">

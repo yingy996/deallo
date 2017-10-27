@@ -50,14 +50,14 @@
             <!-- Filter -->
             <div class="col-xs-9">    
                 <div class="form-group row form-inline">
-                    <form method="POST">
+                    <form action="" method="post">
                         <label for="minPrice">Price range:</label>
 
-                        <input type="number" class="form-control" data-ng-model="minPrice" id="minPrice" min="0" size="4" name="minprice"/> <span>&ndash;</span>
-                        <input type="number" class="form-control" data-ng-model="maxPrice" min="0" name="maxprice"/>
+                        <input type="number" class="form-control"  min="0" size="4" name="minPrice" value="<?php if(!empty($minPrice)){echo $minPrice;}?>"/> <span>&ndash;</span>
+                        <input type="number" class="form-control"  min="0" name="maxPrice" value="<?php if(!empty($minPrice)){echo $maxPrice;}?>"/>
                         <span>&nbsp;</span>
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" data-ng-model="freeShpg" name="filterfreeShipping">
+                            <input type="checkbox" class="form-check-input" name="filterfreeShipping" <?php if(isset($_POST["filterfreeShipping"])){echo "checked";}?>>
                             Free shipping
                         </label>
                         
