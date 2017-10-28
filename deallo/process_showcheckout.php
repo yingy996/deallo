@@ -16,6 +16,7 @@
 	$query->execute();
 	$results = $query->fetchAll();
 
+	//if there is no item to checkout, show error message
 	if (count($results) == 0) {
 		$error_message = "No item to checkout! Please continue shopping.";
 	}
