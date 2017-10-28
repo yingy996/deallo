@@ -24,6 +24,11 @@
         <?php 
         include("header.php"); 
         include("process_productdetails.php"); 
+        
+        if (isset($_GET['success']) || isset($_GET['err']) ) {
+            $success_message = $_GET['success'];
+            $error_message = $_GET['err'];
+        }
         ?>
 
         <!-- Body content -->
@@ -82,7 +87,7 @@
                                         <input type="radio" id="starhalf" name="rating" value="0.5" <?php if($rating <= 0.5 & $rating > 0 ){echo "checked";}else if($rated == true){echo "disabled";}?>/><label class="half" for="starhalf" title="Very Unpopular - 0.5 stars"></label>
                                     </fieldset>
                                         <?php if($rated == false){
-                                            echo "<input type='submit' id='ratingbutton' name='ratingbutton' value='rateproduct'/>";
+                                            echo "<input type='submit' id='ratingbutton' name='ratingbutton' class='btn btn-default' value='rateproduct'/>";
                                         }else{
                                             echo"You have already rated!";
                                         }                       
@@ -92,9 +97,9 @@
 
                                     </div>
                                     <hr>
-                                    <form action="shoppingcart.php" method="post">
+                                    <form action="process_basket_item_add.php" method="post">
                                     <div class="btn-group cart">
-                                        <input type="hidden" name="prod_id" value="<?php echo $productId ?>"/>
+                                        <input type="hidden" name="add_prodID" value="<?php echo $productId ?>"/>
                                         <button type="submit" class="btn btn-success">
                                             Add to cart 
                                         </button>
