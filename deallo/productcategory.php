@@ -50,15 +50,20 @@
             <!-- Filter -->
             <div class="col-xs-9">    
                 <div class="form-group row form-inline">
-                    <label for="minPrice">Price range:</label>
+                    <form action="" method="post">
+                        <label for="minPrice">Price range:</label>
 
-                    <input type="number" class="form-control" data-ng-model="minPrice" id="minPrice" min="0" size="4"/> <span>&ndash;</span>
-                    <input type="number" class="form-control" data-ng-model="maxPrice" min="0"/>
-                    <span>&nbsp;</span>
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" data-ng-model="freeShpg">
-                        Free shipping
-                    </label>
+                        <input type="number" class="form-control"  min="0" size="4" name="minPrice" value="<?php if(!empty($minPrice)){echo $minPrice;}?>"/> <span>&ndash;</span>
+                        <input type="number" class="form-control"  min="0" name="maxPrice" value="<?php if(!empty($minPrice)){echo $maxPrice;}?>"/>
+                        <span>&nbsp;</span>
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="filterfreeShipping" <?php if(isset($_POST["filterfreeShipping"])){echo "checked";}?>>
+                            Free shipping
+                        </label>
+                        
+                         <input type="submit" class="btn btn-default" name="filter" value="filter"/>
+                        
+                    </form>
                 </div>
             </div>
         </div>
@@ -72,7 +77,15 @@
 		<?php 
 			$index = 0;	
             $rated = true;
-            
+        
+            if(!empty($success_message)) { ?>	
+                    <div class="alert alert-success">
+                    <?php if(isset($success_message)) echo $success_message; ?></div>
+                    <?php } ?>
+                    <?php if(!empty($error_message)) { ?>	
+                    <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
+                    <?php }
+        
 			if (count($results) > 0) {
 				foreach ($results as $product) {
                     //get rating for each product
