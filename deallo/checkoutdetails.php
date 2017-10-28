@@ -108,93 +108,78 @@
                                                 </form>
                                                 <?php echo "</td>
 												</tr>"; 
-                                                        $subtotal += $item['quantity']*$item['price'];
-                                                        $shippingtotal += $item['shipping_fee'];
-                                                    } 
-                                                }
-                                                ?>
-                                                <!-- Displaying prices -->
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td><h5>Subtotal</h5></td>
-                                                    <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$subtotal, 2, '.', ''); ?></strong></h5></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td><h5>Estimated shipping</h5></td>
-                                                    <td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$shippingtotal, 2, '.', ''); ?></strong></h5></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="3"></td>
-                                                    <td><h4>Total</h4></td>
-                                                    <td class="text-right"><h4><strong>RM <?php $total = $subtotal + $shippingtotal; 
-                                                        echo number_format((float)$total, 2, '.', ''); ?></strong></h4>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </fieldset>
 
-                                    <fieldset>
-                                        <legend>Shipping Details</legend>
-                                        <p class="text-muted"><em>* indicates the field is a required field</em></p>
-                                        <div class="row">
-                                            <div class="form-group col-xs-6">
-                                                <label for="name">*Recipient Name:</label>
-                                                <input type="text" class="form-control" id="name" name="name" data-ng-model="recipient.name" data-ng-pattern="/^[a-zA-Z ]*$/" data-ng-init="recipient.name='<?php echo $user["first_name"] . " " . $user["last_name"]; ?>'" required/>
-                                            </div>
+														$subtotal += $item['quantity']*$item['price'];
+														$shippingtotal += $item['shipping_fee'];
+													} 
+												}
+												?>
+												<!-- Displaying prices -->
+												<tr>
+													<td colspan="3"></td>
+													<td><h5>Subtotal</h5></td>
+													<td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$subtotal, 2, '.', ''); ?></strong></h5></td>
+												</tr>
+												<tr>
+													<td colspan="3"></td>
+													<td><h5>Estimated shipping</h5></td>
+													<td class="text-right"><h5><strong><?php echo "RM ".number_format((float)$shippingtotal, 2, '.', ''); ?></strong></h5></td>
+												</tr>
+												<tr>
+													<td colspan="3"></td>
+													<td><h4>Total</h4></td>
+													<td class="text-right"><h4><strong>RM <?php $total = $subtotal + $shippingtotal; 
+														echo number_format((float)$total, 2, '.', ''); ?></strong></h4>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</fieldset>
+								
+									<fieldset>
+										<legend>Shipping Details</legend>
+										<p class="text-muted"><em>* indicates the field is a required field</em></p>
+										<div class="row">
+											<div class="form-group col-xs-6">
+												<label for="name">*Recipient Name:</label>
+												<input type="text" class="form-control" id="name" name="name" data-ng-model="recipient.name" data-ng-pattern="/^[a-zA-Z ]*$/" data-ng-init="recipient.name='<?php echo $user["first_name"] . " " . $user["last_name"]; ?>'" required/>
+											</div>
+											
+											<div class="form-group col-xs-6">
+												<label for="contact">*Recipient Contact Number:</label>
+												<input type="text" class="form-control" id="contact" name="contact" data-ng-model="recipient.contact" data-ng-pattern="/^[0-9]*$/" data-ng-init="recipient.contact='<?php echo $user["phone_number"]; ?>'" required/>
+											</div>
+											
+											<!--Displaying errors: recipient name-->
+											<p class="alert alert-danger" data-ng-show="frmCheckout.name.$error.required && frmCheckout.name.$touched">*Recipient name is required</p>
 
-                                            <div class="form-group col-xs-6">
-                                                <label for="contact">*Recipient Contact Number:</label>
-                                                <input type="text" class="form-control" id="contact" name="contact" data-ng-model="recipient.contact" data-ng-pattern="/^[0-9]*$/" data-ng-init="recipient.contact='<?php echo $user["phone_number"]; ?>'" required/>
-                                            </div>
+											<p class="alert alert-danger" data-ng-show="frmCheckout.name.$error.pattern && frmCheckout.name.$touched">Recipient name must be alphabetic</p>
+											
+											<!--Displaying errors: recipient contact-->
+											<p class="alert alert-danger" data-ng-show="frmCheckout.contact.$error.required && frmCheckout.contact.$touched">*Recipient contact number is required</p>
 
-                                            <!--Displaying errors: recipient name-->
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.name.$error.required && frmCheckout.name.$touched">*Recipient name is required</p>
+											<p class="alert alert-danger" data-ng-show="frmCheckout.contact.$error.pattern && frmCheckout.contact.$touched">Recipient contact number must be numeric</p>
+										</div>
+										
+										<div class="row">
+											<div class="form-group col-xs-12">
+												<label for="address">*Shipping Address:</label>
+												<input type="text" id="address" data-ng-model="recipient.address" class="form-control" name="address" data-ng-pattern="/[\w',-\\/.\s]/" data-ng-init="recipient.address='<?php echo $user["address"]; ?>'" required/>
+											</div> 
 
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.name.$error.pattern && frmCheckout.name.$touched">Recipient name must be alphabetic</p>
-
-                                            <!--Displaying errors: recipient contact-->
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.contact.$error.required && frmCheckout.contact.$touched">*Recipient contact number is required</p>
-
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.contact.$error.pattern && frmCheckout.contact.$touched">Recipient contact number must be numeric</p>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col-xs-12">
-                                                <label for="address">*Shipping Address:</label>
-                                                <input type="text" id="address" data-ng-model="recipient.address" class="form-control" name="address" data-ng-pattern="/[\w',-\\/.\s]/" data-ng-init="recipient.address='<?php echo $user["address"]; ?>'" required/>
-                                            </div> 
-
-                                            <!--Displaying errors: address-->
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.address.$error.required && frmCheckout.address.$touched">Shipping Address is required</p>
-
-                                            <p class="alert alert-danger" data-ng-show="frmCheckout.address.$error.pattern && frmCheckout.address.$touched">Invalid shipping address</p>
-                                        </div>
-                                    </fieldset>
-                                    <button type="button" class="btn btn-default" onclick="window.location.href='shoppingcart.php'">
-                                        <span class="glyphicon glyphicon-shopping-cart"></span> Cancel
-                                    </button>
-
-                                    <button type="submit" value="checkout" class="text-right btn btn-success">
-                                        Checkout <span class="glyphicon glyphicon-play"></span>
-                                    </button>
-                                </form>
-
-                                <table>
-
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td>
-
-                                            <td> 
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>  
-
+											<!--Displaying errors: address-->
+											<p class="alert alert-danger" data-ng-show="frmCheckout.address.$error.required && frmCheckout.address.$touched">Shipping Address is required</p>
+											
+											<p class="alert alert-danger" data-ng-show="frmCheckout.address.$error.pattern && frmCheckout.address.$touched">Invalid shipping address</p>
+										</div>
+									</fieldset>
+									<button type="button" class="btn btn-default" onclick="window.location.href='shoppingcart.php'">
+                                    	<span class="glyphicon glyphicon-shopping-cart"></span> Cancel
+									</button>
+									
+									<input type="submit" name="userCheckout" value="Checkout" class="btn btn-success"/>
+								</form>
+								
                             </div>
                         </div>
                     </div>       
