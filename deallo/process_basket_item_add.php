@@ -1,22 +1,19 @@
 <?php
 require_once("dbcontroller.php");
-
-//$currentUser= "";
-/*
-if (isset($_SESSION["user_login"])) {
-    $db_handle = new DBController();
-    //$currentUser= $_SESSION["user_login"];
-    $query = $db_handle->getConn()->prepare("SELECT id, username FROM user_account WHERE username = '".$_SESSION["user_login"]."'");
-    $query->execute();
-    $getUsername = $query->fetchAll();
-    $row = $getUsername[0];
-    $login_user = $row["id"];
-    echo $_SESSION["user_login"]." ".$login_user." ";
-}*/
+require_once("header.php");
 
 $success_message = "";
 $error_message = "";
 $result = "";
+$add_prodId = "";
+//$login_user = "";
+
+if (!empty($_POST['add_prodID'])) {
+    $add_prodId = $_POST['add_prodID'];
+    //$login_user = $_POST['login_user'];
+    //$url = $_POST['url'];
+    //echo $_POST['add_prodID']." ".$login_user;
+}
 
 if (!empty($add_prodId) && !empty($login_user)) {
     $db_handle = new DBController();
@@ -28,7 +25,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
 
     if (!empty($result)) {
         $row = $result[0];
- 
+
         $_id = generateID(6);
         $_product_id = $row["id"];
         //$_name = $row["name"];
@@ -38,7 +35,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
         //$_shipping_fee = $row["shipping_fee"];
         //$_shipping_agents = $row["shipping_agents"];
         //$_seller_id = $row["seller_id"];
-        $_buyer_username = $_SESSION["user_login"];
+        $_buyer_username = $login_user;
         $_date_added = date("Y-m-d");
         //$_img = $row["img"];
 
@@ -55,8 +52,17 @@ if (!empty($add_prodId) && !empty($login_user)) {
             $query = $db_handle->getConn()->prepare("INSERT INTO basket(id, product_id, quantity, buyer_username, date_added) VALUES ('$_id', '$_product_id', '1', '$_buyer_username', '$_date_added')");
 
             $query->execute();
-            //$success_message .= "Added product item";
-            
+
+            $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
+            $check->execute();
+            $result = $check->fetchAll();
+
+            if (!empty($result)) {
+                $success_message = "Successfully added item to basket";
+            } else {
+                $error_message = "failed to add item to basket";
+            }
+
         } else {
             // If record already existed update the quantity to be +1
             $query = $db_handle->getConn()->prepare("SELECT quantity FROM basket WHERE product_id = '$add_prodId'");
@@ -70,20 +76,14 @@ if (!empty($add_prodId) && !empty($login_user)) {
 
             $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE product_id = '$add_prodId'");
             $updateQuantity->execute();
-            
-            $success_message .= "Updated product quantity";
+
+            $success_message = "Updated product quantity";
         }
     } 
 
-    $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
-    $check->execute();
-    $result = $check->fetchAll();
+    echo $add_prodId." ".$login_user;
 
-    if (!empty($result)) {
-        $success_message = "successfully added item to basket";
-    } else {
-        $error_message = "failed to add item to basket";
-    }
+    header("Location: productdetails.php?productID=$add_prodId&success=$success_message&err=$error_message");
 
 }
 
