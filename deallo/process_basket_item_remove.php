@@ -1,5 +1,6 @@
 <?php
 require_once("dbcontroller.php");
+require_once("header.php");
 
 $url = "";
 $remove_prodId = "";
@@ -16,13 +17,13 @@ if (!empty($_POST['remove_prodID'])) {
 if (!empty($remove_prodId)) {
     $db_handle = new DBController();
 
-    $query = $db_handle->getConn()->prepare("SELECT product_id FROM basket WHERE product_id = '$remove_prodId'");
+    $query = $db_handle->getConn()->prepare("SELECT product_id FROM basket WHERE product_id = '$remove_prodId' AND buyer_username = '$login_user'");
     
     $query->execute();
     $result = $query->fetchAll();
     
     if (!empty($result)) {
-        $query = $db_handle->getConn()->prepare("DELETE FROM basket WHERE product_id = '$remove_prodId'");
+        $query = $db_handle->getConn()->prepare("DELETE FROM basket WHERE product_id = '$remove_prodId' AND buyer_username = '$login_user'");
         
         $query->execute();
     }

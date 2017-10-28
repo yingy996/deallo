@@ -44,7 +44,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
         $dbCurrentImg = $row["img"]; //used to add new images
 
         // Check if record already exist
-        $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
+        $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId' AND buyer_username = '$_buyer_username'");
         $check->execute();
         $existed = $check->fetchAll();
 
@@ -53,7 +53,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
 
             $query->execute();
 
-            $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId'");
+            $check = $db_handle->getConn()->prepare("SELECT * FROM basket WHERE product_id = '$add_prodId' AND buyer_username = '$_buyer_username'");
             $check->execute();
             $result = $check->fetchAll();
 
@@ -74,7 +74,7 @@ if (!empty($add_prodId) && !empty($login_user)) {
             $currentQuantity = $getQuantity["quantity"];
             $currentQuantity = $currentQuantity + 1;
 
-            $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE product_id = '$add_prodId'");
+            $updateQuantity = $db_handle->getConn()->prepare("UPDATE basket SET quantity = '$currentQuantity' WHERE product_id = '$add_prodId' AND buyer_username = '$_buyer_username'");
             $updateQuantity->execute();
 
             $success_message = "Updated product quantity";
