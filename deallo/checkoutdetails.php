@@ -56,9 +56,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                <form name="frmCheckout" method="post" action="" novalidate role="form">
+                                <form method="post" role="form">
                                     <fieldset>
                                         <legend>Shopping Cart</legend>
+									</fieldset>
+								</form>
                                         <table class="table table-hover">
                                             <thead>
                                                 <tr>
@@ -135,8 +137,8 @@
 												</tr>
 											</tbody>
 										</table>
-									</fieldset>
-								
+									
+								<form name="frmCheckout" method="post" action="" novalidate role="form">
 									<fieldset>
 										<legend>Shipping Details</legend>
 										<p class="text-muted"><em>* indicates the field is a required field</em></p>
