@@ -1,6 +1,6 @@
 <?php
 	require_once("dbcontroller.php");
-	$success_message = "";
+
 	$isValid = true;
 	$db_handle = new DBController();
 

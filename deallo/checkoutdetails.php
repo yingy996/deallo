@@ -19,10 +19,22 @@
         <!-- Navigation Bar -->
         <?php 
         include("header.php"); 
-        //include("process_showcart.php");
-		include("process_showcheckout.php");
- 		include("process_checkout.php");
+        include("process_showcart.php");
 
+        if (!empty($_POST['prod_id'])) {
+            $add_prodId = $_POST['prod_id'];
+            echo "<meta http-equiv='refresh' content='0'>";
+        } else {
+            $add_prodId = '';
+        }
+
+        $remove_prodId = '';
+        $geturl = "$_SERVER[REQUEST_URI]";
+        //echo $geturl;
+        include("process_basket_item_add.php"); 
+        include("process_basket_item_remove.php"); 
+
+        //echo $add_prodId;
         ?>
 
         <!-- Body content -->
@@ -32,13 +44,15 @@
                     <p class="h3"> Confirm Checkout  </p>
 
                     <hr/>
-                    <?php if ($success_message != "") { ?>
-						<p class="alert alert-success"><?php echo $success_message; ?></p> 
-					<?php } ?>
-
-					<?php if ($error_message != "") { ?>
-						<p class="alert alert-danger"><?php echo $error_message; ?></p> 
-					<?php } ?>
+                    <subtitle style="color:limegreen;">  
+                        <?php if(!empty($success_message)) { ?>	
+                        <div class="alert alert-success">
+                            <?php if(isset($success_message)) echo $success_message; ?></div>
+                        <?php } ?>
+                        <?php if(!empty($error_message)) { ?>	
+                        <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
+                        <?php } ?>
+                    </subtitle>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
