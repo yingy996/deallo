@@ -20,7 +20,8 @@
         <?php 
         ob_start();
         include("header.php"); 
-        include("process_showcart.php");
+        include("process_showcheckout.php");
+		include("process_checkout.php");
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
