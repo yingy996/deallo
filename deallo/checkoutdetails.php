@@ -7,7 +7,6 @@
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/stylesheet.css" rel="stylesheet" />
-        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -172,61 +171,11 @@
 											<p class="alert alert-danger" data-ng-show="frmCheckout.address.$error.pattern && frmCheckout.address.$touched">Invalid shipping address</p>
 										</div>
 									</fieldset>
-                                    <div id="checkoutcancel">
-                                        <button type="button" class="btn btn-default" onclick="window.location.href='shoppingcart.php'">
-                                            <span class="glyphicon glyphicon-shopping-cart"></span> Cancel
-                                        </button>
-									</div>
-                                    <script>
-                                        
-                                        paypal.Button.render({
-
-                                            env: 'sandbox', // sandbox | production
-
-                                            // PayPal Client IDs - replace with your own
-                                            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-                                            client: {
-                                                sandbox:    'AfwOEf37FpiJVb8VlBx4C3-lrQei8DL45kZ8es6zu3vaH401FA1jg0Ud9AH9bhaNcHxGoRB2tkBAeuv5',
-                                                production: '<insert production client id>'// none since this is for test
-                                            },
-
-                                            // Show the buyer a 'Pay Now' button in the checkout flow
-                                            commit: true,
-
-                                            // payment() is called when the button is clicked
-                                            payment: function(data, actions) {
-
-                                                // Make a call to the REST api to create the payment
-                                                return actions.payment.create({
-                                                    payment: {
-                                                        transactions: [
-                                                            {
-                                                                amount: { total: '<?php echo $total; ?>', currency: 'MYR' }
-                                                            }
-                                                        ]
-                                                    }
-                                                });
-                                            },
-
-                                            // onAuthorize() is called when the buyer approves the payment
-                                            onAuthorize: function(data, actions) {
-
-                                                // Make a call to the REST api to execute the payment
-                                                return actions.payment.execute().then(function() {
-                                                    window.alert('Payment Complete!');
-
-                                                    document.getElementById('userCheckout').click();
-
-                                                });
-                                            }
-
-                                        }, '#paypal-button-container');
-                                    </script>
-                                    
-                                    <div id="paypal-button-container"></div>
-									<input type="submit" id="userCheckout" name="userCheckout" value="Checkout" class="btn btn-success"
-                                           style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1"/>
- 
+									<button type="button" class="btn btn-default" onclick="window.location.href='shoppingcart.php'">
+                                    	<span class="glyphicon glyphicon-shopping-cart"></span> Cancel
+									</button>
+									
+									<input type="submit" name="userCheckout" value="Checkout" class="btn btn-success"/>
 								</form>
 								
                             </div>

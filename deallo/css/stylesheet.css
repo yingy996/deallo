@@ -359,15 +359,7 @@ body#loginpg {
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
-/*--- checkoutdetails.php ---*/
-#checkoutcancel{
-        display: inline-block;
-}
 
-#paypal-button-container{
-        display: inline-block;
-        vertical-align:top;
-}
 /*--- Footer ---*/
 body {
     /* Set margin bottom according to the height of footer to prevent overlapping */
