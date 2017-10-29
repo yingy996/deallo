@@ -57,7 +57,7 @@
 								<li class="divider"></li>
 								<li class="dropdown-header">Sell</li>
                                 <li><a href="myproducts.php">My Products</a></li>
-								<li><a href="myproducts.php">My Sales Orders</a></li>
+								<li><a href="customerorders.php">My Sales Orders</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Buy</li>
                                 <li><a href="myproducts.php">My Purchases</a></li>

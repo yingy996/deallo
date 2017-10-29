@@ -210,6 +210,16 @@ body#loginpg {
     opacity: 0;
 }
 
+/*--- Seller: View customer order (customerorders.php)---*/
+.ordertable {
+	border: 1px solid #ddd;
+}
+
+.status-td {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
 /*--- Product Details ---*/
 
 .product{
