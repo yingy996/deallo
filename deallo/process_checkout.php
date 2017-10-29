@@ -68,7 +68,7 @@
 				$customer_id = $login_user;
 				$seller_id = $seller["seller_id"];
 				$order_date = date("Y-m-d");
-				$status = "Not paid";
+				$status = "Paid";
 				$status_date = date("Y-m-d");
 				$shipping_address = sanitizeInput($_POST["address"]);
 				$recipient_name = sanitizeInput($_POST["name"]);
