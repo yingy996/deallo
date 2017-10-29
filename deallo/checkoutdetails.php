@@ -18,15 +18,9 @@
     <body data-ng-controller="shoppingBasketCtrl">
         <!-- Navigation Bar -->
         <?php 
+        ob_start();
         include("header.php"); 
         include("process_showcart.php");
-
-        if (!empty($_POST['prod_id'])) {
-            $add_prodId = $_POST['prod_id'];
-            echo "<meta http-equiv='refresh' content='0'>";
-        } else {
-            $add_prodId = '';
-        }
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
@@ -34,6 +28,10 @@
         include("process_basket_item_add.php"); 
         include("process_basket_item_remove.php"); 
 
+        if (isset($_GET['success']) ) {
+            $success_message = $_GET['success'];
+        }
+        
         //echo $add_prodId;
         ?>
 
@@ -95,7 +93,7 @@
 														</div>
 													</td>
 													<td class='col-sm-1 col-md-1' style='text-align: center'>
-														<input type='email' class='form-control' id='exampleInputEmail1' value='".$item['quantity']."'>
+														<input type='text' readonly class='form-control' id='exampleInputEmail1' value='".$item['quantity']."'>
 													</td>
 													<td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
 													<td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>

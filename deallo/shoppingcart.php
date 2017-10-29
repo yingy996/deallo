@@ -17,15 +17,9 @@
     <body data-ng-controller="shoppingBasketCtrl">
         <!-- Navigation Bar -->
         <?php 
+        ob_start();
         include("header.php"); 
         include("process_showcart.php");
-
-        if (!empty($_POST['prod_id'])) {
-            $add_prodId = $_POST['prod_id'];
-            echo "<meta http-equiv='refresh' content='0'>";
-        } else {
-            $add_prodId = '';
-        }
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
@@ -33,6 +27,13 @@
         include("process_basket_item_add.php"); 
         include("process_basket_item_remove.php"); 
 
+        if (isset($_GET['success']) ) {
+            $success_message = $_GET['success'];
+        }
+        
+        if (isset($_GET['err']) ) {
+            $error_message = $_GET['err'];
+        }
         //echo $add_prodId;
         ?>
 
@@ -89,9 +90,13 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='col-sm-1 col-md-1' style='text-align: center'>
-                                                <input type='email' class='form-control' id='exampleInputEmail1' value='".$item['quantity']."'>
-                                            </td>
+                                            <td class='col-sm-1 col-md-1' style='text-align: center'>"; ?>
+                                            <form method='post' action='process_updatequantity.php'>
+                                                <input type='hidden' name='update_prodID' value='<?php echo $item['product_id']; ?>' />
+                                                <input type='number' class='form-control' id='exampleInputEmail1' name='quantity' value='<?php echo $item['quantity']; ?>'>
+                                                <button type='submit' class='btn btn-default' style='font-size: 0.7em; margin-top:5px;'>update <br/>quantity</button>
+                                            </form>
+                                            <?php echo "</td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
                                             <td class='col-sm-1 col-md-1'>"; ?>

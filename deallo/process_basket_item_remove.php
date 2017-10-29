@@ -26,13 +26,17 @@ if (!empty($remove_prodId)) {
         $query = $db_handle->getConn()->prepare("DELETE FROM basket WHERE product_id = '$remove_prodId' AND buyer_username = '$login_user'");
         
         $query->execute();
+        $success_message = "Product removed";
     }
     
-    if ($url == "/deallo/deallo/shoppingcart.php") {
-        header("Location: shoppingcart.php");
-    } elseif ($url == "/deallo/deallo/checkoutdetails.php") {
-        header("Location: checkoutdetails.php");
+    if (strpos($url, 'shoppingcart.php')) {
+        header("Location: shoppingcart.php?success=$success_message");
+        
+    } elseif (strpos($url, 'checkoutdetails.php')) {
+        header("Location: checkoutdetails.php?success=$success_message");
+        
     }
     
 }
+
 ?>
