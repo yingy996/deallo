@@ -20,14 +20,15 @@
         <?php 
         ob_start();
         include("header.php"); 
+		include("process_basket_item_remove.php"); 
+		include("process_basket_item_add.php"); 
         include("process_showcheckout.php");
 		include("process_checkout.php");
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
         //echo $geturl;
-        include("process_basket_item_add.php"); 
-        include("process_basket_item_remove.php"); 
+        
 
         if (isset($_GET['success']) ) {
             $success_message = $_GET['success'];
@@ -48,7 +49,7 @@
                         <div class="alert alert-success">
                             <?php if(isset($success_message)) echo $success_message; ?></div>
                         <?php } ?>
-                        <?php if(!empty($error_message)) { ?>	
+                        <?php if(!empty($error_message) && empty($success_message)) { ?>	
                         <div class="alert alert-danger"><?php if(isset($error_message)) echo $error_message; ?></div>
                         <?php } ?>
                     </subtitle>
