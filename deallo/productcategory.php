@@ -61,7 +61,7 @@
                             Free shipping
                         </label>
                         
-                         <input type="submit" class="btn btn-default" name="filter" value="filter"/>
+                         <input type="submit" class="btn btn-default" name="filter" value="Filter"/>
                         
                     </form>
                 </div>
