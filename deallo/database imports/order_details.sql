@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2017 at 06:54 AM
+-- Generation Time: Oct 30, 2017 at 03:08 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.5.30
 
@@ -37,16 +37,26 @@ CREATE TABLE `order_details` (
   `shipping_address` text NOT NULL,
   `recipient_name` varchar(200) NOT NULL,
   `recipient_contact` varchar(50) NOT NULL,
-  `shipping_agent` varchar(50) DEFAULT NULL
+  `shipping_agent` varchar(50) DEFAULT NULL,
+  `tracking_number` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_details`
 --
 
-INSERT INTO `order_details` (`order_id`, `customer_id`, `seller_id`, `order_date`, `status`, `status_date`, `order_price`, `shipping_address`, `recipient_name`, `recipient_contact`, `shipping_agent`) VALUES
-('IEY905', 'jonlau', 'coucou', '2017-10-27', 'Not paid', '2017-10-27', '99999999.99', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL),
-('KLD571', 'jonlau', 'jonlau', '2017-10-27', 'Not paid', '2017-10-27', '355.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL);
+INSERT INTO `order_details` (`order_id`, `customer_id`, `seller_id`, `order_date`, `status`, `status_date`, `order_price`, `shipping_address`, `recipient_name`, `recipient_contact`, `shipping_agent`, `tracking_number`) VALUES
+('DXA938', 'jonlau', 'jonlau', '2017-10-29', 'Not paid', '2017-10-29', '280.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('ESA375', 'jonlau', 'jonlau', '2017-10-28', 'Not paid', '2017-10-28', '775.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('EST615', 'jonlau', 'coucou', '2017-10-28', 'Not paid', '2017-10-28', '1900.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('GVF243', 'jonlau', 'coucou', '2017-10-28', 'Not paid', '2017-10-28', '1000.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('HDE147', 'jonlau', 'jonlau', '2017-10-28', 'Not paid', '2017-10-28', '265.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jon Jon', '0167483923', NULL, NULL),
+('KQD855', 'jonlau', 'jonlau', '2017-10-29', 'Not paid', '2017-10-29', '915.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('MRP730', 'jonlau', 'jonlau', '2017-10-28', 'Not paid', '2017-10-28', '100.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('RLG143', 'jonlau', 'jonlau', '2017-10-29', 'Not paid', '2017-10-29', '100.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('TKM932', 'jonlau', 'coucou', '2017-10-29', 'Not paid', '2017-10-29', '3700.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL),
+('TYA678', 'jonlau', 'jonlau', '2017-10-29', 'Paid', '2017-10-29', '100.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonat Donut', '0167483923', NULL, NULL),
+('WIG839', 'jonlau', 'jonlau', '2017-10-29', 'Not paid', '2017-10-29', '165.00', 'No.9, Haribo Street, 54020, KFC, McDonald', 'Jonathan Lau', '0167483923', NULL, NULL);
 
 --
 -- Indexes for dumped tables
