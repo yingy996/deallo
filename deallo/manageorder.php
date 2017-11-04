@@ -19,7 +19,7 @@
         <?php 
         ob_start();
         include("header.php"); 
-        include("process_showcart.php");
+        //include("process_showcart.php");
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
@@ -53,6 +53,7 @@
                         <?php } ?>
                     </subtitle>
                     <hr/>
+                    <h4>Order: [order id]</h4>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -92,22 +93,9 @@
                                                 </div>
                                             </td>
                                             <td class='col-sm-1 col-md-1' style='text-align: center'>"; ?>
-                                            <form method='post' action='process_updatequantity.php'>
-                                                <input type='hidden' name='update_prodID' value='<?php echo $item['product_id']; ?>' />
-                                                <input type='number' class='form-control' id='exampleInputEmail1' name='quantity' value='<?php echo $item['quantity']; ?>'>
-                                                <button type='submit' class='btn btn-default' style='font-size: 0.7em; margin-top:5px;'>update <br/>quantity</button>
-                                            </form>
-                                            <?php echo "</td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
                                             <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
-                                            <td class='col-sm-1 col-md-1'>"; ?>
-                                            <form method='post' action='process_basket_item_remove.php'>
-                                                <input type='hidden' name='remove_prodID' value='<?php echo $item['product_id']; ?>' />
-                                                 <input type='hidden' name='url' value='<?php echo $geturl; ?>' />
-                                                <button type='submit' class='btn btn-danger'>
-                                                    <span class='glyphicon glyphicon-remove'></span> Remove
-                                                </button>
-                                            </form>
+                                            <td class='col-sm-1 col-md-1'>
                                            <?php echo "</td>
                                         </tr> "; 
                                                 $subtotal += $item['quantity']*$item['price'];
@@ -115,7 +103,7 @@
                                             } 
                                         }
                                         ?>
-
+                                        <!--
                                         <tr>
                                             <td colspan="3"></td>
                                             <td><h5>Subtotal</h5></td>
@@ -132,7 +120,8 @@
                                             <td class="text-right"><h4><strong>RM <?php $total = $subtotal + $shippingtotal; 
                                                 echo number_format((float)$total, 2, '.', ''); ?></strong></h4>
                                             </td>
-                                        </tr>
+                                        </tr> -->
+                                        <!--        
                                         <tr>
                                             <td colspan="3"></td>
                                             <td class="text-right">
@@ -145,9 +134,61 @@
                                                     Checkout <span class="glyphicon glyphicon-play"></span>
                                                 </button>
 											</td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
+                                
+                                <!-- Manage order form starts here -->
+                                <div class='col-sm-12 col-md-12'>
+                                <table class='table' border='0'>
+                                <form method="post" action=".php">
+                                    <div class="row">
+                                        <tr>
+                                            <td class="col-sm-2 col-md-4">Recipient's Name :</td>
+                                            <td class="col-sm-10 col-md-8">[name]</td>
+                                        </tr>
+                                    </div>
+                                    <div class="row">
+                                        <tr>
+                                            <td class="col-sm-2 col-md-4">Recipient's Contact Number :</td>
+                                            <td class="col-sm-10 col-md-8">[contact num]</td>
+                                        </tr>
+                                    </div>
+                                    <div class="row">
+                                        <tr>
+                                            <td class="col-sm-2 col-md-4">Recipient's Address :</td>
+                                            <td class="col-sm-10 col-md-8">[address]</td>
+                                        </tr>
+                                    </div>
+                                    <div class="row">
+                                        <tr>
+                                            <td class="col-sm-2 col-md-4">Tracking Number :</td>
+                                            <td class="col-sm-10 col-md-8">
+                                                <input type='text' name='trackingnum' placeholder='[previous tracking no.]' class='form-control' style='width: 180px;'>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                    <div class="row">
+                                        <tr>
+                                            <td class="col-sm-2 col-md-4">Order Status :</td>
+                                            <td class="col-sm-10 col-md-8">
+                                                <select class='form-control' name='status' style='width: 180px;'>
+                                                    <option value='pending'>Pending</option>
+                                                    <option value='complete'>Complete</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                    <div class="row">
+                                        <tr>
+                                            <td><button type='submit' class='btn btn-default'>Update</button>
+                                            <td></td>
+                                        </tr>
+                                    </div>
+                                    
+                                </form>
+                                </table>
+                                </div>
                             </div>
                         </div>
                     </div>       
