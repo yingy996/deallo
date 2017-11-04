@@ -53,10 +53,10 @@
                         <?php } ?>
                     </subtitle>
                     <hr/>
-                    <h4>Order: [order id]</h4>
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                <h4>Order: [order id]</h4>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
