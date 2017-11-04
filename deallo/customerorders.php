@@ -26,6 +26,41 @@
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <p class="h3"> Customer Orders </p>
+					<hr/> 
+					<div class="row">
+						<div class="col-xs-12">
+							&nbsp;
+							<!-- Sorting dropdown -->
+							<span class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Sort <span class="caret"></span></button>
+
+								<ul class="dropdown-menu">
+									<li class="dropdown-header">Order Date</li>
+									<li><a href="customerorders.php?sort=orderasc" class="dropdown-item">Ascending</a></li>
+									<li><a href="customerorders.php?sort=orderdesc" class="dropdown-item">Descending</a></li>
+									<li class="divider"></li>
+									<li class="dropdown-header">Status Date</li>
+									<li><a href="customerorders.php?sort=statusasc" class="dropdown-item">Ascending</a>
+									<li><a href="customerorders.php?sort=statusdesc" class="dropdown-item">Descending</a></li>
+								</ul>
+							</span>
+							&nbsp;
+							<!-- Filter -->
+							<span class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Filter <span class="caret"></span></button>
+
+								<ul class="dropdown-menu">
+									<li class="dropdown-header">Order Status</li>
+									<li><a href="customerorders.php?filter=notpaid" class="dropdown-item">Not paid</a></li>
+									<li><a href="customerorders.php?filter=paid" class="dropdown-item">Paid</a></li>
+									<li><a href="customerorders.php?filter=processing" class="dropdown-item">Processing</a>
+									<li><a href="customerorders.php?filter=delivered" class="dropdown-item">Delivered</a></li>
+									<li><a href="customerorders.php?filter=canceled" class="dropdown-item">Canceled</a></li>
+								</ul>
+							</span>
+						</div>
+					</div>
+					<br/>
                     <?php if ($success_message != "") { ?>
 						<p class="alert alert-success"><?php echo $success_message; ?></p> 
 					<?php } ?>
@@ -33,8 +68,8 @@
 					<?php if ($error_message != "") { ?>
 						<p class="alert alert-danger"><?php echo $error_message; ?></p> 
 					<?php } ?>
-					
-                    <hr/> 
+					<br/>
+                    
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
