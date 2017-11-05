@@ -20,10 +20,12 @@ if (!empty($_POST['orderID']) && !empty($_POST['orderID']) && !empty($_POST['tra
 
 if (empty($_POST['status'])) {
     $error_message = "Failed to update Order Status. Order Status is invalid.";
+    header("Location: manageorder.php?err=$error_message");
 }
 
 if (empty($_POST['trackingnum'])) {
     $error_message = "Failed to update Tracking Number. Tracking Number is invalid.";
+    header("Location: manageorder.php?err=$error_message");
 }
 
 if (!empty($orderID) && $error_message == "") {
@@ -40,17 +42,17 @@ if (!empty($orderID) && $error_message == "") {
         $query->execute();
         $success_message = "Updated Order ID: $orderID";
 
-        header("Location: shoppingcart.php?success=$success_message");
+        header("Location: manageorder.php?success=$success_message");
 
     } else {
         $error_message = "Failed to update order";
-        header("Location: shoppingcart.php?err=$error_message");
+        header("Location: manageorder.php?err=$error_message");
 
     }
 
 } else {
     $error_message = "Error: Order ID cannot be found!";
-    header("Location: shoppingcart.php?err=$error_message");
+    header("Location: manageorder.php?err=$error_message");
 
 }
 
