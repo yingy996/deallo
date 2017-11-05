@@ -14,7 +14,7 @@
     $orderResult = $query->fetchAll();
 
     //Query to get monthly sales of user
-    $monthlysalesquery = $db_handle->getConn()->prepare("SELECT YEAR(status_date) as SalesYear, MONTH(status_date) as SalesMonth, SUM(order_price) as TotalSales FROM order_details WHERE seller_id = :username AND status_date > DATE_SUB(now(), INTERVAL 12 MONTH) GROUP BY YEAR(status_date), MONTH(status_date) ORDER BY YEAR(status_date), MONTH(status_date)");
+    $monthlysalesquery = $db_handle->getConn()->prepare("SELECT YEAR(status_date) as SalesYear, MONTH(status_date) as SalesMonth, SUM(order_price) as TotalSales FROM order_details WHERE seller_id = :username AND status_date > DATE_SUB(now(), INTERVAL 12 MONTH) GROUP BY YEAR(status_date), MONTH(status_date) ORDER BY YEAR(status_date), MONTH(status_date) DESC");
     $monthlysalesquery->bindParam(":username", $login_user);
 
     $monthlysalesquery->execute();
@@ -41,6 +41,8 @@
         
         $x = $x +1;
     }
+
+	$lastMonth = count($SalesMonth)-1;
 
     
 ?>
