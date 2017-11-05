@@ -15,7 +15,7 @@ if (!empty($_POST['orderID']) && !empty($_POST['orderID']) && !empty($_POST['tra
     $update_status = $_POST['status'];
     $update_trackingnum = $_POST['trackingnum'];
     //$quantity = $_POST['quantity'];
-    echo $_POST['update_orderID'];
+    echo $_POST['orderID'];
 }
 
 if (empty($_POST['status'])) {
@@ -42,11 +42,11 @@ if (!empty($orderID) && $error_message == "") {
         $query->execute();
         $success_message = "Updated Order ID: $orderID";
 
-        header("Location: manageorder.php?success=$success_message");
+        header("Location: manageorder.php?orderID=$orderID&success=$success_message");
 
     } else {
         $error_message = "Failed to update order";
-        header("Location: manageorder.php?err=$error_message");
+        header("Location: manageorder.php?orderID=$orderID&err=$error_message");
 
     }
 
