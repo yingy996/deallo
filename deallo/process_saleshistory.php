@@ -13,9 +13,34 @@
     $query->execute();
     $orderResult = $query->fetchAll();
 
-    $monthlysalesquery = $db_handle->getConn()->prepare("SELECT YEAR(status_date) as SalesYear, MONTH(status_date) as SalesMonth, SUM(order_price) as TotalSales FROM order_details WHERE status_date > DATE_SUB(now(), INTERVAL 12 MONTH) GROUP BY YEAR(status_date), MONTH(status_date) ORDER BY YEAR(status_date), MONTH(status_date)");
+    //Query to get monthly sales of user
+    $monthlysalesquery = $db_handle->getConn()->prepare("SELECT YEAR(status_date) as SalesYear, MONTH(status_date) as SalesMonth, SUM(order_price) as TotalSales FROM order_details WHERE seller_id = :username AND status_date > DATE_SUB(now(), INTERVAL 12 MONTH) GROUP BY YEAR(status_date), MONTH(status_date) ORDER BY YEAR(status_date), MONTH(status_date)");
+    $monthlysalesquery->bindParam(":username", $login_user);
 
     $monthlysalesquery->execute();
     $monthlysalesqueryResult = $monthlysalesquery->fetchAll();
 
+    
+    $SalesYear = [];
+    $SalesMonth = [];
+    $TotalSales = [];
+    $HighestSale = 0;
+    $x = 0;
+    //Get Each Row into array for graph display
+    foreach($monthlysalesqueryResult as $row){
+        
+        $SalesYear[$x] = $row["SalesYear"];
+        $SalesMonth[$x] = $row["SalesMonth"];
+        $TotalSales[$x] = $row["TotalSales"];
+        
+        //Check for the month with the highest total sales
+        if($HighestSale < $TotalSales[$x]){
+            $HighestSale = $HighestSale + $TotalSales[$x];
+            $HighestSaleMonth = $SalesMonth[$x];
+        }
+        
+        $x = $x +1;
+    }
+
+    
 ?>
