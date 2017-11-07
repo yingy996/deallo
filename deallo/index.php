@@ -13,6 +13,11 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .row {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -30,13 +35,13 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="images/banner.jpg" alt="banner1" style="width:100%;">
+				<img src="images/carousel/art.jpg" alt="banner1" style="width:100%;">
 			</div>
 			<div class="item">
-				<img src="images/banner2.jpeg" alt="banner2" style="width:100%;">
+				<img src="images/carousel/fashion.jpg" alt="banner2" style="width:100%;">
 			</div>
 			<div class="item">
-				<img src="images/banner.jpg" alt="banner3" style="width:100%;">
+				<img src="images/carousel/crafts.jpg" alt="banner3" style="width:100%;">
 			</div>
 		</div>
 		
@@ -73,13 +78,13 @@
 		
         <div class="row">
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/clothing.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/jewelry.png" alt="Jewelry" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-edit text-muted"></div>
                 <p class="text-muted"><strong>Record Your Expenses</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/jewelry.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/clothing.png" alt="Clothing" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-list-alt text-muted"></div>
                 <p class="text-muted"><strong>View Your Transactions</strong></p>-->
             </div>
@@ -87,27 +92,33 @@
             <div class="clearfix visible-xs"></div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/roomdecor.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/roomdecor.png" alt="Room Decoration" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-piggy-bank text-muted"></div>
                 <p class="text-muted"><strong>Plan Your Budget</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/wedding.png" alt="Clothings" style="width:100%;"/></a>
-                <!--<div class="glyphicon glyphicon-cog text-muted"></div>
-                <p class="text-muted"><strong>Easy Setting of Transactions</strong></p>-->
+				<a href=""><img src="images/category/wedding.png" alt="Wedding" style="width:100%;"/></a>
+                <!--<div class="glyphicon glyphicon-piggy-bank text-muted"></div>
+                <p class="text-muted"><strong>Plan Your Budget</strong></p>-->
             </div>
         </div>
 		
 		<div class="row">
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/vintageart.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/vintageart.png" alt="Vintage Art" style="width:100%;"/></a>
+                <!--<div class="glyphicon glyphicon-cog text-muted"></div>
+                <p class="text-muted"><strong>Easy Setting of Transactions</strong></p>-->
+            </div>
+            
+            <div class="col-xs-6 col-md-3 text-center">
+				<a href=""><img src="images/category/toys.png" alt="Toys" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-edit text-muted"></div>
                 <p class="text-muted"><strong>Record Your Expenses</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/toys.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/craftsupplies.png" alt="Craft Supplies" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-list-alt text-muted"></div>
                 <p class="text-muted"><strong>View Your Transactions</strong></p>-->
             </div>
@@ -115,13 +126,7 @@
             <div class="clearfix visible-xs"></div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/craftsupplies.png" alt="Clothings" style="width:100%;"/></a>
-                <!--<div class="glyphicon glyphicon-piggy-bank text-muted"></div>
-                <p class="text-muted"><strong>Plan Your Budget</strong></p>-->
-            </div>
-            
-            <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/other.png" alt="Clothings" style="width:100%;"/></a>
+				<a href=""><img src="images/category/other.png" alt="Others" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-cog text-muted"></div>
                 <p class="text-muted"><strong>Easy Setting of Transactions</strong></p>-->
             </div>
