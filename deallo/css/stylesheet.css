@@ -178,14 +178,14 @@ body#loginpg {
 	margin: 2px;
 }
 
-/*-- Product list / My products page --*/
+/*-- Product list / My products page #42bbb1--*/
 .square {
 	height: 200px;
 	line-height: 200px;
 }
 
 .productBtn {
-	background-color: #42bbb1;
+	background-color: #31ABA6;
     color: white;
     border-color: white;
 }
