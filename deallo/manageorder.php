@@ -190,7 +190,8 @@
                                     </div>
                                     <div class="row">
                                         <tr>
-                                            <td><button type='submit' class='btn btn-default'>Update</button>
+                                            <td><button type='submit' class='btn productBtn'>Update</button> &nbsp;
+                                            <button type='button' class='btn btn-default' onclick="window.location.href='customerorders.php'">Back</button>
                                             <td></td>
                                         </tr>
                                     </div>
