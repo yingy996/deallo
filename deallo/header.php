@@ -45,7 +45,7 @@
                         echo '<li><a href="register.php">Sign up</a></li>';
                     } else {
                         
-                        echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
+                        echo '<li class="hidden-sm hidden-md hidden-lg hidden-xl"><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span><span> Shopping cart</span></a></li>';
                         
                         echo '<li class="hidden-xs"><a href="shoppingcart.php" class="btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>';
                         
