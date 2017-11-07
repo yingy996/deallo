@@ -24,9 +24,13 @@
                 background-color: white;
             }
             
-            .category>table {
-                width: 100%;
-                text-align: center;
+            table {
+                margin: 0px auto;
+            }
+            
+            .category img {
+                width: 300px;
+                padding: 10px 10px;
             }
         </style>
     </head>
@@ -50,7 +54,7 @@
                 <div class="carousel-inner">
 
                     <div class="item active">
-                        <img src="images/banner.jpg" alt="Los Angeles" style="width:100%; max-height: 250px !important;">
+                        <img src="images/carousel/fashion.jpg" alt="Men's Fashion" style="width:100%; max-height:  !important;">
                         <div class="carousel-caption">
                             <h3> </h3>
                             <p> </p>
@@ -58,7 +62,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="images/calculator.jpeg" alt="Chicago" style="width:100%; max-height: 250px !important;">
+                        <img src="images/carousel/art.jpg" alt="Art Piece" style="width:100%; max-height:  !important;">
                         <div class="carousel-caption">
                             <h3> </h3>
                             <p> </p>
@@ -66,7 +70,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="images/banner2.jpeg" alt="New York" style="width:100%; max-height: 250px !important;">
+                        <img src="images/carousel/crafts.jpg" alt="Craft Supplies" style="width:100%; max-height:  !important;">
                         <div class="carousel-caption">
                             <h3> </h3>
                             <p> </p>
@@ -85,24 +89,43 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            
+            <br>
             <div class='category'>
                 <h2>Item category</h2>
-                
-                <table>
+                <hr/>
+                <table class="category">
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td>
+                            <img src="images/category/jewelry.png">
+                        </td>
+                        <td>
+                            <img src="images/category/clothing.png">
+                        </td>
+                        <td>
+                            <img src="images/category/roomdecor.png">
+                        </td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
+                        <td>
+                            <img src="images/category/wedding.png">
+                        </td>
+                        <td>
+                            <img src="images/category/vintageart.png">
+                        </td>
+                        <td>
+                            <img src="images/category/clothing.png">
+                        </td>
                     </tr>
                     <tr>
-                        <td>7</td>
-                        <td>8</td>
+                        <td>
+                            <img src="images/category/toys.png">
+                        </td>
+                        <td>
+                            <img src="images/category/craftsupplies.png">
+                        </td>
+                        <td>
+                            <img src="images/category/other.png">
+                        </td>
                     </tr>
                 </table>
             </div>
