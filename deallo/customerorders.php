@@ -107,7 +107,7 @@
 														<div class='media-body'>
 															<h4 class='media-heading'><a href='#'>".$item['product_name']."</a></h4>
 															<h5 class='media-heading'> Quantity: ".$item['product_quantity']."</h5>
-															<h5 class='media-heading'> Unit price: ".$item['price']."</h5>
+															<h5 class='media-heading'> Unit price: RM ".$item['price']."</h5>
 														</div>
 													</div>
 													</td>
@@ -125,9 +125,9 @@
 													</td>
 													
 													<td class='text-center col-sm-1 col-md-1' rowspan='". count($itemResult) ."'>
-														<button type='submit' class='btn btn-success'>
+														<a href='manageorder.php?orderId=". $order["order_id"] ."' class='btn btn-success'>
 															<span class='glyphicon glyphicon-edit'></span> Manage
-														</button>
+														</a>
 													</td>";
 												}
 													

@@ -2,11 +2,11 @@
     echo '<footer class="footer navbar-static-bottom">
       <div class="container">
           <ul class="list-inline text-center">
-              <li><a href="#">Home</a></li>
+              <li><a href="index.php">Home</a></li>
               <li>&#8226;</li>
-              <li><a href="#">About</a></li>
+              <li><a href="about.php">About</a></li>
               <li>&#8226;</li>
-              <li><a href="#">Products</a></li>
+              <li><a href="productcategory.php?category=all">Products</a></li>
               <li>&#8226;</li>
               <li><a href="#">Contact us</a></li>
           </ul>
