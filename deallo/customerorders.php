@@ -44,7 +44,7 @@
 									<li><a href="customerorders.php?sort=statusdesc" class="dropdown-item">Descending</a></li>
 								</ul>
 							</span>
-							&nbsp;
+							
 							<!-- Filter -->
 							<span class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Filter <span class="caret"></span></button>
@@ -58,6 +58,8 @@
 									<li><a href="customerorders.php?filter=canceled" class="dropdown-item">Canceled</a></li>
 								</ul>
 							</span>
+							&nbsp;
+							<a href="customerorders.php" alt="Reset sorting and filtering" class="btn btn-default">Reset</a>
 						</div>
 					</div>
 					<br/>

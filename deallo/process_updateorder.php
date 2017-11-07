@@ -10,50 +10,28 @@ $success_message = "";
 $error_message = "";
 $result = "";
 
-if (!empty($_POST['orderID']) && !empty($_POST['orderID']) && !empty($_POST['trackingnum'])) {
-    $orderID = $_POST['orderID'];
+if (isset($_POST['trackingnum']) && isset($_POST['status'])) {
+    $orderID = $order["order_id"];
     $update_status = $_POST['status'];
     $update_trackingnum = $_POST['trackingnum'];
-    //$quantity = $_POST['quantity'];
-    echo $_POST['orderID'];
-}
+	
+	//update database
+	$updateOrderQuery = $db_handle->getConn()->prepare("UPDATE order_details SET tracking_number = :trackingNumber , status = :status, status_date = :status_date WHERE order_id = :id");
 
-if (empty($_POST['status'])) {
-    $error_message = "Failed to update Order Status. Order Status is invalid.";
-    header("Location: manageorder.php?err=$error_message");
-}
+	$updateOrderQuery->bindParam(":trackingNumber", $update_trackingnum);
+	$updateOrderQuery->bindParam(":status", $update_status);
+	$updateOrderQuery->bindParam(":status_date", $status_date);
+	$updateOrderQuery->bindParam(":id", $orderID);
+	
+	$status_date =  date("Y-m-d");
+	$updateOrderQuery->execute();
 
-if (empty($_POST['trackingnum'])) {
-    $error_message = "Failed to update Tracking Number. Tracking Number is invalid.";
-    header("Location: manageorder.php?err=$error_message");
-}
-
-if (!empty($orderID) && $error_message == "") {
-    $db_handle = new DBController();
-
-    $query = $db_handle->getConn()->prepare("SELECT * FROM order_details WHERE order_id = '$orderID' AND customer_id = '$login_user'");
-
-    $query->execute();
-    $result = $query->fetchAll();
-
-    if (!empty($result)) {
-        $query = $db_handle->getConn()->prepare("UPDATE basket SET status = '$update_status', tracking_number = '$update_trackingnum' WHERE order_id = '$orderID' AND buyer_username = '$login_user'");
-
-        $query->execute();
-        $success_message = "Updated Order ID: $orderID";
-
-        header("Location: manageorder.php?orderID=$orderID&success=$success_message");
-
-    } else {
-        $error_message = "Failed to update order";
-        header("Location: manageorder.php?orderID=$orderID&err=$error_message");
-
-    }
-
-} else {
-    $error_message = "Error: Order ID cannot be found!";
-    header("Location: manageorder.php?err=$error_message");
-
+	if($updateOrderQuery->rowCount() > 0) {
+		$success_message = "Order has been successfully updated! This page will be refreshed soon.";	
+		echo "<meta http-equiv='refresh' content='2'>";
+	} else {
+		$error_message = "Failed to update order. Please try again later. This page will be refreshed soon.";
+	}
 }
 
 ?>

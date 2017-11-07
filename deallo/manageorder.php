@@ -20,6 +20,7 @@
         ob_start();
         include("header.php"); 
 		include("process_showorderdetails.php");
+		include("process_updateorder.php");
         //include("process_showcart.php");
 
         $remove_prodId = '';
@@ -146,7 +147,7 @@
 								<h4>Shipping details</h4>
 								<br/>
                                 <table class='table' border='0'>
-                                <form method="post" action=".php">
+                                <form method="post" action="">
                                     <div class="row">
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Recipient's Name :</td>
