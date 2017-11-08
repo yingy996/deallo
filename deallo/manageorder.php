@@ -19,13 +19,15 @@
         <?php 
         ob_start();
         include("header.php"); 
+		include("process_showorderdetails.php");
+		include("process_updateorder.php");
         //include("process_showcart.php");
 
         $remove_prodId = '';
         $geturl = "$_SERVER[REQUEST_URI]";
         //echo $geturl;
-        include("process_basket_item_add.php"); 
-        include("process_basket_item_remove.php"); 
+        //include("process_basket_item_add.php"); 
+        //include("process_basket_item_remove.php"); 
 
         if (isset($_GET['success']) ) {
             $success_message = $_GET['success'];
@@ -56,27 +58,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                <h4>Order: [order id]</h4>
+                                <h4>Order id: <?php echo $order["order_id"]; ?></h4>
+								<hr/>
                                 <table class="table table-hover">
                                     <thead>
-                                        <tr>
+                                        <tr>&nbsp;
                                             <th>Product</th>
                                             <th>Quantity</th>
                                             <th class="text-center">Price</th>
                                             <th class="text-center">Total</th>
-                                            <th> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         //$index = 0;	
                                         $subtotal = 0;
-                                        $shippingtotal = 0;
+                                        $shippingTotal = 0;
                                         $total = 0;
-                                        if (count($results) > 0) {
-                                            foreach ($results as $item) {
+                                        if (count($itemResult) > 0) {
+                                            foreach ($itemResult as $item) {
                                                 $itemImg = explode("_,_", $item["img"]);
-
+												$shippingTotal += $item['shipping_fee'];
+												$subtotal += $item['product_quantity'] * $item['price'];
                                                 echo 
                                                     "<tr class='shoppingcart-product'>
                                             <td class='col-sm-8 col-md-6'>
@@ -85,24 +88,25 @@
                                                     <img class='media-object' src='".$itemImg[0]."' style='width: 72px; height: 72px;'>
                                                     </a>
                                                     <div class='media-body'>
-                                                        <h4 class='media-heading'><a href='#'>".$item['name']."</a></h4>
-                                                        <h5 class='media-heading'> Seller: <a href='#'>".$item['seller_id']."</a></h5>
-                                                        <h6 class='media-heading'> Date added: ".$item['date_added']."</h6>
-                                                        <!--<span>Status: </span><span class='text-success'><strong>In Stock</strong></span> -->
+                                                        <h4 class='media-heading'><a href='#'>".$item['product_name']."</a></h4>
+                                                        <h5 class='media-heading'> Product ID: ".$item['id']."</h5>
+                                                        <h5 class='media-heading'> Shipping fee: RM ".$item['shipping_fee']."</h5>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class='col-sm-1 col-md-1' style='text-align: center'>"; ?>
-                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ".$item['price']."</strong></td>
-                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ". number_format((float)$item['quantity']*$item['price'], 2, '.', '') ."</strong></td>
-                                            <td class='col-sm-1 col-md-1'>
-                                           <?php echo "</td>
-                                        </tr> "; 
-                                                $subtotal += $item['quantity']*$item['price'];
-                                                $shippingtotal += $item['shipping_fee'];
-                                            } 
-                                        }
-                                        ?>
+                                            <td class='col-sm-1 col-md-1' style='text-align: center'>".$item['product_quantity']."</td>
+                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ". $item['price'] ."</strong></td>
+                                            <td class='col-sm-1 col-md-1 text-center'><strong>RM ".  number_format((float)$item['product_quantity']*$item['price']+$item['shipping_fee'], 2, '.', '') ."</strong></td>";
+                                            echo "</tr>"; 
+											}
+											
+											$total = $subtotal + $shippingTotal; 
+											echo "<tr>
+													<td colspan='4' class='text-right'><h4>Total:&nbsp;&nbsp; RM ". number_format((float)$total, 2, '.', '') ."</h4></td>
+												</tr>";
+										}
+										
+										?>
                                         <!--
                                         <tr>
                                             <td colspan="3"></td>
@@ -140,31 +144,33 @@
                                 
                                 <!-- Manage order form starts here -->
                                 <div class='col-sm-12 col-md-12'>
+								<h4>Shipping details</h4>
+								<br/>
                                 <table class='table' border='0'>
-                                <form method="post" action=".php">
+                                <form method="post" action="">
                                     <div class="row">
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Recipient's Name :</td>
-                                            <td class="col-sm-10 col-md-8">[name]</td>
+                                            <td class="col-sm-10 col-md-8"><?php echo $order["recipient_name"]; ?></td>
                                         </tr>
                                     </div>
                                     <div class="row">
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Recipient's Contact Number :</td>
-                                            <td class="col-sm-10 col-md-8">[contact num]</td>
+                                            <td class="col-sm-10 col-md-8"><?php echo $order["recipient_contact"]; ?></td>
                                         </tr>
                                     </div>
                                     <div class="row">
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Recipient's Address :</td>
-                                            <td class="col-sm-10 col-md-8">[address]</td>
+                                            <td class="col-sm-10 col-md-8"><?php echo $order["shipping_address"]; ?></td>
                                         </tr>
                                     </div>
                                     <div class="row">
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Tracking Number :</td>
                                             <td class="col-sm-10 col-md-8">
-                                                <input type='text' name='trackingnum' placeholder='[previous tracking no.]' class='form-control' style='width: 180px;'>
+                                                <input type='text' name='trackingnum' class='form-control' value="<?php echo $order["tracking_number"]; ?>" style='width: 180px;'>
                                             </td>
                                         </tr>
                                     </div>
@@ -173,15 +179,19 @@
                                             <td class="col-sm-2 col-md-4">Order Status :</td>
                                             <td class="col-sm-10 col-md-8">
                                                 <select class='form-control' name='status' style='width: 180px;'>
-                                                    <option value='pending'>Pending</option>
-                                                    <option value='complete'>Complete</option>
+                                                    <option value="Not Paid" <?php if($order["status"] == "Not Paid"){ echo "selected='selected'"; }?>>Not Paid</option>
+                                                    <option value="Paid" <?php if($order["status"] == "Paid"){ echo "selected='selected'"; }?>>Paid</option>
+                                                    <option value="Processing" <?php if($order["status"] == "Processing"){ echo "selected='selected'"; }?>>Processing</option>
+                                                    <option value="Delivered" <?php if($order["status"] == "Delivered"){ echo "selected='selected'"; }?>>Delivered</option>
+                                                    <option value="Canceled" <?php if($order["status"] == "Canceled"){ echo "selected='selected'"; }?>>Canceled</option>
                                                 </select>
                                             </td>
                                         </tr>
                                     </div>
                                     <div class="row">
                                         <tr>
-                                            <td><button type='submit' class='btn btn-default'>Update</button>
+                                            <td><button type='submit' class='btn productBtn'>Update</button> &nbsp;
+                                            <button type='button' class='btn btn-default' onclick="window.location.href='customerorders.php'">Back</button>
                                             <td></td>
                                         </tr>
                                     </div>
@@ -197,20 +207,9 @@
         </div>
 
         <!-- Footer -->
-        <footer class="footer navbar-static-bottom">
-            <div class="container">
-                <ul class="list-inline text-center">
-                    <li><a href="#">Home</a></li>
-                    <li>&#8226;</li>
-                    <li><a href="#">About</a></li>
-                    <li>&#8226;</li>
-                    <li><a href="#">Products</a></li>
-                    <li>&#8226;</li>
-                    <li><a href="#">Contact us</a></li>
-                </ul>
-                <p class="text-center copyright"><em>Copyright &copy; Sharon Lo</em> | <a href="disclaimer.html">Disclaimer</a></p>
-            </div>
-        </footer>
+        <?php 
+        	include("footer.php");
+    	?>
         <!-- jQuery – required for Bootstrap's JavaScript plugins) -->
         <script src="js/jquery.min.js"></script>
         <!-- All Bootstrap plug-ins file -->
