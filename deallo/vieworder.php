@@ -19,12 +19,9 @@
         <?php 
         ob_start();
         include("header.php"); 
-		include("process_showorderdetails.php");
-		include("process_updateorder.php");
+		include("process_vieworder.php");
         //include("process_showcart.php");
 
-        $remove_prodId = '';
-        $geturl = "$_SERVER[REQUEST_URI]";
         //echo $geturl;
         //include("process_basket_item_add.php"); 
         //include("process_basket_item_remove.php"); 
@@ -44,7 +41,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <p class="h3"> Manage Order </p>
+                    <p class="h3"> View Order Details </p>
                     <subtitle style="color:limegreen;">  
                         <?php if(!empty($success_message)) { ?>	
                         <div class="alert alert-success">
@@ -58,8 +55,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
-                                <h4>Order id: <?php echo $order["order_id"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Customer ID: <?php echo $order["customer_id"]; ?></h4>
+                                <h4>Order id: <?php echo $order["order_id"]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seller ID: <?php echo $order["seller_id"]; ?></h4>
 								<hr/>
+								
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>&nbsp;
@@ -170,7 +168,7 @@
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Tracking Number :</td>
                                             <td class="col-sm-10 col-md-8">
-                                                <input type='text' name='trackingnum' class='form-control' value="<?php echo $order["tracking_number"]; ?>" style='width: 180px;'>
+												<?php echo $order["tracking_number"]; ?>
                                             </td>
                                         </tr>
                                     </div>
@@ -178,24 +176,11 @@
                                         <tr>
                                             <td class="col-sm-2 col-md-4">Order Status :</td>
                                             <td class="col-sm-10 col-md-8">
-                                                <select class='form-control' name='status' style='width: 180px;'>
-                                                    <option value="Not Paid" <?php if($order["status"] == "Not Paid"){ echo "selected='selected'"; }?>>Not Paid</option>
-                                                    <option value="Paid" <?php if($order["status"] == "Paid"){ echo "selected='selected'"; }?>>Paid</option>
-                                                    <option value="Processing" <?php if($order["status"] == "Processing"){ echo "selected='selected'"; }?>>Processing</option>
-                                                    <option value="Delivered" <?php if($order["status"] == "Delivered"){ echo "selected='selected'"; }?>>Delivered</option>
-                                                    <option value="Canceled" <?php if($order["status"] == "Canceled"){ echo "selected='selected'"; }?>>Canceled</option>
-                                                </select>
+												<?php echo $order["status"]; ?>
                                             </td>
                                         </tr>
                                     </div>
-                                    <div class="row">
-                                        <tr>
-                                            <td><button type='submit' class='btn productBtn'>Update</button> &nbsp;
-                                            <button type='button' class='btn btn-default' onclick="window.location.href='customerorders.php'">Back</button>
-                                            <td></td>
-                                        </tr>
-                                    </div>
-                                    
+      
                                 </form>
                                 </table>
                                 </div>
