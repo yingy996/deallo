@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html data-ng-app="moneySaver">
     <head>
-        <title>Money Saver</title>
+        <title>Deallo Craft House</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initialscale=1.0"/>
+        <script type="text/javascript" src="js/productdetailsimage.js"></script>
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/stylesheet.css" rel="stylesheet" />
@@ -11,6 +12,7 @@
         <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css"> 
 
         <link href="css/ratingstarcss.css" rel="stylesheet"/>
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -32,6 +34,7 @@
         ?>
 
         <!-- Body content -->
+        
         <div class="container-fluid">
             <div class="content-wrapper">
                  <?php if(!empty($success_message)) { ?>	
@@ -46,7 +49,7 @@
                             <div class="col-md-12">
                                 <div class="product col-md-3 service-image-left">
                                     <center>
-                                        <img id="item-display" name="item-display" <?php echo "src='$dbImages[0]'" ?> alt=""/>
+                                        <img id="item-display" onclick="imgModal()" name="item-display" <?php echo "src='$dbImages[0]'  alt='$productname'"?>>
                                     </center>
                                 </div>
 
@@ -67,7 +70,7 @@
 
 
                                 <div class="col-md-7">
-                                    <h1><?php echo $result[0]["name"]; ?></h1>
+                                    <h1><?php echo $productname; ?></h1>
                                     <hr>
                                     <div class="col-md-12" class="col-xs-12">
                                         <form method="post">
@@ -154,6 +157,15 @@
                     </div>
                 
             </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal Content (The Image) -->
+          <img class="modal-content" id="img01" onclick="closemodal()">
+
+          <!-- Modal Caption (Image Text) -->
+          <div id="caption"></div>
         </div>
         <!-- Footer -->
         <footer class="footer navbar-static-bottom">
