@@ -33,11 +33,15 @@
         <!-- Sort and filter list -->
         <h1 class="h3">My Products</h1>
         <hr/>
-        
+        <div class="row">
+			<div class="col-xs-12">
+				<a href="addproduct.php" class="btn btn-default">Add New Product</a>
+			</div>
+		</div>
         <!-- List of products -->
         <!-- Code reference https://stackoverflow.com/questions/21644493/how-to-split-the-ng-repeat-data-with-three-columns-using-bootstrap/30128450#30128450?newreg=2738e86b04ed403e84ffce4a201fff6f -->
         <br/>
-		
+		<br/>
 		<?php 
 			$index = 0;	
 			if (count($results) > 0) {
