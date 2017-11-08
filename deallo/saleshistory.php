@@ -94,8 +94,8 @@
                                                 "<tr class='shoppingcart-product'>
 													<td class='col-sm-8 col-md-6'>
 													<div class='media'>
-														<a class='thumbnail pull-left' href='productdetails.php?productID=". $item['productid'] ."'> 
-														<img class='media-object' src='".$itemImg[0]."' style='width: 72px; height: 72px;'>
+														<a class='pull-left' href='productdetails.php?productID=". $item['productid'] ."'> 
+														<img class='img-thumbnail media-object' src='".$itemImg[0]."' style='width: 72px; height: 72px;'>
 														</a>
 														<div class='media-body'>
 															<h4 class='media-heading'><a href='productdetails.php?productID=". $item['productid'] ."'>".$item['product_name']."</a></h4>
