@@ -23,7 +23,12 @@
 	$result = $query->fetchAll();
     $productname = $result[0]["name"];
 
-    
+    //Retrieve seller information
+    $retrievesellerquery = $db_handle->getConn()->prepare("SELECT * FROM user_account WHERE username = :seller_id");
+    $retrievesellerquery->bindParam("seller_id", $result[0]["seller_id"]);
+    $retrievesellerquery->execute();
+    $sellerresult = $retrievesellerquery->fetchAll();
+        
 
     //check if product exists
 	if(empty($result)) {

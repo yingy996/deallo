@@ -60,7 +60,8 @@
                                             $index = 1;
                                             foreach($dbImagesSliced as $dbImageSliced){
                                             /*echo "<a id='item-" . $index . "' class='service1-item'><img src='$dbImageSliced' alt=''></img></a>";*/
-                                            echo "<img id='item-" . $index . "' class='service1-item' src='$dbImageSliced' alt=''></img>";
+                                            $subimageid = "item-" . $index;
+                                            echo "<img id='$subimageid' onclick='subimgModal(\"".$subimageid."\")' class='service1-item' src='$dbImageSliced' alt='$productname'></img>";
                                                 $index ++;
                                             }
                                         ?>
@@ -134,22 +135,25 @@
                             <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane fade in active" id="service-one">
                                         <section class="container product-info">
-                                            <?php echo $result[0]["description"]; ?>
+                                            <p><?php echo $result[0]["description"]; ?></p>
                                         </section>
                                     </div>
                                     <div class="tab-pane fade" id="service-two">
                                         <section class="product-info">
-                                            <?php echo "Shipping agents: " . $result[0]["shipping_agents"]; ?>
-                                        </section>
-
-                                        <section class="product-info">
-                                            <?php echo "Shipping price: " . $result[0]["shipping_fee"]; ?>
+                                            <p><?php echo "Shipping agents: " . $result[0]["shipping_agents"]; ?></p>
+                                    
+                                            <p><?php echo "Shipping price: " . $result[0]["shipping_fee"]; ?></p>
                                         </section>
                                     </div>
                                     <div class="tab-pane fade" id="service-three">
                                         <section class="product-info">
-                                            <?php echo $result[0]["seller_id"]; ?>
+                                            <p>Seller Username: <?php echo $result[0]["seller_id"]; ?></p>
+                                             <p>Country of Origin: <?php echo $sellerresult[0]["country"]; ?></p>
+                                            <p>Seller Contact: <?php if($sellerresult[0]["phone_number"] == null){ echo "Not provided";}else{ echo $sellerresult[0]["phone_number"];}?></p>
+                                                
                                         </section>
+                                        
+                                       
                                     </div>
                             </div>
                             <hr>

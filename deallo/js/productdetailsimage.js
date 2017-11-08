@@ -1,14 +1,23 @@
-// Get the modal
-
-
-
-
-
-
-
 function imgModal(){
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById('item-display');
+    
+    outputimagemodal("item-display");
+}
+
+
+function subimgModal(subimageid){
+    
+    if(subimageid == "item-1"){
+        outputimagemodal("item-1");
+    }else if(subimageid == "item-2"){
+        outputimagemodal("item-2");
+    }else if(subimageid == "item-3"){
+        outputimagemodal("item-3");
+    }
+    
+}
+
+function outputimagemodal(id){
+    var img = document.getElementById(id);
     var modal = document.getElementById('myModal');
     var modalImg = document.getElementById("img01");
     var captionText = document.getElementById("caption");
@@ -17,9 +26,6 @@ function imgModal(){
     modalImg.src = img.src;
     captionText.innerHTML = img.alt;
 }
-
-
-
 
 // When the user click the modal image, it will close
 function closemodal(){
