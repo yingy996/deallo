@@ -74,6 +74,14 @@
 
 
 /*--- Body ---*/
+#myCarousel {
+	margin-top: -20px;
+}
+
+.category-img {
+	width: 100%;
+}
+
 .jumbotron {
     background-image: url(../images/banner2.jpeg);
     background-size: cover;
@@ -137,34 +145,6 @@ body#loginpg {
 #loginBtn:hover {
     background-color: #2f8e86;
 }
-
-/*-- Transaction table --*/
-/*.wrapper {
-    height: 400px;
-    margin-bottom: 20px;
-}
-
-#transacTbWrapper {   
-    overflow: auto;
-}
-
-#btnAddTrans {
-    background-color: darkcyan;
-    color: white;
-    width: 100%;
-}
-
-#btnAddTrans:hover{
-    background-color: #307175;
-}
-
-#noTransWrapper {
-    background-color: #ecf0f1;    
-}
-
-#noTransWrapper p {
-    line-height: 350px;
-}*/
 
 /*-- Image upload --*/
 .uploadedImg {
