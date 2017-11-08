@@ -23,6 +23,7 @@
             }
         }else{
             $orderBy = "";
+            $sort = "";
 
         }
 
@@ -57,22 +58,24 @@
 
 
     } else{
+        if(isset($_GET["sort"])){
+            if($_GET["sort"] == "pricelowhigh"){
+                $orderBy = " ORDER BY price ASC";
+                $sort = "Sorted by price in ascending order";
 
-        if($_GET["sort"] = "pricelowhigh"){
-            $orderBy = " ORDER BY price ASC";
-            $sort = "Sorted by price in ascending order";
-
-        }else if($_GET["sort"] == "pricehighlow"){
-            $orderBy = " ORDER BY price DESC";
-            $sort = "Sorted by price in descending order";
-        }else if($_GET["sort"] == "ratinglowhigh"){
-            $orderBy = " ORDER BY rating ASC";
-            $sort = "Sorted by rating in ascending order";
-        }else if($_GET["sort"] == "ratinghighlow"){
-            $orderBy = " ORDER BY rating DESC";
-            $sort = "Sorted by rating in descending order";
+            }else if($_GET["sort"] == "pricehighlow"){
+                $orderBy = " ORDER BY price DESC";
+                $sort = "Sorted by price in descending order";
+            }else if($_GET["sort"] == "ratinglowhigh"){
+                $orderBy = " ORDER BY rating ASC";
+                $sort = "Sorted by rating in ascending order";
+            }else if($_GET["sort"] == "ratinghighlow"){
+                $orderBy = " ORDER BY rating DESC";
+                $sort = "Sorted by rating in descending order";
+            }
         }else{
             $orderBy = "";
+            $sort = "";
         }
 
         $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE category=:category AND deleted = FALSE" . $orderBy);
