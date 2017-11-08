@@ -61,20 +61,20 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<br/>
-				<h2 class="h4">Product Category</h2>
+				<h2 class="h3">Product Category</h2>
 				<hr/>
 			</div>
 		</div>
 		
         <div class="row">
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/jewelry.png" alt="Jewelry" style="width:100%;"/></a>
+				<a href="productcategory.php?category=jewelry"><img src="images/category/jewelry.png" alt="Jewelry" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-edit text-muted"></div>
                 <p class="text-muted"><strong>Record Your Expenses</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/clothing.png" alt="Clothing" style="width:100%;"/></a>
+				<a href="productcategory.php?category=clothesNaccessories"><img src="images/category/clothing.png" alt="Clothing" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-list-alt text-muted"></div>
                 <p class="text-muted"><strong>View Your Transactions</strong></p>-->
             </div>
@@ -82,13 +82,13 @@
             <div class="clearfix visible-xs"></div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/roomdecor.png" alt="Room Decoration" style="width:100%;"/></a>
+				<a href="productcategory.php?category=roomDecor"><img src="images/category/roomdecor.png" alt="Room Decoration" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-piggy-bank text-muted"></div>
                 <p class="text-muted"><strong>Plan Your Budget</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/wedding.png" alt="Wedding" style="width:100%;"/></a>
+				<a href="productcategory.php?category=weddingAccessories"><img src="images/category/wedding.png" alt="Wedding" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-piggy-bank text-muted"></div>
                 <p class="text-muted"><strong>Plan Your Budget</strong></p>-->
             </div>
@@ -96,13 +96,13 @@
 		
 		<div class="row">
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/vintageart.png" alt="Vintage Art" style="width:100%;"/></a>
+				<a href="productcategory.php?category=vintageArts"><img src="images/category/vintageart.png" alt="Vintage Art" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-cog text-muted"></div>
                 <p class="text-muted"><strong>Easy Setting of Transactions</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/toys.png" alt="Toys" style="width:100%;"/></a>
+				<a href="productcategory.php?category=toy"><img src="images/category/toys.png" alt="Toys" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-edit text-muted"></div>
                 <p class="text-muted"><strong>Record Your Expenses</strong></p>-->
             </div>
@@ -110,13 +110,13 @@
 			<div class="clearfix visible-xs"></div>
 			
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/craftsupplies.png" alt="Craft Supplies" style="width:100%;"/></a>
+				<a href="productcategory.php?category=craftSupplies"><img src="images/category/craftsupplies.png" alt="Craft Supplies" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-list-alt text-muted"></div>
                 <p class="text-muted"><strong>View Your Transactions</strong></p>-->
             </div>
             
             <div class="col-xs-6 col-md-3 text-center">
-				<a href=""><img src="images/category/other.png" alt="Others" style="width:100%;"/></a>
+				<a href="productcategory.php?category=etc"><img src="images/category/other.png" alt="Others" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-cog text-muted"></div>
                 <p class="text-muted"><strong>Easy Setting of Transactions</strong></p>-->
             </div>
