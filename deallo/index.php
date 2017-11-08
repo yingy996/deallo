@@ -35,13 +35,13 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="images/carousel/art.jpg" alt="banner1" style="width:100%;">
+				<img src="images/carousel/art.jpg" alt="art" style="width:100%;">
 			</div>
 			<div class="item">
-				<img src="images/carousel/fashion.jpg" alt="banner2" style="width:100%;">
+				<img src="images/carousel/fashion.jpg" alt="fashion" style="width:100%;">
 			</div>
 			<div class="item">
-				<img src="images/carousel/crafts.jpg" alt="banner3" style="width:100%;">
+				<img src="images/carousel/crafts.jpg" alt="crafts" style="width:100%;">
 			</div>
 		</div>
 		
@@ -55,16 +55,6 @@
       		<span class="sr-only">Next</span>
 		</a>
 	</div>
-	
-	<!--
-    <div class="jumbotron">
-        <div class="container-fluid">
-            <h1>Money Saver</h1>
-            <p>Plan your budget with us.</p>
-            <button type="button" class="btn">Sign up now</button>
-        </div>
-    </div>
-    -->
 	
     <!-- Body content -->
     <div class="container-fluid">
@@ -117,13 +107,13 @@
                 <p class="text-muted"><strong>Record Your Expenses</strong></p>-->
             </div>
             
+			<div class="clearfix visible-xs"></div>
+			
             <div class="col-xs-6 col-md-3 text-center">
 				<a href=""><img src="images/category/craftsupplies.png" alt="Craft Supplies" style="width:100%;"/></a>
                 <!--<div class="glyphicon glyphicon-list-alt text-muted"></div>
                 <p class="text-muted"><strong>View Your Transactions</strong></p>-->
             </div>
-            
-            <div class="clearfix visible-xs"></div>
             
             <div class="col-xs-6 col-md-3 text-center">
 				<a href=""><img src="images/category/other.png" alt="Others" style="width:100%;"/></a>
