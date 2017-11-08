@@ -61,7 +61,7 @@
 								<li><a href="saleshistory.php">Sales History</a></li>
 								<li class="divider"></li>
 								<li class="dropdown-header">Buy</li>
-                                <li><a href="myproducts.php">My Purchases</a></li>
+                                <li><a href="mypurchases.php">My Purchases</a></li>
 								<li><a href="shoppingcart.php">Shopping Cart</a></li>
                             </ul>
                         </li>';
