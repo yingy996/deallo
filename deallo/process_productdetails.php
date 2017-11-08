@@ -21,6 +21,7 @@
 	//$productId = "PEO747";
 	$query->execute();
 	$result = $query->fetchAll();
+    $productname = $result[0]["name"];
 
     
 

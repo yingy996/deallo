@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-ng-app="moneySaver">
 <head>
-    <title>Money Saver</title>
+    <title>Deallo Craft House</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initialscale=1.0"/>
     <!-- Bootstrap -->
