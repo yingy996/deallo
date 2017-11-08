@@ -31,7 +31,7 @@
         //price range and shipping fee filter
         if(!empty($_POST["filter"])){
             if(empty($_POST["minPrice"]) && empty($_POST["maxPrice"]) && isset($_POST["filterfreeShipping"])){
-                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE shipping_fee = 0" . $orderBy);
+                $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE deleted = FALSE AND shipping_fee = 0" . $orderBy);
                 $filter = " || Free shipping";
             }else if(empty($_POST["minPrice"]) && empty($_POST["maxPrice"])){
                 $error_message = "Price filter empty";
@@ -46,10 +46,10 @@
                 $maxPrice = $_POST["maxPrice"];
                 
                 if(isset($_POST["filterfreeShipping"])){
-                     $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE shipping_fee = 0 AND price BETWEEN '$minPrice' AND '$maxPrice'" . $orderBy);
+                     $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE deleted = FALSE AND shipping_fee = 0 AND price BETWEEN '$minPrice' AND '$maxPrice'" . $orderBy);
                      $filter = " || RM" . $minPrice . " to RM" . $maxPrice . " || Free shipping"; 
                 }else{
-                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE price BETWEEN '$minPrice' AND '$maxPrice'" . $orderBy);
+                    $query = $db_handle->getConn()->prepare("SELECT id, name, category, price, seller_id, img, rating FROM products WHERE deleted = FALSE AND price BETWEEN '$minPrice' AND '$maxPrice'" . $orderBy);
                     $filter = " || RM" . $minPrice . " to RM" . $maxPrice; 
                 }
             }   
