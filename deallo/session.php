@@ -21,12 +21,21 @@
     } 
     
     if(!isset($_SESSION["user_login"])) {
-        if (basename($_SERVER["PHP_SELF"]) == "addproduct.php" || basename($_SERVER["PHP_SELF"]) == "viewuseraccount.php" || basename($_SERVER["PHP_SELF"]) == "edituseraccount.php" || basename($_SERVER["PHP_SELF"]) == "productdetails.php") {
+		if (basename($_SERVER["PHP_SELF"]) != "login.php" && basename($_SERVER["PHP_SELF"]) != "index.php" && basename($_SERVER["PHP_SELF"]) != "register.php" && basename($_SERVER["PHP_SELF"]) != "productcategory.php"){
 			header("location: login.php");
         	exit;
-		}
+		} 
+        /*if (basename($_SERVER["PHP_SELF"]) == "addproduct.php" || basename($_SERVER["PHP_SELF"]) == "viewuseraccount.php" || basename($_SERVER["PHP_SELF"]) == "edituseraccount.php" || basename($_SERVER["PHP_SELF"]) == "productdetails.php") {
+			header("location: login.php");
+        	exit;
+		}*/
 		
-    }
+    } else {
+		if (basename($_SERVER["PHP_SELF"]) == "login.php" || basename($_SERVER["PHP_SELF"]) == "register.php"){
+			header("location: index.php");
+        	exit;
+		} 
+	}
 
 	function sanitizeInput($data) {
         $data = trim($data);
