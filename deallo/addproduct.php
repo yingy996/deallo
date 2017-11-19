@@ -166,7 +166,7 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent" data-ng-model="shpgAgent[5]" value=""/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
+                                        <label class="form-check-label"><input type="checkbox" class="form-check-input" name="otherShpgAgent" id="shpgAgent"/> Other <input type="text" name="otherSAgent" data-ng-model="otherSAgent"/> </label>
                                     </div>
                                 </div>
                             </div>

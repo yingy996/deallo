@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbar-to-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="#">Contact us</a></li>
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="productcategory.php">Products <span class="caret"></span></a>
                             <ul class="dropdown-menu">

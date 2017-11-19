@@ -9,7 +9,7 @@
     if(!empty($_POST["productSubmit"])){
             
         /* Shipping Agent validation */
-        if(empty($_POST["shpgAgent"])){
+        if(empty($_POST["shpgAgent"]) && empty($_POST["otherShpgAgent"])){
             $error_message = "Please select at least one preferred shipping agent";
             $isValid = false;
         } 
@@ -46,7 +46,12 @@
 		   }
 		   
 		   if (isset($_POST["otherShpgAgent"])) {
-			   $shippingAgents .= "," . sanitizeInput($_POST["otherSAgent"]);
+			   if ($shippingAgents == "") {
+				   $shippingAgents .= sanitizeInput($_POST["otherSAgent"]);
+			   } else {
+				   $shippingAgents .= "," . sanitizeInput($_POST["otherSAgent"]);
+			   }
+			  
 		   }
 		   $images = rearrangeFile($_FILES["img-input"]);
 		   $errors= array();
@@ -80,6 +85,7 @@
 			   if(!move_uploaded_file($file_tmp, $dest_file)) {
 				   $error_message = "There is an error uploading the file. Please try again." . $image["name"] . $image["tmp_name"];
 				   $isValid = false;
+				   break;
 			   } else {
 				   if ($imageFileNames == "") {
 					   $imageFileNames = $dest_file;
